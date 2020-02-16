@@ -1,10 +1,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const popularPointSchema = new Schema({
+const RestaurantSchema = new Schema({
   name: String,
   place_id: String,
-  long_name: String,
   rating: Number,
   type: String,
   location: {
@@ -13,6 +12,7 @@ const popularPointSchema = new Schema({
   },
   formatted_address: String,
   formatted_phone_number: String,
+  international_phone_numer: String,
   hours: {
     open: Date,
     close: Date,
@@ -22,13 +22,13 @@ const popularPointSchema = new Schema({
   website: String,
   photos: Array,
   reviews: Array,
+},
+  {
+    timestamps: {
+      createdAt: 'created_at',
+      updatedAt: 'updated_at'
+    }
+  });
 
-}, {
-  timestamps: {
-    createdAt: 'created_at',
-    updatedAt: 'updated_at'
-  }
-});
-
-const Popular = mongoose.model('Popular', popularPointSchema);
-module.exports = Popular;
+const Restaurant = mongoose.model('Restaurant', restaurantSchema);
+module.exports = Restaurant;
