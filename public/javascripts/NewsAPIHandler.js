@@ -8,9 +8,10 @@ class NewsAPIHandler {
   }
 
   getNews(country) {
+
     this.axiosApp.get(`/top-headlines?country=${country}&apiKey=${this.api}`)
       .then(response => {
-        // console.log(response.data)
+        console.log(response.data)
         const newsArr = response.data.articles
 
         newsArr.forEach(news => {
