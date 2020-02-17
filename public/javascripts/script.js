@@ -1,11 +1,24 @@
+const search = new SearchAPIHandler('https://maps.googleapis.com/maps/api/geocode')
+const newsAPI = new NewsAPIHandler()
+
 document.addEventListener('DOMContentLoaded', () => {
 
-  console.log('IronGenerator JS imported successfully!');
-  const newsAPI = new NewsAPIHandler();
-  const infoAPI = new InfoAPIHandler();
 
+  document.getElementById('search').onclick = e => {
+    event.preventDefault()
+    const city = document.getElementById('citySearch').value
 
-  newsAPI.getNews()
-  infoAPI.getInfo()
+    //request news
+
+    //
+    search.getCountry(city)
+      .then(country => {
+
+        newsAPI.getNews(country)
+        console.log(country)
+      })
+      .catch(err => console.log(err))
+  };
+
 
 }, false);
