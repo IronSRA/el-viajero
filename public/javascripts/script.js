@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
       .then(country => {
 
         newsAPI.getNews(country)
-        console.log(country)
       })
       .catch(err => console.log(err))
   };
