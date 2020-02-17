@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const NewsArctileSchema = new Schema({
+const newsArticleSchema = new Schema({
   title: String,
   description: String,
   url_to_image: String,
@@ -11,5 +11,5 @@ const NewsArctileSchema = new Schema({
   createdAt: { type: Date, default: Date.now },
 });
 
-const Article = mongoose.model('Article', NewsArctileSchema);
+const Article = mongoose.model('Article', newsArticleSchema);
 module.exports = Article;
