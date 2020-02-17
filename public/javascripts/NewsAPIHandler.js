@@ -6,7 +6,8 @@ class NewsAPIHandler {
     })
   }
 
-  getNews() {
+  getNews(country) {
+    country === "ES" ? (alert("En tu pais las noticias se encuentran bloqueadas, te mostramos las de Estados Unidos"), country = "us") : null
     this.axiosApp.get(`/top-headlines?country=${country}&apiKey=${this.api}`)
       .then(response => {
         document.querySelector('.newsContainer').innerHTML = ''

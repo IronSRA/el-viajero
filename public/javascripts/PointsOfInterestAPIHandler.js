@@ -1,4 +1,4 @@
-class RestaurantsAPIHandler {
+class PointsOfInterestAPIHandler {
   constructor() {
     this.apiKey = 'AIzaSyCFPhuSzSAR4FzJmO0eMimZ7B_XRD4FOJY'
     this.axiosApp = axios.create({
@@ -19,14 +19,14 @@ class RestaurantsAPIHandler {
       .catch(err => console.log(err))
   }
 
-  getRestaurants(city, country) {
+  getPointsOfInterest(city, country) {
     this.getCityLatLng(city, country)
       .then(geometry => {
-        return this.axiosApp.get(`place/nearbysearch/json?location=${geometry.lat}%2C${geometry.lng}&radius=50000&keyword=restaurant&point_of_interest&key=${this.apiKey}`)
+        return this.axiosApp.get(`place/nearbysearch/json?location=${geometry.lat}%2C${geometry.lng}&radius=50000&keyword=  point_of_interest&key=${this.apiKey}`)
           .then(responce => {
-            console.log(responce, "res de getrestaurants")
+            console.log(responce, "res de getPointsOfInterest")
           })
-          .catch(err => console.log(err, "error de getrestaurants"))
+          .catch(err => console.log(err, "error de getPointsOfInterest"))
       })
   }
 }
