@@ -6,16 +6,17 @@
 
 | Action                | Endpoint              | Task                  |
 | --------------------- | --------------------- | --------------------- |
-| Iniciar sesion        | /auth/login           | POST                  |
-| Registro              | /auth/singup          | POST                  |
-| Cierre de sesion      | /auth/logout          | GET                   |
-| Perfil                | /profile              | GET                   |
-| Busqueda              | /search?={CIUDAD}     | GET                   |
-| Contenido de la celda | Contenido de la celda | Contenido de la celda |
-| Contenido de la celda | Contenido de la celda | Contenido de la celda |
-| Contenido de la celda | Contenido de la celda | Contenido de la celda |
-| Contenido de la celda | Contenido de la celda | Contenido de la celda |
-| Contenido de la celda | Contenido de la celda | Contenido de la celda |
-| Contenido de la celda | Contenido de la celda | Contenido de la celda |
-| Contenido de la celda | Contenido de la celda | Contenido de la celda |
-| Contenido de la celda | Contenido de la celda | Contenido de la celda |
+| GET                   | /                     | Go to root/index      |
+| POST                  | /auth/login           | Start session         |
+| POST                  | /auth/singup          | Sign Up               | 
+| GET                   | /auth/logout          | Logout                | 
+| GET                   | /profile              | Go to user's profile  | 
+| GET                   | /search?={CIUDAD}     | City search           |  
+| GET                   | /profile/add/city/:id | Add new fav city      |
+| GET                   | /profile/add/buddy/:id| Add new fav buddy     |
+| GET                   | /events               | Go to event list      |
+| GET                   | /weather              | Get weather forecast  |
+| GET                   | /news                 | Get news              |
+| GET                   | /restaurants          | View reastaurants     |
+| GET                   | /pointsofinterest     | View popular places   |
+| GET                   | /countryinfo          | Get more info about   |

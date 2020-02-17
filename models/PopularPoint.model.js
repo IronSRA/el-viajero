@@ -17,6 +17,7 @@ const popularPointSchema = new Schema({
     open: Date,
     close: Date,
   },
+  open_now: Boolean,
   price_level: Number,
   website: String,
   photos: Array,
@@ -24,8 +25,8 @@ const popularPointSchema = new Schema({
 
 }, {
   timestamps: {
-    createdAt: 'created_at',
-    updatedAt: 'updated_at'
+    createdAt: { type: Date, default: Date.now },
+    updatedAt: { type: Date, default: Date.now }
   }
 });
 

@@ -4,6 +4,7 @@ const express = require('express')
 const favicon = require('serve-favicon')
 const logger = require('morgan')
 const path = require('path')
+const passport = require('passport')
 
 module.exports = app => {
   app.use(logger('dev'))
@@ -14,4 +15,6 @@ module.exports = app => {
   app.set('view engine', 'hbs')
   app.use(express.static(path.join(__dirname, '..', 'public')))
   app.use(favicon(path.join(__dirname, '..', 'public', 'images', 'favicon.ico')))
+  app.use(passport.initialize());
+  app.use(passport.session());
 }

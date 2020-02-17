@@ -16,8 +16,8 @@ const weatherSchema = new Schema({
   aqi: Number
 }, {
   timestamps: {
-    createdAt: 'created_at',
-    updatedAt: 'updated_at'
+    createdAt: { type: Date, default: Date.now },
+    updatedAt: { type: Date, default: Date.now }
   }
 });
 
