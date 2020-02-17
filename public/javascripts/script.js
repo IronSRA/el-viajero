@@ -1,5 +1,6 @@
-const search = new SearchAPIHandler('https://maps.googleapis.com/maps/api/geocode')
+const googleAPI = new SearchAPIHandler('https://maps.googleapis.com/maps/api/geocode')
 const newsAPI = new NewsAPIHandler()
+const weatherAPI = new WeatherAPIHandler("https://www.metaweather.com/api")
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -11,9 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
     //request news
 
     //
-    search.getCountry(city)
+    googleAPI.getCountry(city)
       .then(country => {
-
+        weatherAPI.getWeather(city)
         newsAPI.getNews(country)
       })
       .catch(err => console.log(err))
