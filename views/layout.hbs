@@ -10,8 +10,6 @@
 </head>
 
 <body>
-
-
   <nav>
     <a href="/">Home</a>
     <a href="/auth/login">Login</a>
@@ -29,16 +27,11 @@
   {{{body}}}
 
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <script src="/javascripts/SearchAPIHandler.js">
-  </script>
-
-  <script src="/javascripts/NewsAPIHandler.js">
-  </script>
-
-
-  <script src="/javascripts/script.js">
-    let apiKey = {{ newsApi }};
-  </script>
+  <script src="/javascripts/SearchAPIHandler.js"></script>
+  <script src="/javascripts/BasicAPIHandler.js"></script>
+  <script src="/javascripts/NewsAPIHandler.js"></script>
+  <script src="/javascripts/RestaurantsAPIHandler.js"></script>
+  <script src="/javascripts/script.js"></script>
 </body>
 
 </html>

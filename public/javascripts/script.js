@@ -1,5 +1,5 @@
 const search = new SearchAPIHandler('https://maps.googleapis.com/maps/api/geocode')
-const newsAPI = new NewsAPIHandler()
+// const newsAPI = new NewsAPIHandler()
 const restaurantsAPI = new RestaurantsAPIHandler()
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -9,15 +9,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const city = document.getElementById('citySearch').value
 
 
-
-
     search.getCountry(city)
       .then(country => {
         //request news
         newsAPI.getNews(country)
         //request restaurants
         restaurantsAPI.getCityLatLng(city, country)
-        console.log(city, country)
+        //console.log(city, country)
       })
       .catch(err => console.log(err))
   };
