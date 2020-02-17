@@ -20,7 +20,7 @@ const popularPointSchema = new Schema({
   open_now: Boolean,
   price_level: Number,
   website: String,
-  photos: Array,
+  photos: [String],
   reviews: Array,
 
 }, {

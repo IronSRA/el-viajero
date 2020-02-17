@@ -23,7 +23,7 @@ const userSchema = new Schema({
     description: String,
     date: Date
   }],
-  travelbuddies: Array
+  travelbuddies: [{ type: mongoose.SchemaTypes.ObjectId, ref: "User" }]
 
 
 }, {
