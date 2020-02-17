@@ -25,8 +25,8 @@ const RestaurantSchema = new Schema({
 },
   {
     timestamps: {
-      createdAt: 'created_at',
-      updatedAt: 'updated_at'
+      createdAt: { type: Date, default: Date.now },
+      updatedAt: { type: Date, default: Date.now }
     }
   });
 
