@@ -8,16 +8,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.getElementById('search').onclick = e => {
     event.preventDefault()
-    const city = document.getElementById('citySearch').value
+    const citySearch= document.getElementById('citySearch').value
 
     //request news
 
     //
-    googleAPI.getCountry(city)
-      .then(country => {
-        weatherAPI.getWeather(city)
-        newsAPI.getNews(country)
-        basicAPI.getInfo(country)
+    googleAPI.getCountry(citySearch)
+      .then(city => {
+        console.log(city)
+        weatherAPI.getWeather(city[0])
+        newsAPI.getNews(city[1])
+        basicAPI.getInfo(city[1])
       })
       .catch(err => console.log(err))
   };

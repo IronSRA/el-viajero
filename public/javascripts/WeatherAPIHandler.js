@@ -12,6 +12,7 @@ class WeatherAPIHandler {
     this.axiosApp.get(`/location/search/?query=${city}`)
       .then(response => {
         const woeid = response.data[0].woeid
+        console.log(response)
         getInfo(woeid)
       })
       .catch(error => console.log('Oh No! Error is: ', error))
