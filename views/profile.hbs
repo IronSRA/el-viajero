@@ -1,0 +1,9 @@
+<h1>Welcome, {{user.username}}! </h1>
+<img src={{user.picture}}></img>
+
+<p>Sube tu careto</p>
+
+<form action="/profile" method="post" enctype="multipart/form-data">
+  <input type="file" name="phototoupload"><br>
+  <input type="submit" value="Save"><br>
+</form>

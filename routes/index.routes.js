@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const User = require('../models/User.model')
+const uploadCloud = require('../configs/cloudinary.config');
 
 const isAdmin = user => user && user.role === 'Admin'
 
@@ -15,6 +16,14 @@ router.get('/', (req, res) => res.render('index', {
 router.get('/profile', checkLoggedIn, (req, res) => res.render('profile', {
   user: req.user
 }));
+
+router.post('/profile', uploadCloud.single('phototoupload'), (req, res, next) => {
+
+  req.user.picture = req.file.secure_url
+  res.render('authentication/profile', {
+    user: req.user
+  });
+})
 
 router.get('/userList', (req, res) => {
   User.find()
