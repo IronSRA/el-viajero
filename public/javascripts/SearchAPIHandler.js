@@ -1,4 +1,3 @@
-let country = ""
 class SearchAPIHandler {
   constructor(baseUrl) {
     this.BASE_URL = baseUrl;
