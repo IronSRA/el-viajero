@@ -1,19 +1,19 @@
 class NewsAPIHandler {
-  constructor(baseUrl, apiKey) {
-    this.BASE_URL = baseUrl;
+  constructor() {
     this.api = '96a3d62e4e734ff19ca5bcc072762650'
     this.axiosApp = axios.create({
-      baseURL: `https://newsapi.org/v2/top-headlines?country=gb&apiKey=${this.api}`
+      baseURL: `https://newsapi.org/v2/top-headlines`
     })
   }
 
   getNews() {
-    this.axiosApp.get('')
+    this.axiosApp.get(`?country=gb&apiKey=${this.api}`)
       .then(response => {
+        document.querySelector('.newsContainer').innerHTML = ''
         // console.log(response.data)
         const newsArr = response.data.articles
-
         newsArr.forEach(news => {
+          news.urlToImage ? null : news.urlToImage = ''
           const details = `<div class="news-info">
           <img src="${news.urlToImage}" / >
         <h2>${news.title}</h2>
