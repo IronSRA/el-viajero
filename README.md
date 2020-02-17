@@ -12,11 +12,11 @@
 | GET                   | /auth/logout          | Logout                | 
 | GET                   | /profile              | Go to user's profile  | 
 | GET                   | /search?={CIUDAD}     | City search           |  
-| Contenido de la celda | Contenido de la celda | Contenido de la celda |
-| Contenido de la celda | Contenido de la celda | Contenido de la celda |
-| Contenido de la celda | Contenido de la celda | Contenido de la celda |
-| Contenido de la celda | Contenido de la celda | Contenido de la celda |
-| Contenido de la celda | Contenido de la celda | Contenido de la celda |
-| Contenido de la celda | Contenido de la celda | Contenido de la celda |
-| Contenido de la celda | Contenido de la celda | Contenido de la celda |
-| Contenido de la celda | Contenido de la celda | Contenido de la celda |
+| GET                   | /profile/add/city/:id | Add new fav city      |
+| GET                   | /profile/add/buddy/:id| Add new fav buddy     |
+| GET                   | /events               | Go to event list      |
+| GET                   | /weather              | Get weather forecast  |
+| GET                   | /news                 | Get news              |
+| GET                   | /restaurants          | View reastaurants     |
+| GET                   | /pointsofinterest     | View popular places   |
+| GET                   | /countryinfo          | Get more info about   |
