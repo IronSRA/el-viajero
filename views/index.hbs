@@ -1,15 +1,49 @@
-<h2>NOTICIAS</h2>
-<hr>
-<div class="newsContainer">
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <h2>NOTICIAS</h2>
+      <hr>
+      {{#each news}}
+      <div class="newsContainer">
+        <img class="mb-3" src="{{urlToImage}}" alt="{{title}}" />
+        <p><b>{{title}}</b></p>
+        <p>{{description}}</p>
+      </div>
+      <hr>
+      {{/each}}
+    </div>
+    <div class="col-3">
+      <h2>INFO</h2>
+      <hr>
+      <div class="basicInfoContainer">
+        <p>Capital: {{info.capital}}</p>
+        <p>Monedas:</p>
+        {{#each info.currencies}}
+        {{name}}
+        {{/each}}
+        <p>Lenguajes:</p>
+        {{#each info.languages}}
+        {{name}}
+        {{/each}}
+        <p>Prefijo: {{info.numericCode}}</p>
+        <p>Zona Horaria:</p>
+        {{#each info.timezones}}
+        {{this}}
+        {{/each}}
+      </div>
+    </div>
+    <div class="col-3">
+      <h2>TIEMPO</h2>
+      <hr>
+      <div class="infoWeather">
 
+      </div>
+    </div>
+    <div class="col-3">
+      <h2>RESTAURANTES</h2>
+      <hr>
+      <div class="restaurants">
 
-</div>
-<h2>INFO</h2>
-<hr>
-<div class="basicInfoContainer">
-
-</div>
-<h2>TIEMPO</h2>
-<div class="infoWeather">
-
-</div>
+      </div>
+    </div>
+  </div>
