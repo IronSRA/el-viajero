@@ -6,7 +6,7 @@ class NewsAPIHandler {
     })
   }
 
-  getNews() {
+  getNews(country) {
     this.axiosApp.get(`/top-headlines?country=${country}&apiKey=${this.api}`)
       .then(response => {
         document.querySelector('.newsContainer').innerHTML = ''

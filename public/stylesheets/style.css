@@ -9,7 +9,11 @@ img {
   width: 100px; }
 
 a {
-  text-decoration: none; }
+  text-decoration: none;
+  color: inherit; }
+
+main {
+  margin: 40px; }
 
 .menu-wrapper {
   padding: 10px 0;
@@ -26,7 +30,9 @@ a {
 .menu-wrapper .menu {
   display: flex;
   justify-content: flex-end;
-  align-items: center; }
+  align-items: center;
+  color: #3a3a3a;
+  text-transform: uppercase; }
 
 .menu-wrapper .menu ul {
   display: flex;

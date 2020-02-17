@@ -13,6 +13,11 @@ img {
 
 a {
   text-decoration: none;
+  color: inherit;
+}
+
+main {
+  margin: 40px
 }
 
 .menu-wrapper {
@@ -34,6 +39,8 @@ a {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  color: #3a3a3a;
+  text-transform: uppercase;
 }
 
 .menu-wrapper .menu ul {

@@ -1,5 +1,6 @@
 const search = new SearchAPIHandler('https://maps.googleapis.com/maps/api/geocode')
 const newsAPI = new NewsAPIHandler()
+const basicAPI = new InfoAPIHandler()
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -13,8 +14,9 @@ document.addEventListener('DOMContentLoaded', () => {
     //
     search.getCountry(city)
       .then(country => {
-
+        console.log(country)
         newsAPI.getNews(country)
+        basicAPI.getInfo(country)
       })
       .catch(err => console.log(err))
   };
