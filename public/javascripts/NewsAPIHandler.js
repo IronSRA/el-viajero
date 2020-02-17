@@ -1,14 +1,14 @@
 class NewsAPIHandler {
-  constructor(baseUrl, apiKey) {
+  constructor(baseUrl) {
     this.BASE_URL = baseUrl;
     this.api = '96a3d62e4e734ff19ca5bcc072762650'
     this.axiosApp = axios.create({
-      baseURL: `https://newsapi.org/v2/top-headlines?country=gb&apiKey=${this.api}`
+      baseURL: `https://newsapi.org/v2`
     })
   }
 
-  getNews() {
-    this.axiosApp.get('')
+  getNews(country) {
+    this.axiosApp.get(`/top-headlines?country=${country}&apiKey=${this.api}`)
       .then(response => {
         // console.log(response.data)
         const newsArr = response.data.articles

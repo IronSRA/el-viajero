@@ -12,11 +12,6 @@ router.get('/', (req, res) => res.render('index', {
   isAdmin: isAdmin(req.user)
 }))
 
-router.post('/', (req, res) => {
-  const city = req.query.city
-  console.log(city)
-})
-
 router.get('/profile', checkLoggedIn, (req, res) => res.render('profile', {
   user: req.user
 }));

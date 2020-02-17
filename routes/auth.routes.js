@@ -18,8 +18,6 @@ router.post('/login', passport.authenticate('local', {
   passReqToCallback: true
 }))
 
-
-
 router.get('/signup', (req, res, next) => {
   res.render('auth/signup')
 })

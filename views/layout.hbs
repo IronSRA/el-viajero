@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{title}}</title>
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
 
@@ -19,17 +18,23 @@
     <a href="/auth/signup">Signup</a>
     <a href="/auth/logout">Logout</a>
   </nav>
-  <form>
+
+  <form action="/" method="POST">
     <div>
       <input type="search" id="citySearch" name="city" placeholder="Elige una ciudad">
-      <button>Buscar</button>
+      <button id="search">Buscar</button>
     </div>
   </form>
 
   {{{body}}}
 
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="/javascripts/SearchAPIHandler.js">
+  </script>
+
   <script src="/javascripts/NewsAPIHandler.js">
   </script>
+
 
   <script src="/javascripts/script.js">
     let apiKey = {{ newsApi }};
