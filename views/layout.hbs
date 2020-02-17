@@ -6,25 +6,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{title}}</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
   <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
 
 <body>
-  <nav>
-    <a href="/">Home</a>
-    <a href="/auth/login">Login</a>
-    <a href="/auth/signup">Signup</a>
-    <a href="/auth/logout">Logout</a>
-  </nav>
-
-  <form action="/" method="POST">
-    <div>
-      <input type="search" id="citySearch" name="city" placeholder="Elige una ciudad">
-      <button id="search">Buscar</button>
+  <header class="menu-wrapper">
+    <div class="container">
+      <div class="row d-flex align-items-center">
+        <div class="col-4">
+          {{!-- BUSCADOR --}}
+          <form action="/" method="POST">
+            <div>
+              <input type="search" id="citySearch" name="city" placeholder="Elige una ciudad">
+              <button id="search">Buscar</button>
+            </div>
+          </form>
+        </div>
+        <div class="col-4">
+          <div class="logo">
+            {{!-- LOGO --}}
+            <h1>EL VIAJERO</h1>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="menu">
+            {{!-- MENU --}}
+            <nav>
+              <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/auth/login">Login</a></li>
+                <li><a href="/auth/signup">Signup</a></li>
+                <li><a href="/auth/logout">Logout</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
     </div>
-  </form>
+  </header>
 
-  {{{body}}}
+  <main>
+    {{{body}}}
+  </main>
+
 
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="/javascripts/SearchAPIHandler.js"></script>
