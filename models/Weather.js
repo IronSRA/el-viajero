@@ -12,7 +12,8 @@ const weatherSchema = new Schema({
   light: {
     sun_rise: Date,
     sun_set: Date
-  }
+  },
+  aqi: Number
 }, {
   timestamps: {
     createdAt: 'created_at',
