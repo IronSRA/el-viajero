@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const RestaurantSchema = new Schema({
+const restaurantSchema = new Schema({
   name: String,
   place_id: String,
   rating: Number,
@@ -22,13 +22,12 @@ const RestaurantSchema = new Schema({
   website: String,
   photos: Array,
   reviews: Array,
-},
-  {
-    timestamps: {
-      createdAt: 'created_at',
-      updatedAt: 'updated_at'
-    }
-  });
+}, {
+  timestamps: {
+    createdAt: 'created_at',
+    updatedAt: 'updated_at'
+  }
+});
 
 const Restaurant = mongoose.model('Restaurant', restaurantSchema);
 module.exports = Restaurant;

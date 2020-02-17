@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const EventSchema = new Schema({
+const eventSchema = new Schema({
   name: String,
   description: String,
   rating: Number,
@@ -23,13 +23,12 @@ const EventSchema = new Schema({
   website: String,
   photos: Array,
   reviews: Array,
-},
-  {
-    timestamps: {
-      createdAt: 'created_at',
-      updatedAt: 'updated_at'
-    }
-  });
+}, {
+  timestamps: {
+    createdAt: 'created_at',
+    updatedAt: 'updated_at'
+  }
+});
 
 const Event = mongoose.model('Event', eventSchema);
 module.exports = Event;
