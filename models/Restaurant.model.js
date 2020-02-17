@@ -22,12 +22,13 @@ const restaurantSchema = new Schema({
   website: String,
   photos: Array,
   reviews: Array,
-}, {
-  timestamps: {
-    createdAt: 'created_at',
-    updatedAt: 'updated_at'
-  }
-});
+},
+  {
+    timestamps: {
+      createdAt: { type: Date, default: Date.now },
+      updatedAt: { type: Date, default: Date.now }
+    }
+  });
 
 const Restaurant = mongoose.model('Restaurant', restaurantSchema);
 module.exports = Restaurant;

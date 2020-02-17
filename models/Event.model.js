@@ -23,12 +23,13 @@ const eventSchema = new Schema({
   website: String,
   photos: Array,
   reviews: Array,
-}, {
-  timestamps: {
-    createdAt: 'created_at',
-    updatedAt: 'updated_at'
-  }
-});
+},
+  {
+    timestamps: {
+      createdAt: { type: Date, default: Date.now },
+      updatedAt: { type: Date, default: Date.now }
+    }
+  });
 
-const Event = mongoose.model('Event', eventSchema);
+const Event = mongoose.model('Event', EventSchema);
 module.exports = Event;

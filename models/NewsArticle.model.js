@@ -8,6 +8,7 @@ const newsArticleSchema = new Schema({
   url: String,
   published_at: String,
   source_name: String,
+  createdAt: { type: Date, default: Date.now },
 });
 
 const Article = mongoose.model('Article', newsArticleSchema);

@@ -23,13 +23,13 @@ const userSchema = new Schema({
     description: String,
     date: Date
   }],
-  travelbuddies: Array
+  travelbuddies: [{ type: mongoose.SchemaTypes.ObjectId, ref: "User" }]
 
 
 }, {
   timestamps: {
-    createdAt: 'created_at',
-    updatedAt: 'updated_at'
+    createdAt: { type: Date, default: Date.now },
+    updatedAt: { type: Date, default: Date.now }
   }
 });
 
