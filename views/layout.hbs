@@ -16,11 +16,9 @@
       <div class="row d-flex align-items-center">
         <div class="col-4">
           {{!-- BUSCADOR --}}
-          <form action="/" method="POST">
-            <div>
-              <input type="search" id="citySearch" name="city" placeholder="Elige una ciudad">
-              <button id="search">Buscar</button>
-            </div>
+          <form action="/" method="GET">
+            <input type="search" id="citySearch" name="city" placeholder="Elige una ciudad">
+            <button id="search">Buscar</button>
           </form>
         </div>
         <div class="col-4">
@@ -52,13 +50,6 @@
 
 
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <script src="/javascripts/SearchAPIHandler.js"></script>
-  <script src="/javascripts/EventsAPIHandler.js"></script>
-  <script src="/javascripts/WeatherAPIHandler.js"></script>
-  <script src="/javascripts/BasicAPIHandler.js"></script>
-  <script src="/javascripts/NewsAPIHandler.js"></script>
-  <script src="/javascripts/RestaurantsAPIHandler.js"></script>
-  <script src="/javascripts/PointsOfInterestAPIHandler.js"></script>
   <script src="/javascripts/script.js"></script>
 </body>
 

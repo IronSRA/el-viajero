@@ -1,30 +1,9 @@
-const googleAPI = new SearchAPIHandler('https://maps.googleapis.com/maps/api/geocode')
-const newsAPI = new NewsAPIHandler()
-const weatherAPI = new WeatherAPIHandler("https://www.metaweather.com/api")
-const basicAPI = new InfoAPIHandler()
-const eventAPI = new EventsAPIHandler(`https://app.ticketmaster.com/discovery/v2`)
-const restaurantsAPI = new RestaurantsAPIHandler()
-const pointsOfInterest = new PointsOfInterestAPIHandler()
-const country = ''
+// const weatherAPI = new WeatherAPIHandler("https://www.metaweather.com/api")
+// const basicAPI = new InfoAPIHandler()
 
 document.addEventListener('DOMContentLoaded', () => {
-
-  document.getElementById('search').onclick = e => {
-    event.preventDefault()
-    const citySearch = document.getElementById('citySearch').value
-
-    //
-    googleAPI.getCountry(citySearch)
-      .then(city => {
-        weatherAPI.getWeather(city[0])
-        eventAPI.getEvents(city[0])
-        newsAPI.getNews(city[1])
-        basicAPI.getInfo(city[1])
-        restaurantsAPI.getRestaurants(city, country)
-        pointsOfInterest.getPointsOfInterest(city, country)
-      })
-      .catch(err => console.log(err))
-  };
-
-
+  // document.querySelector('#search').onclick = e => {
+  //   const city = document.querySelector('#citySearch').value
+  //   axios.get(`/${city}`)
+  // };
 }, false);

@@ -1,6 +1,8 @@
+const axios = require('axios').default;
+
 class SearchAPIHandler {
   constructor(baseUrl) {
-    this.BASE_URL = baseUrl;
+    this.BASE_URL = 'https://maps.googleapis.com/maps/api/geocode';
     this.apiKey = 'AIzaSyD44K0JK21Zr3D_vx2B1VKPoxwei7vzwfM'
     this.axiosApp = axios.create({
       baseURL: this.BASE_URL
@@ -8,7 +10,6 @@ class SearchAPIHandler {
   }
 
   getCountry(city) {
-
     return this.axiosApp.get(`/json?address=${city}&key=${this.apiKey}`)
       .then(response => {
         let infoCountry = response.data.results[0].address_components.filter(pro => (pro.types[0] === "country"));
@@ -20,3 +21,5 @@ class SearchAPIHandler {
       .catch(error => console.log('Oh No! Error is: ', error))
   }
 }
+
+module.exports = SearchAPIHandler
