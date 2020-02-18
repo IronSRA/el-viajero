@@ -24,7 +24,6 @@ const checkLoggedIn = (req, res, next) => req.user ? next() : res.render('index'
 })
 
 router.get('/', (req, res) => {
-  console.log(Date.now())
   let city = req.query.city
   searchCountry.getCountry(city)
     .then(countryCode => {
@@ -37,12 +36,17 @@ router.get('/', (req, res) => {
 
       Promise.all([newsPromise, infoPromise, weatherPromise, restaurantsPromise, pointsPromise, eventsPromise])
         .then(results => {
+          console.log(results[2].data.list[0])
+          results[2] === undefined ? results[2] = {
+            data: ""
+          } : null
           let sunrise = (new Date(results[2].data.city.sunrise * 1000)).toLocaleTimeString("en-UK")
           let sunset = (new Date(results[2].data.city.sunset * 1000)).toLocaleTimeString("en-UK")
           res.render('index', {
             news: results[0].data.articles,
             info: results[1].data,
             weather: results[2].data,
+            city: countryCode.city,
             hours: {
               sunrise,
               sunset
@@ -62,12 +66,21 @@ router.get('/profile', checkLoggedIn, (req, res) => res.render('profile', {
 }));
 
 router.post('/profile', uploadCloud.single('phototoupload'), (req, res, next) => {
+  User.findByIdAndUpdate(req.user.id, { image: req.file.secure_url })
+    .then(() => res.redirect('/profile'))
+    .catch(err => next(err))
+});
 
-  req.user.picture = req.file.secure_url
-  res.render('authentication/profile', {
-    user: req.user
-  });
-})
+router.post('/profile/newpicture', uploadCloud.single('imagesupload'), (req, res, next) => {
+  User.findByIdAndUpdate(req.user.id, { $push: { pictures: { image: req.file.secure_url, description: req.body.description } } })
+    .then(() => res.redirect('/profile'))
+    .catch(err => next(err))
+});
+
+// router.post('profile/picture/like', (req, res, next) => {
+
+// })
+
 
 router.get('/userList', (req, res) => {
   User.find()

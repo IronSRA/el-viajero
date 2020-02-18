@@ -14,15 +14,20 @@ const userSchema = new Schema({
   visiting_now: String,
   visited_cities: Array,
   rating: Number,
+  image: String,
   comments: [{
     body: String,
     section: String,
-    date: Date
+    date: { type: Date, default: Date.now }
   }],
   pictures: [{
     image: String,
     description: String,
-    date: Date
+    date: { type: Date, default: Date.now },
+    likes: [{
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: "User"
+    }]
   }],
   travelbuddies: [{
     type: mongoose.SchemaTypes.ObjectId,
