@@ -6,10 +6,12 @@ const searchAPIHandler = require('../services/SearchAPIHandler')
 const newsAPIHandler = require('../services/NewsAPIHandler')
 const infoAPIHandler = require('../services/BasicAPIHandler')
 const weatherAPIHandler = require('../services/WeatherAPIHandler')
+const restaurantsAPIHandler = require('../services/RestaurantAPIHandler')
 const searchCountry = new searchAPIHandler()
 const newsAPI = new newsAPIHandler()
 const infoAPI = new infoAPIHandler()
 const weatherAPI = new weatherAPIHandler()
+const restaurantsAPI = new restaurantsAPIHandler()
 
 const isAdmin = user => user && user.role === 'Admin'
 
@@ -18,20 +20,34 @@ const checkLoggedIn = (req, res, next) => req.user ? next() : res.render('index'
 })
 
 router.get('/', (req, res) => {
-  console.log(Date.now())
   let city = req.query.city
   searchCountry.getCountry(city)
     .then(countryCode => {
       const newsPromise = newsAPI.getNews(`${countryCode.country}`)
       const infoPromise = infoAPI.getInfo(`${countryCode.country}`)
       const weatherPromise = weatherAPI.getWeather(`${countryCode.city}`)
+      const restaurantsPromise = restaurantsAPI.getRestaurants(`${countryCode.city}`, `${countryCode.country}`)
 
-      Promise.all([newsPromise, infoPromise, weatherPromise])
+
+      Promise.all([newsPromise, infoPromise, weatherPromise, restaurantsPromise])
         .then(results => {
+          console.log(results[2].data.list[0])
+          results[2] === undefined ? results[2] = {
+            data: ""
+          } : null
+          let sunrise = (new Date(results[2].data.city.sunrise * 1000)).toLocaleTimeString("en-UK")
+          let sunset = (new Date(results[2].data.city.sunset * 1000)).toLocaleTimeString("en-UK")
+          console.log(results[3])
           res.render('index', {
             news: results[0].data.articles,
             info: results[1].data,
-            weather: results[2].data
+            weather: results[2].data,
+            city: countryCode.city,
+            hours: {
+              sunrise,
+              sunset
+            },
+            restaurant: results[3].data.results
           })
         })
         .catch(err => console.log(err))

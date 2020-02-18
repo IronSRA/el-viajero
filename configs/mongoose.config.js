@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 mongoose
-  .connect(`${process.env.DB}`, {
+  .connect(`${process.env.DBREMOTE}`, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })

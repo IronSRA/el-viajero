@@ -1,6 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="col-4">
+    <div class="col-12">
+      <h1 class="mainCityTitle">{{city}}</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-4 col-sm-12">
       <article class="card">
         <header>
           <i class="material-icons">
@@ -21,12 +26,12 @@
           {{/each}}
           {{/if}}
           {{#unless news}}
-          <h1>sdafsdf</h1>
+          <p class="error">Las noticias se encuentran bloqueadas en esta búsqueda</p>
           {{/unless}}
         </div>
       </article>
     </div>
-    <div class="col-4">
+    <div class="col-lg-4 col-sm-12">
       <article class="card">
         <header>
           <i class="material-icons">
@@ -35,6 +40,7 @@
           <h2>Info</h2>
         </header>
         <div class="content">
+          {{#if info}}
           <div class="basicInfoContainer">
             <p><span class="infoTitle">Capital: </span>{{info.capital}}</p>
             <p><span class="infoTitle">Moneda: </span>
@@ -47,24 +53,51 @@
               {{name}}.
               {{/each}}
             </p>
-            <p><span class="infoTitle">Prefijo: </span>+{{info.numericCode}}</p>
+            <p><span class="infoTitle">Prefijo: </span>+{{info.callingCodes}}</p>
             <p><span class="infoTitle">Zona Horaria:</span>
               {{#each info.timezones}}
               {{this}}.
               {{/each}}
             </p>
           </div>
+          {{/if}}
+          {{#unless info}}
+          <p class="error">No tenemos datos para esa búsqueda</p>
+          {{/unless}}
         </div>
       </article>
     </div>
-    <div class="col-4">
-      <h2>TIEMPO</h2>
-      <hr>
-      <div class="infoWeather">
-        <h5>{{weather.city.name}}, {{weather.city.country}}</h5>
+
+
+    <div class="col-lg-4 col-sm-12">
+      <article class="card">
+        <header>
+          <i class="material-icons">
+            wb_sunny
+          </i>
+          <h2>Tiempo</h2>
+        </header>
+        <div class="content">
+          {{#if weather}}
+          <div class="weatherContainer">
+            <div>
+              <img src="http://openweathermap.org/img/wn/{{weather.list.[0].weather.[0].icon}}@2x.png"
+                alt="{{weather.list.[0].weather.[0].description}}" />
+              <p class="infoTitle weather">{{weather.list.[0].weather.[0].description}}</p>
+            </div>
+          </div>
+          {{/if}}
+          {{#unless weather}}
+          <p class="error">No tenemos datos para esa búsqueda</p>
+          {{/unless}}
+        </div>
+      </article>
+    </div>
+    {{!-- 
+    {{#if weather}}
         <p>{{weather.list.[0].dt_txt}} <br>
-          amanece: {{weather.city.sunrise}}<br>
-          anochece: {{weather.city.sunset}}
+          amanece: {{hours.sunrise}}<br>
+          anochece: {{hours.sunset}}
         </p>
         {{#each weather.list.[0].weather}}
         <b>{{main}}</b>
@@ -84,14 +117,20 @@
         {{/each}}
         {{main.humidity}}<br>
         {{/each}}
-
-
       </div>
     </div>
-    <div class="col-4">
+    {{/if}} --}}
+    <div class="col-lg-4 col-sm-12">
       <h2>RESTAURANTES</h2>
       <hr>
       <div class="restaurants">
+        {{#each restaurant}}
+        <h5>{{name}}</h5>
+        <p>Precio: {{price_level}}</p>
+        <p>Rating: {{rating}}</p>
+        <p>Direccion: {{vicinity}}</p>
+        <hr>
+        {{/each}}
 
       </div>
     </div>

@@ -4,7 +4,8 @@
 
 body {
   font-family: 'Monserrat', sans-serif;
-  background-color: #f5f5f5;
+  font-weight: 100;
+  background-color: #3a2678;
   color: #3a3a3a; }
 
 img {
@@ -30,6 +31,17 @@ a:hover {
 
 main {
   margin: 40px; }
+
+.error {
+  border: 1px solid #E53935;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 0.8em;
+  color: #E53935; }
+
+.infoTitle {
+  font-weight: bold;
+  text-transform: capitalize; }
 
 .menu-wrapper {
   background-color: #fff;
@@ -78,6 +90,10 @@ main {
 .menu-wrapper .menu ul li {
   margin-left: 20px; }
 
+.mainCityTitle {
+  margin-bottom: 20px;
+  color: #fff; }
+
 .card {
   height: 300px;
   border: 0;
@@ -125,7 +141,26 @@ main {
 .basicInfoContainer p {
   margin-bottom: 5px; }
 
-.infoTitle {
-  font-weight: bold; }
+.weatherContainer div {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-bottom: 1px solid #e0e0e0; }
+
+.weatherContainer img {
+  width: 30%; }
+
+.weatherContainer .infoTitle.weather {
+  font-size: 1.5em; }
+
+@media (max-width: 768px) {
+  .card {
+    margin-bottom: 20px; }
+  .menu-wrapper .menu {
+    justify-content: center; }
+  .searchBar,
+  .logo,
+  .menu {
+    margin-bottom: 10px; } }
 
 /*# sourceMappingURL=style.css.map */
