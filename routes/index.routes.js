@@ -6,10 +6,12 @@ const searchAPIHandler = require('../services/SearchAPIHandler')
 const newsAPIHandler = require('../services/NewsAPIHandler')
 const infoAPIHandler = require('../services/BasicAPIHandler')
 const weatherAPIHandler = require('../services/WeatherAPIHandler')
+const restaurantsAPIHandler = require('../services/RestaurantAPIHandler')
 const searchCountry = new searchAPIHandler()
 const newsAPI = new newsAPIHandler()
 const infoAPI = new infoAPIHandler()
 const weatherAPI = new weatherAPIHandler()
+const restaurantsAPI = new restaurantsAPIHandler()
 
 const isAdmin = user => user && user.role === 'Admin'
 
@@ -24,15 +26,16 @@ router.get('/', (req, res) => {
       const newsPromise = newsAPI.getNews(`${countryCode.country}`)
       const infoPromise = infoAPI.getInfo(`${countryCode.country}`)
       const weatherPromise = weatherAPI.getWeather(`${countryCode.city}`)
-      
+      const restaurantsPromise = restaurantsAPI.getRestaurants(`${countryCode.city}`, `${countryCode.country}`)
 
-      Promise.all([newsPromise, infoPromise, weatherPromise])
+
+      Promise.all([newsPromise, infoPromise, weatherPromise, restaurantsPromise])
         .then(results => {
-          console.log(results[2].data)
           res.render('index', {
             news: results[0].data.articles,
             info: results[1].data,
-            weather: results[2].data
+            weather: results[2].data,
+            restaurant: results[3].data
           })
         })
         .catch(err => console.log(err))

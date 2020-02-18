@@ -67,6 +67,12 @@
       <h2>RESTAURANTES</h2>
       <hr>
       <div class="restaurants">
+        {{#each restaurant}}
+        <p>{{name}}</p>
+        <p>Precio: {{price_level}}</p>
+        <p>Rating: {{rating}}</p>
+        <p>Direccion: {{vicinity}}</p>
+        {{/each}}
 
       </div>
     </div>
