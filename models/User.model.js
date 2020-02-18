@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const now = Date.now()
 
 const userSchema = new Schema({
   username: String,
@@ -23,13 +24,16 @@ const userSchema = new Schema({
     description: String,
     date: Date
   }],
-  travelbuddies: [{ type: mongoose.SchemaTypes.ObjectId, ref: "User" }]
+  travelbuddies: [{
+    type: mongoose.SchemaTypes.ObjectId,
+    ref: "User"
+  }]
 
 
 }, {
   timestamps: {
-    createdAt: { type: Date, default: Date.now },
-    updatedAt: { type: Date, default: Date.now }
+    createdAt: 'created_at',
+    updatedAt: 'updated_at'
   }
 });
 

@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{title}}</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
   <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
@@ -16,15 +18,20 @@
       <div class="row d-flex align-items-center">
         <div class="col-4">
           {{!-- BUSCADOR --}}
-          <form action="/" method="GET">
-            <input type="search" id="citySearch" name="city" placeholder="Elige una ciudad">
-            <button id="search">Buscar</button>
+          <div class="searchBar">
+            <form action="/" method="GET">
+              <i class="material-icons">
+                search
+              </i>
+              <input type="search" id="citySearch" name="city" placeholder="Elige una ciudad">
+              <button id="search">Buscar</button>
+          </div>
           </form>
         </div>
         <div class="col-4">
           <div class="logo">
             {{!-- LOGO --}}
-            <h1>EL VIAJERO</h1>
+            <h1><a href="/">EL VIAJERO</a></h1>
           </div>
         </div>
         <div class="col-4">
