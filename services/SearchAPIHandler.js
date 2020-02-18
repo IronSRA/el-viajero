@@ -16,7 +16,10 @@ class SearchAPIHandler {
         let infoCity = response.data.results[0].address_components.filter(pro => (pro.types[0] === "locality"));
         let country = infoCountry[0].short_name
         let city = infoCity[0].short_name
-        return [city, country]
+        return {
+          city: city,
+          country: country
+        }
       })
       .catch(error => console.log('Oh No! Error is: ', error))
   }

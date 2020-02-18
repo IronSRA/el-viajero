@@ -18,8 +18,8 @@ router.get('/', (req, res) => {
   let city = req.query.city
   searchCountry.getCountry(city)
     .then(countryCode => {
-      const newsPromise = newsAPI.getNews(`${countryCode}`)
-      const infoPromise = infoAPI.getInfo(`${countryCode}`)
+      const newsPromise = newsAPI.getNews(`${countryCode.country}`)
+      const infoPromise = infoAPI.getInfo(`${countryCode.country}`)
 
       Promise.all([newsPromise, infoPromise])
         .then(results => {
