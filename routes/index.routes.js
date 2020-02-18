@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const User = require('../models/User.model')
+const uploadCloud = require('../configs/cloudinary.config');
 const searchAPIHandler = require('../services/SearchAPIHandler')
 const newsAPIHandler = require('../services/NewsAPIHandler')
 const infoAPIHandler = require('../services/BasicAPIHandler')
@@ -38,6 +39,14 @@ router.get('/', (req, res) => {
 router.get('/profile', checkLoggedIn, (req, res) => res.render('profile', {
   user: req.user
 }));
+
+router.post('/profile', uploadCloud.single('phototoupload'), (req, res, next) => {
+
+  req.user.picture = req.file.secure_url
+  res.render('authentication/profile', {
+    user: req.user
+  });
+})
 
 router.get('/userList', (req, res) => {
   User.find()
