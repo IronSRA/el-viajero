@@ -145,4 +145,21 @@
           {{/each}}
         </div>
       </div>
+
+      <div class="col-4">
+        <h2>EVENTOS</h2>
+        <hr>
+        <div class="events">
+          {{#each event}}
+          <h5>{{name}}</h5>
+          <p>{{type}}</p>
+          <a href="{{url}}">COMPRAR</a>
+          <img src="{{images.[0].url}}"></img>
+          <hr>
+          {{/each}}
+
+        </div>
+
+
+      </div>
     </div>

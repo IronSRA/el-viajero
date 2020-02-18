@@ -8,12 +8,14 @@ const infoAPIHandler = require('../services/BasicAPIHandler')
 const weatherAPIHandler = require('../services/WeatherAPIHandler')
 const restaurantsAPIHandler = require('../services/RestaurantAPIHandler')
 const pointOfInterestAPIHandler = require('../services/PointOfInterestAPIHandler')
+const eventsAPIHandler = require('../services/EventsAPIHandler')
 const searchCountry = new searchAPIHandler()
 const newsAPI = new newsAPIHandler()
 const infoAPI = new infoAPIHandler()
 const weatherAPI = new weatherAPIHandler()
 const restaurantsAPI = new restaurantsAPIHandler()
 const pointsOfInterestAPI = new pointOfInterestAPIHandler()
+const eventsAPI = new eventsAPIHandler()
 
 const isAdmin = user => user && user.role === 'Admin'
 
@@ -30,9 +32,9 @@ router.get('/', (req, res) => {
       const weatherPromise = weatherAPI.getWeather(`${countryCode.city}`)
       const restaurantsPromise = restaurantsAPI.getRestaurants(`${countryCode.city}`, `${countryCode.country}`)
       const pointOfInterestPromise = pointsOfInterestAPI.getPointsOfInterest(`${countryCode.city}`, `${countryCode.country}`)
+      const eventsPromise = eventsAPI.getEvents(`${countryCode.city}`)
 
-
-      Promise.all([newsPromise, infoPromise, weatherPromise, restaurantsPromise, pointOfInterestPromise])
+      Promise.all([newsPromise, infoPromise, weatherPromise, restaurantsPromise, pointOfInterestPromise, eventsPromise])
         .then(results => {
           console.log(results[2].data.list[0])
           results[2] === undefined ? results[2] = {
@@ -40,7 +42,6 @@ router.get('/', (req, res) => {
           } : null
           let sunrise = (new Date(results[2].data.city.sunrise * 1000)).toLocaleTimeString("en-UK")
           let sunset = (new Date(results[2].data.city.sunset * 1000)).toLocaleTimeString("en-UK")
-          console.log(results[4].data)
           res.render('index', {
             news: results[0].data.articles,
             info: results[1].data,
@@ -51,7 +52,8 @@ router.get('/', (req, res) => {
               sunset
             },
             restaurant: results[3].data.results,
-            points: results[4].data.results
+            points: results[4].data.results,
+            event: results[5].data._embedded.events
           })
         })
         .catch(err => console.log(err))
