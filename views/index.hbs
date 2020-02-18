@@ -96,8 +96,8 @@
     {{!-- 
     {{#if weather}}
         <p>{{weather.list.[0].dt_txt}} <br>
-          amanece: {{weather.city.sunrise}}<br>
-          anochece: {{weather.city.sunset}}
+          amanece: {{hours.sunrise}}<br>
+          anochece: {{hours.sunset}}
         </p>
         {{#each weather.list.[0].weather}}
         <b>{{main}}</b>
@@ -124,6 +124,13 @@
       <h2>RESTAURANTES</h2>
       <hr>
       <div class="restaurants">
+        {{#each restaurant}}
+        <h5>{{name}}</h5>
+        <p>Precio: {{price_level}}</p>
+        <p>Rating: {{rating}}</p>
+        <p>Direccion: {{vicinity}}</p>
+        <hr>
+        {{/each}}
 
       </div>
     </div>

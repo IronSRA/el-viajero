@@ -153,4 +153,14 @@ main {
 .weatherContainer .infoTitle.weather {
   font-size: 1.5em; }
 
+@media (max-width: 768px) {
+  .card {
+    margin-bottom: 20px; }
+  .menu-wrapper .menu {
+    justify-content: center; }
+  .searchBar,
+  .logo,
+  .menu {
+    margin-bottom: 10px; } }
+
 /*# sourceMappingURL=style.css.map */
