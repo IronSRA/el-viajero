@@ -3,7 +3,7 @@ const axios = require('axios').default;
 class SearchAPIHandler {
   constructor(baseUrl) {
     this.BASE_URL = 'https://maps.googleapis.com/maps/api/geocode';
-    this.apiKey = ''
+    this.apiKey = 'AIzaSyD44K0JK21Zr3D_vx2B1VKPoxwei7vzwfM'
     this.axiosApp = axios.create({
       baseURL: this.BASE_URL
     })
