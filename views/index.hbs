@@ -147,7 +147,35 @@
         <p>Direccion: {{vicinity}}</p>
         <hr>
         {{/each}}
+      </div>
+      <div class="col-lg-4 col-sm-12">
+        <h2>PUNTOS DE INTERÉS</h2>
+        <hr>
+        <div class="points-of-interest">
+          {{#each points}}
+          <h5>{{name}}</h5>
+          <p>Precio: {{price_level}}</p>
+          <p>Rating: {{rating}}</p>
+          <p>Direccion: {{vicinity}}</p>
+          <hr>
+          {{/each}}
+        </div>
+      </div>
+
+      <div class="col-4">
+        <h2>EVENTOS</h2>
+        <hr>
+        <div class="events">
+          {{#each event}}
+          <h5>{{name}}</h5>
+          <p>{{type}}</p>
+          <a href="{{url}}">COMPRAR</a>
+          <img src="{{images.[0].url}}"></img>
+          <hr>
+          {{/each}}
+
+        </div>
+
 
       </div>
     </div>
-  </div>
