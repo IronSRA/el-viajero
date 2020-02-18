@@ -144,8 +144,11 @@ main {
 .weatherContainer div {
   display: flex;
   justify-content: flex-start;
-  align-items: center;
-  border-bottom: 1px solid #e0e0e0; }
+  align-items: center; }
+
+.weatherContainer > div {
+  border-bottom: 1px solid #e0e0e0;
+  padding: 10px 0; }
 
 .weatherContainer img {
   width: 30%; }
@@ -153,7 +156,30 @@ main {
 .weatherContainer .infoTitle.weather {
   font-size: 1.5em; }
 
-@media (max-width: 768px) {
+.weatherContainer .weatherHours {
+  display: flex;
+  align-items: flex-end; }
+
+.weatherContainer .weatherHours img {
+  width: 20%; }
+
+.weatherContainer .weatherHours p {
+  margin-left: 15px;
+  font-weight: 200; }
+
+.weatherContainer .weatherDetails {
+  width: 25%; }
+
+.weatherContainer .weatherDetails p {
+  margin-left: 8px;
+  font-size: 0.9em;
+  font-weight: 200; }
+
+.weatherContainer .weatherDetails span {
+  font-size: 0.7em;
+  font-weight: 200; }
+
+@media (max-width: 992px) {
   .card {
     margin-bottom: 20px; }
   .menu-wrapper .menu {

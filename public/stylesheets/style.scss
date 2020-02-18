@@ -186,7 +186,11 @@ main {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+}
+
+.weatherContainer>div {
   border-bottom: 1px solid #e0e0e0;
+  padding: 10px 0;
 }
 
 .weatherContainer img {
@@ -197,11 +201,43 @@ main {
   font-size: 1.5em;
 }
 
+.weatherContainer .weatherHours {
+  display: flex;
+  align-items: flex-end;
+}
+
+.weatherContainer .weatherHours img {
+  width: 20%;
+}
+
+.weatherContainer .weatherHours p {
+  margin-left: 15px;
+  font-weight: 200;
+}
+
+.weatherContainer .weatherDetails {
+  width: 25%;
+}
+
+.weatherContainer .weatherDetails p {
+  margin-left: 8px;
+  font-size: 0.9em;
+  font-weight: 200;
+}
+
+.weatherContainer .weatherDetails span {
+  font-size: 0.7em;
+  font-weight: 200;
+}
+
 // Small devices (landscape phones, 576px and up)
 @media (max-width: 576px) {}
 
 // Medium devices (tablets, 768px and up)
-@media (max-width: 768px) {
+@media (max-width: 768px) {}
+
+// Large devices (desktops, 992px and up)
+@media (max-width: 992px) {
   .card {
     margin-bottom: 20px;
   }
@@ -216,9 +252,6 @@ main {
     margin-bottom: 10px;
   }
 }
-
-// Large devices (desktops, 992px and up)
-@media (max-width: 992px) {}
 
 // Extra large devices (large desktops, 1200px and up)
 @media (max-width: 1200px) {}
