@@ -53,8 +53,11 @@ router.post('/profile/newpicture', uploadCloud.single('imagesupload'), (req, res
   User.findByIdAndUpdate(req.user.id, { $push: { pictures: { image: req.file.secure_url, description: req.body.description } } })
     .then(() => res.redirect('/profile'))
     .catch(err => next(err))
-
 });
+
+router.post('profile/picture/like', (req, res, next) => {
+
+})
 
 
 router.get('/userList', (req, res) => {

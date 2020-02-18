@@ -10,7 +10,7 @@
 <hr>
 <br>
 
-<p>Sube tu careto:</p>
+<p>Sube tu foto de perfil:</p>
 <form action="/profile" method="post" enctype="multipart/form-data">
   <input type="file" name="phototoupload"><br>
   <input type="submit" value="Enviar"><br>
@@ -23,3 +23,18 @@
   <input type="file" name="imagesupload"><br>
   <input type="submit" value="Enviar"><br>
 </form>
+
+{{!-- <p>Fotos de viajes</p>
+<div class="row">
+  {{#each user.pictures}}
+  <div class="image_card col-4" class="card">
+    <form action="profile/picture/like" method="post" class="like" id="like-button{{@index}}"></form>
+    <img src="{{image}}" alt="{{description}}">
+    <p>Description: {{description}}</p>
+
+    <button class="like-button" id={{_id}}>Like</button>
+    </form>
+  </div>
+</div>
+{{/each}}
+</div> --}}

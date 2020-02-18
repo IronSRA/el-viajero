@@ -23,7 +23,11 @@ const userSchema = new Schema({
   pictures: [{
     image: String,
     description: String,
-    date: { type: Date, default: Date.now }
+    date: { type: Date, default: Date.now },
+    likes: [{
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: "User"
+    }]
   }],
   travelbuddies: [{
     type: mongoose.SchemaTypes.ObjectId,
