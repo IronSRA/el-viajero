@@ -25,29 +25,29 @@
             <div>
               <div class="weatherHours">
                 <img src="https://image.flaticon.com/icons/svg/2294/2294952.svg" />
-                <p class="infoTitle">{{hours.sunrise}}</p>
+                <p>{{hours.sunrise}}</p>
               </div>
               <div class="weatherHours">
                 <img src="https://image.flaticon.com/icons/svg/2294/2294957.svg" />
-                <p class="infoTitle">{{hours.sunset}}</p>
+                <p>{{hours.sunset}}</p>
               </div>
             </div>
             <div>
               <div class="weatherDetails">
                 <img src="https://image.flaticon.com/icons/svg/1684/1684374.svg" />
-                <p class="infoTitle">{{weather.list.[0].main.temp_min}}°</p>
+                <p>{{weather.list.[0].main.temp_min}}°</p>
               </div>
               <div class="weatherDetails">
                 <img src="https://image.flaticon.com/icons/svg/1684/1684375.svg" />
-                <p class="infoTitle">{{weather.list.[0].main.temp_max}}°</p>
+                <p>{{weather.list.[0].main.temp_max}}°</p>
               </div>
               <div class="weatherDetails">
                 <img src="https://image.flaticon.com/icons/svg/1532/1532259.svg" />
-                <p class="infoTitle">{{weather.list.[0].main.humidity}}%</p>
+                <p>{{weather.list.[0].main.humidity}}%</p>
               </div>
               <div class="weatherDetails">
                 <img src="https://image.flaticon.com/icons/svg/615/615486.svg" />
-                <p class="infoTitle">{{weather.list.[0].wind.speed}}<span>ms</span></p>
+                <p>{{weather.list.[0].wind.speed}}<span>ms</span></p>
               </div>
             </div>
           </div>
@@ -158,29 +158,73 @@
           <h2>Restaurantes</h2>
         </header>
         <div class="content">
-          {{#if event}}
-          {{#each event}}
+          {{#if restaurant}}
+          {{#each restaurant}}
           <a href="{{url}}">
             <div class="restaurantsContainer">
-              <img src="{{images.[0].url}}" alt="{{name}}" />
-              <p class="infoTitle">{{name}}</p>
+              <img src="https://www.ahstatic.com/photos/b3g8_rsr001_00_p_1024x768.jpg" alt="{{name}}" />
+              {{!-- <img src="{{images.[0].url}}" alt="{{name}}" /> --}}
+              <div class="restaurantDetails">
+                <p class="infoTitle">{{name}}</p>
+                {{!-- <p>Precio: {{price_level}}</p> --}}
+                <div class="ratings">
+                  <img src="https://image.flaticon.com/icons/svg/616/616489.svg">
+                  <p>{{rating}}</p>
+                </div>
+                <p>{{vicinity}}</p>
+              </div>
             </div>
           </a>
           {{/each}}
           {{/if}}
-          {{#unless event}}
-          <p class="error">Los restaurantes no se han popdido cargar en esta búsqueda</p>
+          {{#unless restaurant}}
+          <p class="error">Los restaurantes no se han podido cargar en esta búsqueda</p>
           {{/unless}}
         </div>
       </article>
     </div>
 
-
+    {{!-- RESTAURANTES --}}
     <div class="col-lg-4 col-md-6 col-12">
-      <h2>RESTAURANTES</h2>
+      <article class="card">
+        <header>
+          <i class="material-icons">
+            local_see
+          </i>
+          <h2>Puntos de Interés</h2>
+        </header>
+        <div class="content">
+          {{#if points}}
+          {{#each points}}
+          <a href="{{url}}">
+            <div class="restaurantsContainer">
+              <img src="https://www.ahstatic.com/photos/b3g8_rsr001_00_p_1024x768.jpg" alt="{{name}}" />
+              {{!-- <img src="{{images.[0].url}}" alt="{{name}}" /> --}}
+              <div class="restaurantDetails">
+                <p class="infoTitle">{{name}}</p>
+                {{!-- <p>Precio: {{price_level}}</p> --}}
+                <div class="ratings">
+                  <img src="https://image.flaticon.com/icons/svg/616/616489.svg">
+                  <p>{{rating}}</p>
+                </div>
+                <p>{{vicinity}}</p>
+              </div>
+            </div>
+          </a>
+          {{/each}}
+          {{/if}}
+          {{#unless points}}
+          <p class="error">Los puntos de interés no se han podido cargar en esta búsqueda</p>
+          {{/unless}}
+        </div>
+      </article>
+    </div>
+
+    <div class="col-lg-4 col-sm-12">
+      <h2>PUNTOS DE INTERÉS</h2>
       <hr>
-      <div class="restaurants">
-        {{#each restaurant}}
+      <div class="points-of-interest">
+        {{#each points}}
         <h5>{{name}}</h5>
         <p>Precio: {{price_level}}</p>
         <p>Rating: {{rating}}</p>
@@ -188,34 +232,5 @@
         <hr>
         {{/each}}
       </div>
-      <div class="col-lg-4 col-sm-12">
-        <h2>PUNTOS DE INTERÉS</h2>
-        <hr>
-        <div class="points-of-interest">
-          {{#each points}}
-          <h5>{{name}}</h5>
-          <p>Precio: {{price_level}}</p>
-          <p>Rating: {{rating}}</p>
-          <p>Direccion: {{vicinity}}</p>
-          <hr>
-          {{/each}}
-        </div>
-      </div>
-
-      <div class="col-4">
-        <h2>EVENTOS</h2>
-        <hr>
-        <div class="events">
-          {{#each event}}
-          <h5>{{name}}</h5>
-          <p>{{type}}</p>
-          <a href="{{url}}">COMPRAR</a>
-          <img src="{{images.[0].url}}"></img>
-          <hr>
-          {{/each}}
-
-        </div>
-
-
-      </div>
     </div>
+  </div>
