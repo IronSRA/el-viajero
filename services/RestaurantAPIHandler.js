@@ -25,27 +25,30 @@ class restaurantsAPIHandler {
       .then(geometry => {
         return this.axiosApp.get(`place/nearbysearch/json?location=${geometry.lat}%2C${geometry.lng}&radius=50000&keyword=restaurant&point_of_interest&key=${this.apiKey}`)
       })
-      .then(restaurant => {
-        let photo = []
-        let info = restaurant.data.results
-        let restaurants = {
-          photo,
-          info
-        }
+      // .then(restaurant => {
+      //   let photo = []
+      //   let info = restaurant.data.results
+      //   let restaurants = {
+      //     photo,
+      //     info
+      //   }
+      
 
-        let reference = info[0].photos[0].photo_reference
-        return this.axiosApp.get(`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${reference}&key=${this.apiKey}`)
-          // .then(res => {
+      //   let reference = info[0].photos[0].photo_reference
+      //   return this.axiosApp.get(`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${reference}&key=${this.apiKey}`)
+      //     .then(res => {
 
-          //   var arrayBufferView = new Uint8Array(res.data);
-          //   var blob = new Blob([arrayBufferView], {
-          //     type: "image/jpeg"
-          //   });
-          //   var urlCreator = window.URL || window.webkitURL;
-          //   var imageUrl = urlCreator.createObjectURL(blob);
-          //   var img = document.querySelector("#photo");
-          //   img.src = imageUrl;
-          //   console.log(img.src)
+            
+            // var arrayBufferView = new Uint8Array.prototype.buffer(res.data);
+            // var blob = new Blob([arrayBufferView], {
+            //   type: "image/jpeg"
+            // });
+            // var urlCreator = window.URL || window.webkitURL;
+            // var imageUrl = urlCreator.createObjectURL(blob);
+            // var img = document.querySelector("#photo");
+            // img.src = imageUrl;
+            // console.log(arrayBufferView)
+            // console.log(img.src)
           // })
 
 
@@ -58,7 +61,7 @@ class restaurantsAPIHandler {
         //     })
 
         // })
-      })
+      // })
       .catch(error => console.log('Oh No! Error is: ', error))
   }
 
