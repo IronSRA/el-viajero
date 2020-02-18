@@ -5,9 +5,11 @@ const uploadCloud = require('../configs/cloudinary.config');
 const searchAPIHandler = require('../services/SearchAPIHandler')
 const newsAPIHandler = require('../services/NewsAPIHandler')
 const infoAPIHandler = require('../services/BasicAPIHandler')
+const weatherAPIHandler = require('../services/WeatherAPIHandler')
 const searchCountry = new searchAPIHandler()
 const newsAPI = new newsAPIHandler()
 const infoAPI = new infoAPIHandler()
+const weatherAPI = new weatherAPIHandler()
 
 const isAdmin = user => user && user.role === 'Admin'
 
@@ -22,13 +24,15 @@ router.get('/', (req, res) => {
     .then(countryCode => {
       const newsPromise = newsAPI.getNews(`${countryCode.country}`)
       const infoPromise = infoAPI.getInfo(`${countryCode.country}`)
+      const weatherPromise = weatherAPI.getWeather(`${countryCode.city}`)
+      
 
-      Promise.all([newsPromise, infoPromise])
+      Promise.all([newsPromise, infoPromise, weatherPromise])
         .then(results => {
-
           res.render('index', {
             news: results[0].data.articles,
-            info: results[1].data
+            info: results[1].data,
+            weather: results[2].data
           })
         })
         .catch(err => console.log(err))
