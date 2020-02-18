@@ -136,7 +136,13 @@
         <h2>PUNTOS DE INTERÉS</h2>
         <hr>
         <div class="points-of-interest">
-
+          {{#each points}}
+          <h5>{{name}}</h5>
+          <p>Precio: {{price_level}}</p>
+          <p>Rating: {{rating}}</p>
+          <p>Direccion: {{vicinity}}</p>
+          <hr>
+          {{/each}}
         </div>
       </div>
     </div>

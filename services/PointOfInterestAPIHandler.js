@@ -25,23 +25,23 @@ class pointOfInterestAPIHandler {
       .then(geometry => {
         return this.axiosApp.get(`place/nearbysearch/json?location=${geometry.lat}%2C${geometry.lng}&radius=50000&address_components=point_of_interest&key=${this.apiKey}`)
       })
-      // .then(restaurant => {
+      // .then(pointOfinterest => {
       //   let photo = []
-      //   let info = restaurant.data.results
-      //   let restaurants = {
+      //   let info = pointOfinterest.data.results
+      //   let pointOfinterests = {
       //     photo,
       //     info
       //   }
-      //   restaurant.data.results.forEach(elm => {
+      //   pointOfinterest.data.results.forEach(elm => {
       //     let reference = elm.photos[0].photo_reference
       //     return this.axiosApp.get(`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${reference}&key=${this.apiKey}`)
       //       .then(res => {
       //         photo.push(res.data)
-      //         return restaurants
+      //         return pointOfinterests
       //       })
 
       //   })
-      // })
+      //})
       .catch(error => console.log('Oh No! Error is: ', error))
   }
 
