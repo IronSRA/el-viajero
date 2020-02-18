@@ -9,6 +9,7 @@
           <h2>Noticias</h2>
         </header>
         <div class="content">
+          {{#if news}}
           {{#each news}}
           <a href="{{url}}">
             <div class="newsContainer">
@@ -18,6 +19,10 @@
             </div>
           </a>
           {{/each}}
+          {{/if}}
+          {{#unless news}}
+          <h1>sdafsdf</h1>
+          {{/unless}}
         </div>
       </article>
     </div>

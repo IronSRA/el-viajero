@@ -26,9 +26,8 @@ router.get('/', (req, res) => {
     .then(countryCode => {
       const newsPromise = newsAPI.getNews(`${countryCode.country}`)
       const infoPromise = infoAPI.getInfo(`${countryCode.country}`)
-      const weatherPromise = weatherAPI.getWeather(`${countryCode.city}`) | {}
+      const weatherPromise = weatherAPI.getWeather(`${countryCode.city}`)
       const restaurantsPromise = restaurantsAPI.getRestaurants(`${countryCode.city}`, `${countryCode.country}`)
-      
 
 
       Promise.all([newsPromise, infoPromise, weatherPromise, restaurantsPromise])
