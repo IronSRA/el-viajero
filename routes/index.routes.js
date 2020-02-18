@@ -18,7 +18,6 @@ const checkLoggedIn = (req, res, next) => req.user ? next() : res.render('index'
 })
 
 router.get('/', (req, res) => {
-  console.log(Date.now())
   let city = req.query.city
   searchCountry.getCountry(city)
     .then(countryCode => {
@@ -28,10 +27,15 @@ router.get('/', (req, res) => {
 
       Promise.all([newsPromise, infoPromise, weatherPromise])
         .then(results => {
+          console.log(results[2].data.list[0])
+          results[2] === undefined ? results[2] = {
+            data: ""
+          } : null
           res.render('index', {
             news: results[0].data.articles,
             info: results[1].data,
-            weather: results[2].data
+            weather: results[2].data,
+            city: countryCode.city
           })
         })
         .catch(err => console.log(err))
