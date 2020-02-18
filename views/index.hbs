@@ -36,6 +36,30 @@
       <h2>TIEMPO</h2>
       <hr>
       <div class="infoWeather">
+        <h5>{{weather.city.name}}, {{weather.city.country}}</h5>
+        <p>{{weather.list.[0].dt_txt}} <br>
+          amanece: {{weather.city.sunrise}}<br>
+          anochece: {{weather.city.sunset}}
+        </p>
+        {{#each weather.list.[0].weather}}
+        <b>{{main}}</b>
+        {{/each}}
+        <p>
+          temperatura minima: {{weather.list.[0].main.temp_min}}º
+          tempratatura maxima: {{weather.list.[0].main.temp_max}}º
+          humedad: {{weather.list.[0].main.humidity}} <br>
+          precipitaciones: {{weather.list.[0].clouds.all}}% <br>
+          viento: {{weather.list.[0].wind.speed}} | {{weather.list.[0].wind.deg}}º
+        </p>
+        <hr>
+        {{#each weather.list}}
+        {{dt_txt}}<br>
+        {{#each weather}}
+        <b>{{main}}</b><br>
+        {{/each}}
+        {{main.humidity}}<br>
+        {{/each}}
+
 
       </div>
     </div>
