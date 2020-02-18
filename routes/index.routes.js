@@ -7,11 +7,15 @@ const newsAPIHandler = require('../services/NewsAPIHandler')
 const infoAPIHandler = require('../services/BasicAPIHandler')
 const weatherAPIHandler = require('../services/WeatherAPIHandler')
 const restaurantsAPIHandler = require('../services/RestaurantAPIHandler')
+const popularPointAPIHandler = require('../services/PopularPointAPIHandler')
+const eventsAPIHandler = require('../services/EventsAPIHandler')
 const searchCountry = new searchAPIHandler()
 const newsAPI = new newsAPIHandler()
 const infoAPI = new infoAPIHandler()
 const weatherAPI = new weatherAPIHandler()
 const restaurantsAPI = new restaurantsAPIHandler()
+const pointsAPI = new popularPointAPIHandler()
+const eventsAPI = new eventsAPIHandler()
 
 const isAdmin = user => user && user.role === 'Admin'
 
@@ -28,13 +32,13 @@ router.get('/', (req, res) => {
       const infoPromise = infoAPI.getInfo(`${countryCode.country}`)
       const weatherPromise = weatherAPI.getWeather(`${countryCode.city}`)
       const restaurantsPromise = restaurantsAPI.getRestaurants(`${countryCode.city}`, `${countryCode.country}`)
+      const pointsPromise = pointsAPI.getPopularPoint(`${countryCode.city}`, `${countryCode.country}`)
+      const eventsPromise = eventsAPI.getEvents(`${countryCode.city}`)
 
-
-      Promise.all([newsPromise, infoPromise, weatherPromise, restaurantsPromise])
+      Promise.all([newsPromise, infoPromise, weatherPromise, restaurantsPromise, pointsPromise, eventsPromise])
         .then(results => {
           let sunrise = (new Date(results[2].data.city.sunrise * 1000)).toLocaleTimeString("en-UK")
           let sunset = (new Date(results[2].data.city.sunset * 1000)).toLocaleTimeString("en-UK")
-          console.log(results[3])
           res.render('index', {
             news: results[0].data.articles,
             info: results[1].data,
@@ -43,7 +47,9 @@ router.get('/', (req, res) => {
               sunrise,
               sunset
             },
-            restaurant: results[3].data.results
+            restaurant: results[3],
+            point: results[4].data,
+            event: results[5].data._embedded.events
           })
         })
         .catch(err => console.log(err))
