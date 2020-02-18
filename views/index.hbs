@@ -5,7 +5,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-lg-4 col-sm-12">
+    <div class="col-lg-4 col-md-6 col-12">
       <article class="card">
         <header>
           <i class="material-icons">
@@ -31,7 +31,7 @@
         </div>
       </article>
     </div>
-    <div class="col-lg-4 col-sm-12">
+    <div class="col-lg-4 col-md-6 col-12">
       <article class="card">
         <header>
           <i class="material-icons">
@@ -69,7 +69,7 @@
     </div>
 
 
-    <div class="col-lg-4 col-sm-12">
+    <div class="col-lg-4 col-md-6 col-12">
       <article class="card">
         <header>
           <i class="material-icons">
@@ -85,6 +85,34 @@
                 alt="{{weather.list.[0].weather.[0].description}}" />
               <p class="infoTitle weather">{{weather.list.[0].weather.[0].description}}</p>
             </div>
+            <div>
+              <div class="weatherHours">
+                <img src="https://image.flaticon.com/icons/svg/2294/2294952.svg" />
+                <p class="infoTitle">{{hours.sunrise}}</p>
+              </div>
+              <div class="weatherHours">
+                <img src="https://image.flaticon.com/icons/svg/2294/2294957.svg" />
+                <p class="infoTitle">{{hours.sunset}}</p>
+              </div>
+            </div>
+            <div>
+              <div class="weatherDetails">
+                <img src="https://image.flaticon.com/icons/svg/1684/1684374.svg" />
+                <p class="infoTitle">{{weather.list.[0].main.temp_min}}°</p>
+              </div>
+              <div class="weatherDetails">
+                <img src="https://image.flaticon.com/icons/svg/1684/1684375.svg" />
+                <p class="infoTitle">{{weather.list.[0].main.temp_max}}°</p>
+              </div>
+              <div class="weatherDetails">
+                <img src="https://image.flaticon.com/icons/svg/1532/1532259.svg" />
+                <p class="infoTitle">{{weather.list.[0].main.humidity}}%</p>
+              </div>
+              <div class="weatherDetails">
+                <img src="https://image.flaticon.com/icons/svg/615/615486.svg" />
+                <p class="infoTitle">{{weather.list.[0].wind.speed}}<span>ms</span></p>
+              </div>
+            </div>
           </div>
           {{/if}}
           {{#unless weather}}
@@ -94,18 +122,6 @@
       </article>
     </div>
     {{!-- 
-    {{#if weather}}
-        <p>{{weather.list.[0].dt_txt}} <br>
-          amanece: {{hours.sunrise}}<br>
-          anochece: {{hours.sunset}}
-        </p>
-        {{#each weather.list.[0].weather}}
-        <b>{{main}}</b>
-        {{/each}}
-        <p>
-          temperatura minima: {{weather.list.[0].main.temp_min}}º
-          tempratatura maxima: {{weather.list.[0].main.temp_max}}º
-          humedad: {{weather.list.[0].main.humidity}} <br>
           precipitaciones: {{weather.list.[0].clouds.all}}% <br>
           viento: {{weather.list.[0].wind.speed}} | {{weather.list.[0].wind.deg}}º
         </p>
@@ -120,7 +136,7 @@
       </div>
     </div>
     {{/if}} --}}
-    <div class="col-lg-4 col-sm-12">
+    <div class="col-lg-4 col-md-6 col-12">
       <h2>RESTAURANTES</h2>
       <hr>
       <div class="restaurants">

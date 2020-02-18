@@ -36,12 +36,18 @@ router.get('/', (req, res) => {
 
       Promise.all([newsPromise, infoPromise, weatherPromise, restaurantsPromise, pointOfInterestPromise, eventsPromise])
         .then(results => {
-          console.log(results[2].data.list[0])
-          results[2] === undefined ? results[2] = {
-            data: ""
-          } : null
-          let sunrise = (new Date(results[2].data.city.sunrise * 1000)).toLocaleTimeString("en-UK")
-          let sunset = (new Date(results[2].data.city.sunset * 1000)).toLocaleTimeString("en-UK")
+          // IMPORTANTE NO TOCAR DE AQUI
+          let sunrise, sunset
+          if (results[2] === undefined) {
+            results[2] = {
+              data: ""
+            }
+          } else {
+            sunrise = (new Date(results[2].data.city.sunrise * 1000)).toLocaleTimeString("en-UK")
+            sunset = (new Date(results[2].data.city.sunset * 1000)).toLocaleTimeString("en-UK")
+          }
+          // A AQUI
+          console.log(results[2].data.list[0].rain)
           res.render('index', {
             news: results[0].data.articles,
             info: results[1].data,
