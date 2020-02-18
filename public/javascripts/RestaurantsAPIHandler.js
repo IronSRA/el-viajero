@@ -1,6 +1,6 @@
 class RestaurantsAPIHandler {
   constructor() {
-    this.apiKey = ''
+    this.apiKey = 'AIzaSyCFPhuSzSAR4FzJmO0eMimZ7B_XRD4FOJY'
     this.axiosApp = axios.create({
       baseURL: "https://cors-anywhere.herokuapp.com/" + 'https://maps.googleapis.com/maps/api'
     })

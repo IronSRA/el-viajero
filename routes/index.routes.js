@@ -41,12 +41,18 @@ router.get('/profile', checkLoggedIn, (req, res) => res.render('profile', {
 }));
 
 router.post('/profile', uploadCloud.single('phototoupload'), (req, res, next) => {
+  User.findByIdAndUpdate(req.user.id, { image: req.file.secure_url })
+    .then(() => res.redirect('/profile'))
+    .catch(err => next(err))
+});
 
-  req.user.picture = req.file.secure_url
-  res.render('authentication/profile', {
-    user: req.user
-  });
-})
+router.post('/profile/newpicture', uploadCloud.single('imagesupload'), (req, res, next) => {
+  User.findByIdAndUpdate(req.user.id, { $push: { pictures: { image: req.file.secure_url, description: req.body.description } } })
+    .then(() => res.redirect('/profile'))
+    .catch(err => next(err))
+
+});
+
 
 router.get('/userList', (req, res) => {
   User.find()

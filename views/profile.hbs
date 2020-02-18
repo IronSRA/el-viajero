@@ -1,9 +1,25 @@
 <h1>Welcome, {{user.username}}! </h1>
 <img src={{user.picture}}></img>
 
-<p>Sube tu careto</p>
+<div class='row'>
+  <div class='col-4'>
+    <p>Foto de usuario:</p>
+    <img src="{{user.image}}" alt="{{user.username}}">
+  </div>
+</div>
+<hr>
+<br>
 
+<p>Sube tu careto:</p>
 <form action="/profile" method="post" enctype="multipart/form-data">
   <input type="file" name="phototoupload"><br>
-  <input type="submit" value="Save"><br>
+  <input type="submit" value="Enviar"><br>
+</form>
+
+
+<p>Sube tus fotos:</p>
+<form action="/profile/newpicture" method="post" enctype="multipart/form-data">
+  <input type="text" name="description"><br>
+  <input type="file" name="imagesupload"><br>
+  <input type="submit" value="Enviar"><br>
 </form>
