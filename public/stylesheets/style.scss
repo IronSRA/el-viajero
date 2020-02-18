@@ -37,7 +37,7 @@ a:hover {
 }
 
 main {
-  margin: 40px
+  margin: 40px 0
 }
 
 // GENERAL
@@ -127,6 +127,7 @@ main {
   border-radius: 10px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
   overflow: hidden;
+  margin-bottom: 20px;
 }
 
 .card header {
@@ -230,6 +231,22 @@ main {
   font-weight: 200;
 }
 
+// EVENTOS
+.eventsContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.eventsContainer img {
+  margin-bottom: 10px;
+}
+
+.eventsContainer p {
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #f5f5f5;
+}
+
 // Small devices (landscape phones, 576px and up)
 @media (max-width: 576px) {}
 
@@ -238,10 +255,6 @@ main {
 
 // Large devices (desktops, 992px and up)
 @media (max-width: 992px) {
-  .card {
-    margin-bottom: 20px;
-  }
-
   .menu-wrapper .menu {
     justify-content: center;
   }
