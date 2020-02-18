@@ -55,9 +55,9 @@ router.post('/profile/newpicture', uploadCloud.single('imagesupload'), (req, res
     .catch(err => next(err))
 });
 
-router.post('profile/picture/like', (req, res, next) => {
+// router.post('profile/picture/like', (req, res, next) => {
 
-})
+// })
 
 
 router.get('/userList', (req, res) => {
