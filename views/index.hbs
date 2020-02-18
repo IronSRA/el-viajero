@@ -1,38 +1,58 @@
 <div class="container">
   <div class="row">
-    <div class="col-3">
-      <h2>NOTICIAS</h2>
-      <hr>
-      {{#each news}}
-      <div class="newsContainer">
-        <img class="mb-3" src="{{urlToImage}}" alt="{{title}}" />
-        <p><b>{{title}}</b></p>
-        <p>{{description}}</p>
-      </div>
-      <hr>
-      {{/each}}
+    <div class="col-4">
+      <article class="card">
+        <header>
+          <i class="material-icons">
+            bookmark_border
+          </i>
+          <h2>Noticias</h2>
+        </header>
+        <div class="content">
+          {{#each news}}
+          <a href="{{url}}">
+            <div class="newsContainer">
+              <img src="{{urlToImage}}" alt="{{title}}" />
+              <p>{{title}}</p>
+              {{!-- <p>{{description}}</p> --}}
+            </div>
+          </a>
+          {{/each}}
+        </div>
+      </article>
     </div>
-    <div class="col-3">
-      <h2>INFO</h2>
-      <hr>
-      <div class="basicInfoContainer">
-        <p>Capital: {{info.capital}}</p>
-        <p>Monedas:</p>
-        {{#each info.currencies}}
-        {{name}}
-        {{/each}}
-        <p>Lenguajes:</p>
-        {{#each info.languages}}
-        {{name}}
-        {{/each}}
-        <p>Prefijo: {{info.numericCode}}</p>
-        <p>Zona Horaria:</p>
-        {{#each info.timezones}}
-        {{this}}
-        {{/each}}
-      </div>
+    <div class="col-4">
+      <article class="card">
+        <header>
+          <i class="material-icons">
+            list_alt
+          </i>
+          <h2>Info</h2>
+        </header>
+        <div class="content">
+          <div class="basicInfoContainer">
+            <p><span class="infoTitle">Capital: </span>{{info.capital}}</p>
+            <p><span class="infoTitle">Moneda: </span>
+              {{#each info.currencies}}
+              {{name}}.
+              {{/each}}
+            </p>
+            <p><span class="infoTitle">Lengua: </span>
+              {{#each info.languages}}
+              {{name}}.
+              {{/each}}
+            </p>
+            <p><span class="infoTitle">Prefijo: </span>+{{info.numericCode}}</p>
+            <p><span class="infoTitle">Zona Horaria:</span>
+              {{#each info.timezones}}
+              {{this}}.
+              {{/each}}
+            </p>
+          </div>
+        </div>
+      </article>
     </div>
-    <div class="col-3">
+    <div class="col-4">
       <h2>TIEMPO</h2>
       <hr>
       <div class="infoWeather">
@@ -63,7 +83,7 @@
 
       </div>
     </div>
-    <div class="col-3">
+    <div class="col-4">
       <h2>RESTAURANTES</h2>
       <hr>
       <div class="restaurants">

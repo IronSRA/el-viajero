@@ -20,13 +20,15 @@ const checkLoggedIn = (req, res, next) => req.user ? next() : res.render('index'
 })
 
 router.get('/', (req, res) => {
+  console.log(Date.now())
   let city = req.query.city
   searchCountry.getCountry(city)
     .then(countryCode => {
       const newsPromise = newsAPI.getNews(`${countryCode.country}`)
       const infoPromise = infoAPI.getInfo(`${countryCode.country}`)
-      const weatherPromise = weatherAPI.getWeather(`${countryCode.city}`)
+      const weatherPromise = weatherAPI.getWeather(`${countryCode.city}`) | {}
       const restaurantsPromise = restaurantsAPI.getRestaurants(`${countryCode.city}`, `${countryCode.country}`)
+      
 
 
       Promise.all([newsPromise, infoPromise, weatherPromise, restaurantsPromise])

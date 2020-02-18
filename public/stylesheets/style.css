@@ -3,35 +3,70 @@
   padding: 0; }
 
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+  font-family: 'Monserrat', sans-serif;
+  background-color: #f5f5f5;
+  color: #3a3a3a; }
 
 img {
   width: 100%; }
 
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  padding: 0; }
+
+p {
+  margin: 0;
+  padding: 0; }
+
 a {
   text-decoration: none;
+  color: inherit; }
+
+a:hover {
   color: inherit; }
 
 main {
   margin: 40px; }
 
 .menu-wrapper {
+  background-color: #fff;
   padding: 10px 0;
-  border-bottom: 4px solid #41f0a5;
+  border-bottom: 4px solid #1DE9B6;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4); }
+
+.menu-wrapper .searchBar {
+  background-color: #f5f5f5;
+  border: 0;
+  border-radius: 20px;
+  padding: 10px 20px; }
+
+.menu-wrapper .searchBar form {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center; }
+
+.menu-wrapper .searchBar input {
+  margin-left: 10px;
+  width: 100%;
+  background-color: #f5f5f5;
+  border: 0; }
+
+.menu-wrapper .searchBar input:focus {
+  outline: none; }
+
+.menu-wrapper .searchBar button {
+  display: none; }
 
 .menu-wrapper .logo {
   text-align: center; }
-
-.menu-wrapper .nav {
-  display: flex;
-  justify-content: flex-end; }
 
 .menu-wrapper .menu {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  color: #3a3a3a;
   text-transform: uppercase; }
 
 .menu-wrapper .menu ul {
@@ -42,5 +77,55 @@ main {
 
 .menu-wrapper .menu ul li {
   margin-left: 20px; }
+
+.card {
+  height: 300px;
+  border: 0;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+  overflow: hidden; }
+
+.card header {
+  background-color: #1DE9B6;
+  color: #fff;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center; }
+
+.card header h2 {
+  margin-left: 10px;
+  font-size: 1.3em; }
+
+.card .content {
+  padding: 10px 20px;
+  overflow: hidden;
+  overflow-y: scroll; }
+
+.newsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 5px 0; }
+
+.newsContainer img {
+  width: 30%;
+  height: auto; }
+
+.newsContainer p {
+  margin-left: 10px;
+  font-size: 0.8em;
+  text-overflow: ellipsis;
+  width: 70%; }
+
+.basicInfoContainer {
+  width: 100%; }
+
+.basicInfoContainer p {
+  margin-bottom: 5px; }
+
+.infoTitle {
+  font-weight: bold; }
 
 /*# sourceMappingURL=style.css.map */
