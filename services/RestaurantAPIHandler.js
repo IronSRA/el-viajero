@@ -2,7 +2,7 @@ const axios = require('axios').default;
 
 class restaurantsAPIHandler {
   constructor() {
-    this.apiKey = process.env.GOOGLE_MAPS_API
+    this.apiKey = process.env.SEARCHAPI
     this.axiosApp = axios.create({
       baseURL: 'https://maps.googleapis.com/maps/api'
     })
@@ -25,8 +25,27 @@ class restaurantsAPIHandler {
       .then(geometry => {
         return this.axiosApp.get(`place/nearbysearch/json?location=${geometry.lat}%2C${geometry.lng}&radius=50000&keyword=restaurant&point_of_interest&key=${this.apiKey}`)
       })
+      // .then(restaurant => {
+      //   let photo = []
+      //   let info = restaurant.data.results
+      //   let restaurants = {
+      //     photo,
+      //     info
+      //   }
+      //   restaurant.data.results.forEach(elm => {
+      //     let reference = elm.photos[0].photo_reference
+      //     return this.axiosApp.get(`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${reference}&key=${this.apiKey}`)
+      //       .then(res => {
+      //         photo.push(res.data)
+      //         return restaurants
+      //       })
+
+      //   })
+      // })
       .catch(error => console.log('Oh No! Error is: ', error))
   }
+
+
 }
 
 module.exports = restaurantsAPIHandler

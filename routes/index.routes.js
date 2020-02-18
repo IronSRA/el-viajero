@@ -32,11 +32,18 @@ router.get('/', (req, res) => {
 
       Promise.all([newsPromise, infoPromise, weatherPromise, restaurantsPromise])
         .then(results => {
+          let sunrise = (new Date(results[2].data.city.sunrise * 1000)).toLocaleTimeString("en-UK")
+          let sunset = (new Date(results[2].data.city.sunset * 1000)).toLocaleTimeString("en-UK")
+          console.log(results[3])
           res.render('index', {
             news: results[0].data.articles,
             info: results[1].data,
             weather: results[2].data,
-            restaurant: results[3].data
+            hours: {
+              sunrise,
+              sunset
+            },
+            restaurant: results[3].data.results
           })
         })
         .catch(err => console.log(err))
