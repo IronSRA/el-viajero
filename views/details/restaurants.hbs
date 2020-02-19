@@ -2,7 +2,6 @@
   <div class="row">
     <div class="col-12">
       <article class="card big">
-
         <header>
           <a href="/?city={{city}}"><i class="material-icons">
               chevron_left
@@ -14,16 +13,15 @@
             <h2>Restaurantes</h2>
           </div>
         </header>
-
         <div class="content">
           {{#if restaurant}}
           {{#each restaurant}}
           <a href="{{url}}">
             <div class="restaurantsContainer">
-              <h3>{{name}}</h3>
               <img
                 src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference={{photos.[0].photo_reference}}&key=AIzaSyD44K0JK21Zr3D_vx2B1VKPoxwei7vzwfM"
                 alt="{{name}}" />
+              <p class="infoTitle">{{name}}</p>
               <div class="restaurantDetails">
                 <p class="infoTitle">{{name}}</p>
                 <div class="ratings">
