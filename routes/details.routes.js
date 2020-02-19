@@ -9,13 +9,10 @@ const eventsAPI = new eventsAPIHandler()
 
 router.get('/weather/:city', (req, res, next) => {
   let city = req.params.city
-  console.log(`WEATHER DETAILS CITY ${city}`)
   searchCountry.getCountry(city)
     .then(countryCode => {
-      console.log(`WEATHER DETAILS countrycode ${countryCode.city}`)
       weatherAPI.getWeather(`${countryCode.city}`)
         .then(response => {
-          console.log(response.data)
           let sunrise, sunset
           if (response === undefined) {
             response = {
@@ -50,7 +47,9 @@ router.get('/events/:city', (req, res, next) => {
   eventsAPI.getEvents(`${city}`)
     .then(events => {
       console.log(events.data._embedded.events)
-      res.render('details/events', { event: events.data._embedded.events })
+      res.render('details/events', {
+        event: events.data._embedded.events
+      })
     })
     .catch(err => console.log(`Error al buscar el codigo de pais ${err}`))
 })

@@ -1,12 +1,9 @@
-// const weatherAPI = new WeatherAPIHandler("https://www.metaweather.com/api")
-// const basicAPI = new InfoAPIHandler()
-
 document.addEventListener('DOMContentLoaded', () => {
 
-  /////////////////////////////////
   const city = document.querySelector('#citySearch').value
 
   document.getElementById("like-button").onclick = function (event) {
+    alert("sdfasd")
     event.preventDefault();
 
     axios.post('api/city/like/:id', visited_cities)

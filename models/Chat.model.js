@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const now = Date.now()
 
-const postSchema = new Schema({
+const chatSchema = new Schema({
   //   post_author_id: {
   //     type: mongoose.SchemaTypes.ObjectId,
   //     ref: "User"
@@ -28,12 +28,20 @@ const postSchema = new Schema({
   //   timestamps: {
   //     createdAt: { type: Date, default: Date.now }
   //   }
-  name: String, message: String
+  message: {
+    user: [{
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: 'User'
+    }],
+    author: {
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: 'User'
+    },
+    message: String
+  },
 
 });
 
-const Post = mongoose.model('Post', postSchema);
+const Chat = mongoose.model('Chat', chatSchema);
 
-module.exports = Post
-
-
+module.exports = Chat

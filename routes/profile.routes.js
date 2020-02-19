@@ -12,9 +12,10 @@ const checkLoggedIn = (req, res, next) => req.user ? next() : res.render('index'
   loginErrorMessage: 'Zona restringida a usuarios registrados'
 })
 
-router.get('/', checkLoggedIn, (req, res) => res.render('profile', {
+router.get('/', checkLoggedIn, (req, res) => res.render('profile/profile', {
   user: req.user
 }));
+
 
 router.post('/', uploadCloud.single('phototoupload'), (req, res, next) => {
   User.findByIdAndUpdate(req.user.id, {

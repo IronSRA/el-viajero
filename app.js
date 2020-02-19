@@ -21,10 +21,7 @@ require('./passport')(app);
 app.use('/', require('./routes/index.routes'))
 app.use('/auth', require('./routes/auth.routes'))
 app.use('/profile', require('./routes/profile.routes'))
-<<<<<<< HEAD
-=======
 app.use('/chat', require('./routes/chat.routes'))
->>>>>>> master
 app.use('/details', require('./routes/details.routes'))
 
 
