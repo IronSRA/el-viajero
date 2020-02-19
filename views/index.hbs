@@ -18,7 +18,7 @@
             </i>
             <h2>Tiempo</h2>
           </div>
-          <a href="details/weather/{{city}}">Detalles</a>
+          <a href="details/weather/?city={{city}}">Detalles</a>
         </header>
         <div class="content">
           {{#if weather}}
@@ -123,7 +123,7 @@
             </i>
             <h2>Noticias</h2>
           </div>
-          <a href="details/news/{{city}}">Detalles</a>
+          <a href="details/news/?city={{city}}&country={{country}}">Detalles</a>
         </header>
         <div class="content">
           {{#if news}}
@@ -223,7 +223,7 @@
             </i>
             <h2>P. de Interés</h2>
           </div>
-          <a href="details/points-of-interest/{{city}}">Detalles</a>
+          <a href="details/popular-place/?city={{city}}&country={{country}}">Detalles</a>
         </header>
         <div class="content">
           {{#if points}}
