@@ -1,20 +1,37 @@
+
+
 window.onload = () => {
   const city = {
-    lat: 41.386230,
-    lng: 2.174980
+    lat: parseFloat(document.getElementById('latitud').innerText),
+    lng: parseFloat(document.getElementById('longitud').innerText)
   };
 
-  const markers = []
+  const markers = [...document.getElementsByClassName('marker')]
 
   const map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 13,
+    zoom: 17,
     center: city
   });
 
-  let center = {
-    lat: undefined,
-    lng: undefined
-  };
+  markers.forEach(element => {
+
+
+    markerPlace = {
+      lat: parseFloat(element.querySelector("#latitud").innerText),
+      lng: parseFloat(element.querySelector("#longitud").innerText),
+    }
+    console.log(element)
+    new google.maps.Marker({
+      position: markerPlace,
+      map: map,
+    })
+
+  });
+
+
+
+
+
 
   document.addEventListener('DOMContentLoaded', () => {
 
