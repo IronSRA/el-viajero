@@ -5,6 +5,7 @@
 
 body {
   font-family: 'Monserrat', sans-serif;
+  font-weight: 100;
   background-color: #3a3a3a;
   color: #3a3a3a
 }
@@ -36,9 +37,31 @@ a:hover {
 }
 
 main {
-  margin: 40px
+  margin: 40px 0
 }
 
+// GENERAL
+.error {
+  border: 1px solid #E53935;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 0.8em;
+  color: #E53935
+}
+
+.infoTitle {
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.ratings {
+  display: flex;
+  align-items: center;
+}
+
+.ratings p {
+  margin-left: 5px;
+}
 
 // MENU 
 .menu-wrapper {
@@ -98,6 +121,13 @@ main {
   margin-left: 20px;
 }
 
+
+// CITY TITLE
+.mainCityTitle {
+  margin-bottom: 20px;
+  color: #fff
+}
+
 // CARD
 .card {
   height: 300px;
@@ -105,6 +135,7 @@ main {
   border-radius: 10px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
   overflow: hidden;
+  margin-bottom: 20px;
 }
 
 .card header {
@@ -136,11 +167,12 @@ main {
 
 // NEWS
 .newsContainer {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   padding: 5px 0;
-  // border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid #f5f5f5;
 }
 
 .newsContainer img {
@@ -151,8 +183,11 @@ main {
 .newsContainer p {
   margin-left: 10px;
   font-size: 0.8em;
-  text-overflow: ellipsis;
   width: 70%;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 
@@ -165,6 +200,132 @@ main {
   margin-bottom: 5px;
 }
 
-.infoTitle {
-  font-weight: bold;
+// TIEMPO
+.weatherContainer div {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
+
+.weatherContainer>div {
+  border-bottom: 1px solid #e0e0e0;
+  padding: 10px 0;
+}
+
+.weatherContainer img {
+  width: 30%;
+}
+
+.weatherContainer .infoTitle.weather {
+  font-size: 1.5em;
+}
+
+.weatherContainer .weatherHours {
+  display: flex;
+  align-items: flex-end;
+}
+
+.weatherContainer .weatherHours img {
+  width: 20%;
+}
+
+.weatherContainer .weatherHours p {
+  margin-left: 15px;
+  font-weight: 200;
+  font-size: 0.8em;
+}
+
+.weatherContainer .weatherDetails {
+  width: 25%;
+}
+
+.weatherContainer .weatherDetails p {
+  margin-left: 8px;
+  font-size: 0.8em;
+  font-weight: 200;
+}
+
+.weatherContainer .weatherDetails span {
+  font-size: 0.5em;
+  font-weight: 200;
+}
+
+// RESTAURANTES
+
+.restaurantsContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.restaurantsContainer img {
+  width: 25%;
+}
+
+.restaurantsContainer .restaurantDetails {
+  width: 70%;
+  margin-left: 10px;
+  font-size: 0.7em;
+}
+
+.restaurantsContainer .restaurantDetails img {
+  width: 10px;
+  height: auto;
+}
+
+.restaurantsContainer .restaurantDetails p {
+  /* Required for text-overflow to do anything */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.restaurantsContainer .restaurantDetails>.infoTitle {
+  font-size: 1.3em;
+}
+
+// .restaurantsContainer .restaurantDetails {
+//   margin-bottom: 15px;
+//   padding-bottom: 5px;
+//   border-bottom: 1px solid #f5f5f5;
+// }
+
+// EVENTOS
+.eventsContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.eventsContainer img {
+  margin-bottom: 10px;
+}
+
+.eventsContainer p {
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (max-width: 576px) {}
+
+// Medium devices (tablets, 768px and up)
+@media (max-width: 768px) {}
+
+// Large devices (desktops, 992px and up)
+@media (max-width: 992px) {
+  .menu-wrapper .menu {
+    justify-content: center;
+  }
+
+  .searchBar,
+  .logo,
+  .menu {
+    margin-bottom: 10px;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (max-width: 1200px) {}

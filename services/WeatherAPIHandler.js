@@ -9,7 +9,7 @@ class weatherAPIHandler {
   }
 
   getWeather(city) {
-    return this.axiosApp.get(`forecast?q=${city}&APPID=${this.api}`)
+    return this.axiosApp.get(`forecast?q=${city}&units=metric&APPID=${this.api}`)
       .catch(error => console.log('Oh No! Error is: ', error))
   }
 }
