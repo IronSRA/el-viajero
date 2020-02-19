@@ -26,9 +26,6 @@ router.get('/:id', checkLoggedIn, (req, res, next) => {
       }]
     }).populate('message.author')
     .then(allMessages => {
-      console.log(allMessages)
-      allMessages.push(req.user)
-      res.json(allMessages)
       res.render('chat/chat', {
         allMessages,
         user: req.user

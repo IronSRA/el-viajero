@@ -13,38 +13,30 @@ const restaurantsAPI = new restaurantsAPIHandler()
 const newsAPI = new newsAPIHandler()
 const pointsOfInterestAPI = new pointOfInterestAPIHandler()
 
-<<<<<<< HEAD
-router.get('/weather/:city', (req, res, next) => {
-  let city = req.params.city
-  searchCountry.getCountry(city)
-    .then(countryCode => {
-      weatherAPI.getWeather(`${countryCode.city}`)
-=======
 router.get('/weather', (req, res, next) => {
   let city = req.query.city
   weatherAPI.getWeather(`${city}`)
->>>>>>> 4ba5448ce9752cc7afe3c83ece029f301975c3a8
-        .then(response => {
-          let sunrise, sunset
-          if (response === undefined) {
-            response = {
-              data: ""
-            }
-          } else {
-            sunrise = (new Date(response.data.city.sunrise * 1000)).toLocaleTimeString("en-UK")
-            sunset = (new Date(response.data.city.sunset * 1000)).toLocaleTimeString("en-UK")
-          }
+    .then(response => {
+      let sunrise, sunset
+      if (response === undefined) {
+        response = {
+          data: ""
+        }
+      } else {
+        sunrise = (new Date(response.data.city.sunrise * 1000)).toLocaleTimeString("en-UK")
+        sunset = (new Date(response.data.city.sunset * 1000)).toLocaleTimeString("en-UK")
+      }
 
-          res.render('details/weather', {
-            weather: response.data,
-            hours: {
-              sunrise,
-              sunset
-            },
-            city
-          })
-        })
-        .catch(err => console.log(`Error al buscar el tiempo ${err}`))
+      res.render('details/weather', {
+        weather: response.data,
+        hours: {
+          sunrise,
+          sunset
+        },
+        city
+      })
+    })
+    .catch(err => console.log(`Error al buscar el tiempo ${err}`))
 })
 
 router.get('/info', (req, res, next) => {
@@ -52,32 +44,25 @@ router.get('/info', (req, res, next) => {
 })
 
 router.get('/news', (req, res, next) => {
-    let city = req.query.city
-    let country = req.query.country
-    newsAPI.getNews(`${country}`)
-      .then(news => {
-        console.log(news.data)
-        res.render('details/news', {
-          new: news.data.articles,
-          city
-        })
+  let city = req.query.city
+  let country = req.query.country
+  newsAPI.getNews(`${country}`)
+    .then(news => {
+      res.render('details/news', {
+        new: news.data.articles,
+        city
       })
-      .catch(err => console.log(`Error al buscar el codigo de pais ${err}`))
+    })
+    .catch(err => console.log(`Error al buscar el codigo de pais ${err}`))
 })
 
 router.get('/events/:city', (req, res, next) => {
   let city = req.params.city
   eventsAPI.getEvents(`${city}`)
     .then(events => {
-<<<<<<< HEAD
-      console.log(events.data._embedded.events)
-      res.render('details/events', {
-        event: events.data._embedded.events
-=======
       res.render('details/events', {
         event: events.data._embedded.events,
         city
->>>>>>> 4ba5448ce9752cc7afe3c83ece029f301975c3a8
       })
     })
     .catch(err => console.log(`Error al buscar el codigo de pais ${err}`))
