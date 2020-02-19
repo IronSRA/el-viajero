@@ -14,8 +14,7 @@ class RestaurantsAPIHandler {
           lng: responce.data.results[0].geometry.location.lng
         }
         return geometry
-      }
-      )
+      })
       .catch(err => console.log(err))
   }
 
