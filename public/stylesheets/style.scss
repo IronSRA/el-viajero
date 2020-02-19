@@ -199,6 +199,25 @@ main {
 // INFO
 .basicInfoContainer {
   width: 100%;
+
+  img {
+    width: 8%;
+    margin-bottom: 5px;
+    margin-right: 5px;
+  };
+
+  .iconCurrency {
+    padding: 3px .5px 2px 7px;
+    border-radius: 50%;
+    background: rgb(210, 189, 145);
+    font-weight: 600;
+    color: rgb(46, 46, 46);
+    margin-right: 4px;
+    border: 1px solid rgb(147, 147, 147);
+    ;
+  }
+
+  ;
 }
 
 .basicInfoContainer p {

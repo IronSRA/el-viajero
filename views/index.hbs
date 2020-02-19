@@ -77,8 +77,15 @@
         <div class="content">
           {{#if info}}
           <div class="basicInfoContainer">
-            <p><span class="infoTitle">Capital: </span>{{info.capital}}</p>
-            <p><span class="infoTitle">Moneda: </span>
+            <p><img src="{{info.flag}}" alt="{{info.capital}}"><span class="infoTitle">Capital: </span>{{info.capital}}
+            </p>
+            <p>
+              <span class="iconCurrency">
+                {{#each info.currencies}}
+                {{symbol}}.
+                {{/each}}
+              </span></o>
+              <span class="infoTitle">Moneda: </span>
               {{#each info.currencies}}
               {{name}}.
               {{/each}}

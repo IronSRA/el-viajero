@@ -159,6 +159,18 @@ main {
 
 .basicInfoContainer {
   width: 100%; }
+  .basicInfoContainer img {
+    width: 8%;
+    margin-bottom: 5px;
+    margin-right: 5px; }
+  .basicInfoContainer .iconCurrency {
+    padding: 3px .5px 2px 7px;
+    border-radius: 50%;
+    background: #d2bd91;
+    font-weight: 600;
+    color: #2e2e2e;
+    margin-right: 4px;
+    border: 1px solid #939393; }
 
 .basicInfoContainer p {
   margin-bottom: 5px; }
