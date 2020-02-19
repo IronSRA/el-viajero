@@ -58,7 +58,8 @@ router.get('/', (req, res) => {
             },
             restaurant: results[3],
             points: results[4],
-            event: results[5].data._embedded.events
+            event: results[5].data._embedded.events,
+            user: req.user
           })
         })
         .catch(err => console.log(`Error al traer los datos ${err}`))
