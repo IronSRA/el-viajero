@@ -83,6 +83,10 @@ router.post('/profile/newpicture', uploadCloud.single('imagesupload'), (req, res
     .catch(err => next(err))
 });
 
+router.post('/like-city'), (req, res, next) => {
+  User.findByIdAndUpdate(req.user.id, { $push: { visited_cities: req.body.data } })
+};
+
 // router.post('profile/picture/like', (req, res, next) => {
 
 // })
