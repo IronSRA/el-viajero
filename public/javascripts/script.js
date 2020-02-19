@@ -8,7 +8,7 @@ window.onload = () => {
 
   const map = new google.maps.Map(document.getElementById('map'), {
     zoom: 13,
-    center: ironhackBCN
+    center: city
   });
 
   let center = {
