@@ -40,10 +40,16 @@
             <nav>
               <ul>
                 <li><a href="/" id="home">Home</a></li>
+                {{#if user}}
                 <li><a href="/profile" id="home">Profile</a></li>
+                {{/if}}
+                {{#unless user}}
                 <li><a href="/auth/login" id="login">Login</a></li>
                 <li><a href="/auth/signup" id="signup">Signup</a></li>
+                {{/unless}}
+                {{#if user}}
                 <li><a href="/auth/logout" id="logout">Logout</a></li>
+                {{/if}}
               </ul>
             </nav>
           </div>

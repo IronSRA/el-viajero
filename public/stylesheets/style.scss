@@ -245,9 +245,12 @@ main {
 }
 
 .weatherContainer {
-  padding-bottom: 10px;
   margin-bottom: 10px;
   border-bottom: 2px solid #e0e0e0;
+}
+
+.weatherContainer.index {
+  border-bottom: 0
 }
 
 .weatherContainer div {
@@ -274,7 +277,7 @@ main {
 }
 
 .weatherContainer .weatherDetailsContainer>div {
-  padding: 20px 0;
+  padding: 15px 0;
   width: 100%;
 }
 
@@ -419,6 +422,7 @@ main {
 
   .weatherContainer.big .weatherStatus .infoTitle {
     margin-bottom: 30px;
+    font-size: 3em;
   }
 
   .weatherContainer.big .weatherStatus img {
@@ -428,6 +432,10 @@ main {
 
   .weatherContainer.big .weatherDetailsContainer {
     width: 70%;
+  }
+
+  .weatherContainer.big .weatherDetailsContainer>div {
+    padding: 20px;
   }
 
 }
