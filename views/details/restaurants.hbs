@@ -14,6 +14,8 @@
           </div>
         </header>
         <div class="content">
+          <!--The div element for the map -->
+          <div id="map"></div>
           {{#if restaurant}}
           {{#each restaurant}}
           <a href="{{url}}">
@@ -21,15 +23,16 @@
               <img
                 src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference={{photos.[0].photo_reference}}&key=AIzaSyD44K0JK21Zr3D_vx2B1VKPoxwei7vzwfM"
                 alt="{{name}}" />
-              <p class="infoTitle">{{name}}</p>
+              <p class="infoTitle" id="{{name}}">{{name}}</p>
               <div class="ratings">
                 <img src="https://image.flaticon.com/icons/svg/616/616489.svg">
                 <p>{{rating}}</p>
               </div>
               <p>{{vicinity}}</p>
-              <h3>My Google Maps Demo</h3>
-              <!--The div element for the map -->
-              <div id="map"></div>
+              <div class="marker">
+                <div id="latitud">{{geometry.location.lat}}</div>
+                <div id="longitud">{{geometry.location.lng}}</div>
+              </div>
             </div>
           </a>
           {{/each}}
