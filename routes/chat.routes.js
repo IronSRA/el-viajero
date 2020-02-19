@@ -35,11 +35,10 @@ router.get('/:id', checkLoggedIn, (req, res, next) => {
     .catch(err => next(err))
 });
 
-router.post('/', (req, res, next) => {
-  console.log(req.user)
+router.post('/:id', (req, res, next) => {
   const newComment = {
     message: {
-      user: [req.user._id, '5e4c22825cca96001794c9f5'],
+      user: [req.user._id, req.params.id],
       author: req.user._id,
       message: req.body.message,
       user: req.user
