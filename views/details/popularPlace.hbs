@@ -16,6 +16,7 @@
         </header>
 
         <div class="content">
+          <div id="map"></div>
           {{#if popular}}
           {{#each popular}}
           <a href="{{url}}">
@@ -31,6 +32,10 @@
                   <p>{{rating}}</p>
                 </div>
                 <p>{{vicinity}}</p>
+              </div>
+              <div class="marker">
+                <div id="latitude">{{geometry.location.lat}}</div>
+                <div id="longitude">{{geometry.location.lng}}</div>
               </div>
             </div>
             <div>
