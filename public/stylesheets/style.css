@@ -295,6 +295,13 @@ main {
   padding-bottom: 5px;
   border-bottom: 1px solid #f5f5f5; }
 
+/* Set the size of the div element that contains the map */
+#map {
+  height: 400px;
+  /* The height is 400 pixels */
+  width: 100%;
+  /* The width is the width of the web page */ }
+
 @media (min-width: 768px) {
   .weatherDate {
     text-align: left; }
