@@ -61,16 +61,22 @@ router.get('/', (req, res) => {
             event: results[5].data._embedded.events
           })
         })
-        .catch(err => console.log(err))
+        .catch(err => console.log(`Error al traer los datos ${err}`))
     })
-    .catch(err => console.log(err))
+    .catch(err => console.log(`Error al buscar el codigo de pais ${err}`))
 })
 
 router.post('/api/city/like/:city', (req, res, next) => {
-  User.findByIdAndUpdate(req.user.id, { $push: { visited_cities: city } })
+  User.findByIdAndUpdate(req.user.id, {
+      $push: {
+        visited_cities: city
+      }
+    })
     .then(() => {
       console.log(req.body.id)
-      res.json({ city: true })
+      res.json({
+        city: true
+      })
     })
     .catch(err => next(err))
 });

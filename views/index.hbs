@@ -16,42 +16,44 @@
             </i>
             <h2>Tiempo</h2>
           </div>
-          <a href="details/weather">Detalles</a>
+          <a href="details/weather/{{city}}">Detalles</a>
         </header>
         <div class="content">
           {{#if weather}}
           <div class="weatherContainer">
-            <div>
+            <div class="weatherStatus">
               <img src="http://openweathermap.org/img/wn/{{weather.list.[0].weather.[0].icon}}@2x.png"
                 alt="{{weather.list.[0].weather.[0].description}}" />
               <p class="infoTitle weather">{{weather.list.[0].weather.[0].description}}</p>
             </div>
-            <div>
-              <div class="weatherHours">
-                <img src="https://image.flaticon.com/icons/svg/2294/2294952.svg" />
-                <p>{{hours.sunrise}}</p>
+            <div class="weatherDetailsContainer">
+              <div>
+                <div class="weatherHours">
+                  <img src="https://image.flaticon.com/icons/svg/2294/2294952.svg" />
+                  <p>{{hours.sunrise}}</p>
+                </div>
+                <div class="weatherHours">
+                  <img src="https://image.flaticon.com/icons/svg/2294/2294957.svg" />
+                  <p>{{hours.sunset}}</p>
+                </div>
               </div>
-              <div class="weatherHours">
-                <img src="https://image.flaticon.com/icons/svg/2294/2294957.svg" />
-                <p>{{hours.sunset}}</p>
-              </div>
-            </div>
-            <div>
-              <div class="weatherDetails">
-                <img src="https://image.flaticon.com/icons/svg/1684/1684374.svg" />
-                <p>{{weather.list.[0].main.temp_min}}°</p>
-              </div>
-              <div class="weatherDetails">
-                <img src="https://image.flaticon.com/icons/svg/1684/1684375.svg" />
-                <p>{{weather.list.[0].main.temp_max}}°</p>
-              </div>
-              <div class="weatherDetails">
-                <img src="https://image.flaticon.com/icons/svg/1532/1532259.svg" />
-                <p>{{weather.list.[0].main.humidity}}%</p>
-              </div>
-              <div class="weatherDetails">
-                <img src="https://image.flaticon.com/icons/svg/615/615486.svg" />
-                <p>{{weather.list.[0].wind.speed}}<span>ms</span></p>
+              <div>
+                <div class="weatherDetails">
+                  <img src="https://image.flaticon.com/icons/svg/1684/1684374.svg" />
+                  <p>{{weather.list.[0].main.temp_min}}°</p>
+                </div>
+                <div class="weatherDetails">
+                  <img src="https://image.flaticon.com/icons/svg/1684/1684375.svg" />
+                  <p>{{weather.list.[0].main.temp_max}}°</p>
+                </div>
+                <div class="weatherDetails">
+                  <img src="https://image.flaticon.com/icons/svg/1532/1532259.svg" />
+                  <p>{{weather.list.[0].main.humidity}}%</p>
+                </div>
+                <div class="weatherDetails">
+                  <img src="https://image.flaticon.com/icons/svg/615/615486.svg" />
+                  <p>{{weather.list.[0].wind.speed}}<span>ms</span></p>
+                </div>
               </div>
             </div>
           </div>
@@ -72,7 +74,7 @@
             </i>
             <h2>Info</h2>
           </div>
-          <a href="details/info">Detalles</a>
+          <a href="details/info/{{city}}">Detalles</a>
         </header>
         <div class="content">
           {{#if info}}
@@ -112,7 +114,7 @@
             </i>
             <h2>Noticias</h2>
           </div>
-          <a href="details/news">Detalles</a>
+          <a href="details/news/{{city}}">Detalles</a>
         </header>
         <div class="content">
           {{#if news}}
@@ -142,7 +144,7 @@
             </i>
             <h2>Eventos</h2>
           </div>
-          <a href="details/events">Detalles</a>
+          <a href="details/events/{{city}}">Detalles</a>
         </header>
         <div class="content">
           {{#if event}}
@@ -171,7 +173,7 @@
             </i>
             <h2>Restaurantes</h2>
           </div>
-          <a href="details/restaurants">Detalles</a>
+          <a href="details/restaurants/{{city}}">Detalles</a>
         </header>
         <div class="content">
           {{#if restaurant}}
@@ -212,7 +214,7 @@
             </i>
             <h2>P. de Interés</h2>
           </div>
-          <a href="details/points-of-interest">Detalles</a>
+          <a href="details/points-of-interest/{{city}}">Detalles</a>
         </header>
         <div class="content">
           {{#if points}}

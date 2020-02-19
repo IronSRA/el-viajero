@@ -10,7 +10,7 @@
       <a href="details/events">Detalles</a>
     </header>
     <div class="content">
-      {{#if event}}
+      {{!-- {{#if event}} --}}
       {{#each event}}
       <a href="{{url}}">
         <div class="eventsContainer">
@@ -19,10 +19,10 @@
         </div>
       </a>
       {{/each}}
-      {{/if}}
-      {{#unless event}}
+      {{!-- {{/if}} --}}
+      {{!-- {{#unless event}}
       <p class="error">Los eventos no se han popdido cargar en esta búsqueda</p>
-      {{/unless}}
+      {{/unless}} --}}
     </div>
   </article>
 </div>
