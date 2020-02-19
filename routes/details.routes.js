@@ -5,19 +5,17 @@ const searchAPIHandler = require('../services/SearchAPIHandler')
 const newsAPIHandler = require('../services/NewsAPIHandler')
 const weatherAPIHandler = require('../services/WeatherAPIHandler')
 const restaurantsAPIHandler = require('../services/RestaurantAPIHandler')
+const pointOfInterestAPIHandler = require('../services/PointOfInterestAPIHandler')
 const searchCountry = new searchAPIHandler()
 const weatherAPI = new weatherAPIHandler()
 const eventsAPI = new eventsAPIHandler()
 const restaurantsAPI = new restaurantsAPIHandler()
 const newsAPI = new newsAPIHandler()
+const pointsOfInterestAPI = new pointOfInterestAPIHandler()
 
-router.get('/weather/:city', (req, res, next) => {
-  let city = req.params.city
-  console.log(`WEATHER DETAILS CITY ${city}`)
-  searchCountry.getCountry(city)
-    .then(countryCode => {
-      console.log(`WEATHER DETAILS countrycode ${countryCode.city}`)
-      weatherAPI.getWeather(`${countryCode.city}`)
+router.get('/weather', (req, res, next) => {
+  let city = req.query.city
+  weatherAPI.getWeather(`${city}`)
         .then(response => {
           console.log(response.data)
           let sunrise, sunset
@@ -36,36 +34,37 @@ router.get('/weather/:city', (req, res, next) => {
               sunrise,
               sunset
             },
-            city: city
+            city
           })
         })
         .catch(err => console.log(`Error al buscar el tiempo ${err}`))
-    })
-    .catch(err => console.log(`Error al buscar el codigo de pais ${err}`))
 })
+
 router.get('/info', (req, res, next) => {
   res.render('details/info')
 })
-router.get('/news/:city', (req, res, next) => {
-  let city = req.params.city
-  searchCountry.getCountry(city)
-    .then(countryCode => {
-      newsAPI.getNews(`${countryCode.country}`)
-        .then(news => {
-          res.render('details/news', { new: news.data.articles })
+
+router.get('/news', (req, res, next) => {
+    let city = req.query.city
+    let country = req.query.country
+    newsAPI.getNews(`${country}`)
+      .then(news => {
+        console.log(news.data)
+        res.render('details/news', {
+          new: news.data.articles,
+          city
         })
-        .catch(err => console.log(`Error al buscar el codigo de pais ${err}`))
-    })
-    .catch(err => console.log(`Error al buscar el codigo de pais ${err}`)
-    )
+      })
+      .catch(err => console.log(`Error al buscar el codigo de pais ${err}`))
 })
+
 router.get('/events/:city', (req, res, next) => {
   let city = req.params.city
   eventsAPI.getEvents(`${city}`)
     .then(events => {
-      console.log(events.data._embedded.events)
       res.render('details/events', {
-        event: events.data._embedded.events
+        event: events.data._embedded.events,
+        city
       })
     })
     .catch(err => console.log(`Error al buscar el codigo de pais ${err}`))
@@ -76,17 +75,25 @@ router.get('/restaurants', (req, res, next) => {
   let country = req.query.country
   restaurantsAPI.getRestaurants(`${city}`, `${country}`)
     .then(restaurant => {
-      console.log(restaurant)
       res.render('details/restaurants', {
-        restaurant
-      }
-      )
+        restaurant,
+        city
+      })
     })
 })
 
-router.get('/points-of-interest', (req, res, next) => {
-  res.render('details/points-of-interest')
+router.get('/popular-place', (req, res, next) => {
+  let city = req.query.city
+  let country = req.query.country
+  pointsOfInterestAPI.getPointsOfInterest(`${city}`, `${country}`)
+    .then(popular => {
+      res.render('details/popularPlace', {
+        popular,
+        city
+      })
+    })
 })
+
 
 
 module.exports = router

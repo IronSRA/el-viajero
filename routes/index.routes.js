@@ -45,8 +45,8 @@ router.get('/', (req, res) => {
             sunrise = (new Date(results[2].data.city.sunrise * 1000)).toLocaleTimeString("en-UK")
             sunset = (new Date(results[2].data.city.sunset * 1000)).toLocaleTimeString("en-UK")
           }
+          console.log(req.user)
           // A AQUI
-          console.log(results[1].data)
           res.render('index', {
             news: results[0].data.articles,
             info: results[1].data,
