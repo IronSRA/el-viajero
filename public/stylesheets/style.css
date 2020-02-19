@@ -5,7 +5,7 @@
 body {
   font-family: 'Monserrat', sans-serif;
   font-weight: 100;
-  background-color: #3a2678;
+  background-color: #212121;
   color: #3a3a3a; }
 
 img {
@@ -115,12 +115,21 @@ main {
   padding: 10px 20px;
   text-transform: uppercase;
   display: flex;
+  justify-content: space-between;
+  align-items: center; }
+
+.card header .headerTitle {
+  display: flex;
   justify-content: flex-start;
   align-items: center; }
 
-.card header h2 {
+.card header .headerTitle h2 {
   margin-left: 10px;
   font-size: 1.3em; }
+
+.card header a {
+  text-transform: capitalize;
+  font-size: 0.9em; }
 
 .card .content {
   padding: 10px 20px;
