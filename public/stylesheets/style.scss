@@ -420,12 +420,12 @@ main {
   .weatherDate {
     text-align: left;
   }
-
+  
   .weatherContainer.big {
     display: flex;
     align-items: center;
   }
-
+  
   .weatherContainer.big .weatherStatus {
     width: 30%;
     font-size: 0.5em;
@@ -435,33 +435,35 @@ main {
     border: 0;
     padding: 0;
   }
-
+  
   .weatherContainer.big .weatherStatus .infoTitle {
     margin-bottom: 30px;
     font-size: 3em;
   }
-
+  
   .weatherContainer.big .weatherStatus img {
     width: 70%;
     margin-bottom: -30px;
   }
-
+  
   .weatherContainer.big .weatherDetailsContainer {
     width: 70%;
   }
-
+  
   .weatherContainer.big .weatherDetailsContainer>div {
     padding: 20px;
   }
-
+  
 }
+
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
+  
   .menu-wrapper .menu {
     justify-content: flex-end;
   }
-
+  
   .searchBar,
   .logo,
   .menu {
