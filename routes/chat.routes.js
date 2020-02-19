@@ -28,6 +28,7 @@ router.get('/:id', checkLoggedIn, (req, res, next) => {
     .then(allMessages => {
       res.render('chat/chat', {
         allMessages,
+        receptor: req.params.id,
         user: req.user
       })
     })
