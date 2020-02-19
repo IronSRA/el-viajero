@@ -16,28 +16,27 @@ const pointsOfInterestAPI = new pointOfInterestAPIHandler()
 router.get('/weather', (req, res, next) => {
   let city = req.query.city
   weatherAPI.getWeather(`${city}`)
-        .then(response => {
-          console.log(response.data)
-          let sunrise, sunset
-          if (response === undefined) {
-            response = {
-              data: ""
-            }
-          } else {
-            sunrise = (new Date(response.data.city.sunrise * 1000)).toLocaleTimeString("en-UK")
-            sunset = (new Date(response.data.city.sunset * 1000)).toLocaleTimeString("en-UK")
-          }
+    .then(response => {
+      let sunrise, sunset
+      if (response === undefined) {
+        response = {
+          data: ""
+        }
+      } else {
+        sunrise = (new Date(response.data.city.sunrise * 1000)).toLocaleTimeString("en-UK")
+        sunset = (new Date(response.data.city.sunset * 1000)).toLocaleTimeString("en-UK")
+      }
 
-          res.render('details/weather', {
-            weather: response.data,
-            hours: {
-              sunrise,
-              sunset
-            },
-            city
-          })
-        })
-        .catch(err => console.log(`Error al buscar el tiempo ${err}`))
+      res.render('details/weather', {
+        weather: response.data,
+        hours: {
+          sunrise,
+          sunset
+        },
+        city
+      })
+    })
+    .catch(err => console.log(`Error al buscar el tiempo ${err}`))
 })
 
 router.get('/info', (req, res, next) => {
@@ -45,17 +44,16 @@ router.get('/info', (req, res, next) => {
 })
 
 router.get('/news', (req, res, next) => {
-    let city = req.query.city
-    let country = req.query.country
-    newsAPI.getNews(`${country}`)
-      .then(news => {
-        console.log(news.data)
-        res.render('details/news', {
-          new: news.data.articles,
-          city
-        })
+  let city = req.query.city
+  let country = req.query.country
+  newsAPI.getNews(`${country}`)
+    .then(news => {
+      res.render('details/news', {
+        new: news.data.articles,
+        city
       })
-      .catch(err => console.log(`Error al buscar el codigo de pais ${err}`))
+    })
+    .catch(err => console.log(`Error al buscar el codigo de pais ${err}`))
 })
 
 router.get('/events/:city', (req, res, next) => {
