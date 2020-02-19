@@ -1,19 +1,46 @@
-document.addEventListener('DOMContentLoaded', () => {
+window.onload = () => {
+  const city = {
+    lat: 41.386230,
+    lng: 2.174980
+  };
 
-  const city = document.querySelector('#citySearch').value
+  const markers = []
 
-  document.getElementById("like-button").onclick = function (event) {
-    alert("sdfasd")
-    event.preventDefault();
+  const map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 13,
+    center: ironhackBCN
+  });
 
-    axios.post('api/city/like/:id', visited_cities)
-      .then(response => {
-        console.log("You just updated visited cities with: ", response.data);
+  let center = {
+    lat: undefined,
+    lng: undefined
+  };
 
-      })
-      .catch(error => {
-        console.log("Error is: ", error);
-      })
-  }
+  document.addEventListener('DOMContentLoaded', () => {
 
-}, false);
+    const city = document.querySelector('#citySearch').value
+
+    document.getElementById("like-button").onclick = function (event) {
+      alert("sdfasd")
+      event.preventDefault();
+
+      axios.post('api/city/like/:id', visited_cities)
+        .then(response => {
+          console.log("You just updated visited cities with: ", response.data);
+
+        })
+        .catch(error => {
+          console.log("Error is: ", error);
+        })
+    }
+
+
+
+  }, false);
+};
+
+
+
+
+
+
