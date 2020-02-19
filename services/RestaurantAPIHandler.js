@@ -20,36 +20,32 @@ class restaurantsAPIHandler {
       .catch(err => console.log(err))
   }
 
+  getUrl(info) {
+
+    let urlPromises = info.map(elm => {
+      let reference = elm.place_id
+      return this.axiosApp.get(`https://maps.googleapis.com/maps/api/place/details/json?placeid=${reference}&key=${this.apiKey}`)
+        .then(res => {
+          elm.url = res.data.result.url
+          return elm
+        })
+
+    })
+    return Promise.all(urlPromises)
+      .then(allPromisesResult => allPromisesResult)
+      .catch(err => console.log(err))
+  }
+
   getRestaurants(city, country) {
     return this.getCityLatLng(city, country)
       .then(geometry => {
         return this.axiosApp.get(`place/nearbysearch/json?location=${geometry.lat}%2C${geometry.lng}&rankby=distance&keyword=restaurant&key=${this.apiKey}`)
       })
-      // .then(restaurant => {
-      //   let photo = []
-      //   let info = restaurant.data.results
-      //   let restaurants = {
-      //     photo,
-      //     info
-      //   }
+      .then(restaurant => {
+        let info = restaurant.data.results
+        return this.getUrl(info)
+      })
 
-
-      //   let reference = info[0].photos[0].photo_reference
-      //   return this.axiosApp.get(`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${reference}&key=${this.apiKey}`)
-      //     .then(res => {
-
-
-      // var arrayBufferView = new Uint8Array.prototype.buffer(res.data);
-      // var blob = new Blob([arrayBufferView], {
-      //   type: "image/jpeg"
-      // });
-      // var urlCreator = window.URL || window.webkitURL;
-      // var imageUrl = urlCreator.createObjectURL(blob);
-      // var img = document.querySelector("#photo");
-      // img.src = imageUrl;
-      // console.log(arrayBufferView)
-      // console.log(img.src)
-      // })
 
 
       // restaurant.data.results.forEach(elm => {
