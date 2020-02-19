@@ -2,8 +2,21 @@
 // const basicAPI = new InfoAPIHandler()
 
 document.addEventListener('DOMContentLoaded', () => {
-  // document.querySelector('#search').onclick = e => {
-  //   const city = document.querySelector('#citySearch').value
-  //   axios.get(`/${city}`)
-  // };
+
+  /////////////////////////////////
+  const city = document.querySelector('#citySearch').value
+
+  document.getElementById("like-button").onclick = function (event) {
+    event.preventDefault();
+
+    axios.post('api/city/like/:id', visited_cities)
+      .then(response => {
+        console.log("You just updated visited cities with: ", response.data);
+
+      })
+      .catch(error => {
+        console.log("Error is: ", error);
+      })
+  }
+
 }, false);

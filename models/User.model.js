@@ -12,7 +12,7 @@ const userSchema = new Schema({
   hidden: Boolean,
   about: String,
   visiting_now: String,
-  visited_cities: Array,
+  visited_cities: [String],
   rating: Number,
   image: String,
   comments: [{

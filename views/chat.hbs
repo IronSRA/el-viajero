@@ -1,0 +1,27 @@
+{{!-- <section>
+  <h2>Chat</h2>
+  <form action="/chat/post" method="post">
+    <input type="text" name="description" placeholder="Escribe aquí"><br>
+    <input type="submit" value="Enviar"><br>
+  </form>
+</section> --}}
+
+
+<div class='container'>
+  <br>
+  <div class='jumbotron'>
+    <h1>Send Message</h1>
+    <br>
+    <form action="/chat/post" method="post">
+      <input id='name' class='form-control' placeholder='Name'>
+      <br>
+      <textarea id='message' class='form-control' placeholder='Your Message Here'>
+</textarea>
+      <br>
+      <button id='send' class='btn btn-success'>Send</button>
+  </div>
+  <div id='messages'>
+    </form>
+
+  </div>
+</div>

@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <article class="card big">
+        <header>
+          <a href="/?city={{city}}"><i class="material-icons">
+              chevron_left
+            </i></a>
+          <div class="headerTitle">
+            <i class="material-icons">
+              wb_sunny
+            </i>
+            <h2>Tiempo</h2>
+          </div>
+        </header>
+        <div class="content">
+          {{#if weather}}
+          {{#each weather.list}}
+          <div class="weatherDate">{{dt_txt}}</div>
+          <div class="weatherContainer big">
+            <div class="weatherStatus">
+              <img src="http://openweathermap.org/img/wn/{{weather.[0].icon}}@2x.png"
+                alt="{{weather.[0].description}}" />
+              <p class="infoTitle weather">{{weather.[0].description}}</p>
+            </div>
+            <div class="weatherDetailsContainer">
+              <div>
+                <div class="weatherHours">
+                  <img src="https://image.flaticon.com/icons/svg/2294/2294952.svg" />
+                  <p>{{../hours.sunrise}}</p>
+                </div>
+                <div class="weatherHours">
+                  <img src="https://image.flaticon.com/icons/svg/2294/2294957.svg" />
+                  <p>{{../hours.sunset}}</p>
+                </div>
+              </div>
+              <div>
+                <div class="weatherDetails">
+                  <img src="https://image.flaticon.com/icons/svg/1684/1684374.svg" />
+                  <p>{{main.temp_min}}°</p>
+                </div>
+                <div class="weatherDetails">
+                  <img src="https://image.flaticon.com/icons/svg/1684/1684375.svg" />
+                  <p>{{main.temp_max}}°</p>
+                </div>
+                <div class="weatherDetails">
+                  <img src="https://image.flaticon.com/icons/svg/1532/1532259.svg" />
+                  <p>{{main.humidity}}%</p>
+                </div>
+                <div class="weatherDetails">
+                  <img src="https://image.flaticon.com/icons/svg/615/615486.svg" />
+                  <p>{{wind.speed}}<span>ms</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          {{/each}}
+          {{/if}}
+          {{#unless weather}}
+          <p class="error">No tenemos datos para esa búsqueda</p>
+          {{/unless}}
+        </div>
+      </article>
+    </div>
+  </div>
+</div>

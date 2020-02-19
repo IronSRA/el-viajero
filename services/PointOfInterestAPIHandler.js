@@ -8,20 +8,28 @@ class pointOfInterestAPIHandler {
     })
   }
 
-  // getCityLatLng(city, country) {
-  //   return this.axiosApp.get(`geocode/json?components=locality:${city}|country:${country}&key=${this.apiKey}`)
-  //     .then(response => {
-  //       const geometry = {
-  //         lat: response.data.results[0].geometry.location.lat,
-  //         lng: response.data.results[0].geometry.location.lng
-  //       }
-  //       return geometry
-  //     })
-  //     .catch(err => console.log(err))
-  // }
+  getUrl(info) {
+
+    let urlPromises = info.map(elm => {
+      let reference = elm.place_id
+      return this.axiosApp.get(`https://maps.googleapis.com/maps/api/place/details/json?placeid=${reference}&key=${this.apiKey}`)
+        .then(res => {
+          elm.url = res.data.result.url
+          return elm
+        })
+
+    })
+    return Promise.all(urlPromises)
+      .then(allPromisesResult => allPromisesResult)
+      .catch(err => console.log(err))
+  }
 
   getPointsOfInterest(city, country) {
     return this.axiosApp.get(`place/textsearch/json?query=${city}+${country}+point+of+interest&key=${this.apiKey}`)
+      .then(popularPlaces => {
+        let info = popularPlaces.data.results
+        return this.getUrl(info)
+      })
       .catch(error => console.log('Oh No! Error is: ', error))
   }
 

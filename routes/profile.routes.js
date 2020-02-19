@@ -1,18 +1,22 @@
 const express = require('express')
+const passport = require('passport')
 const router = express.Router()
+const {
+  ensureLoggedIn,
+  ensureLoggedOut
+} = require('connect-ensure-login')
+const uploadCloud = require('../configs/cloudinary.config')
 const User = require('../models/User.model')
-const uploadCloud = require('../configs/cloudinary.config');
-
-const isAdmin = user => user && user.role === 'Admin'
 
 const checkLoggedIn = (req, res, next) => req.user ? next() : res.render('index', {
   loginErrorMessage: 'Zona restringida a usuarios registrados'
 })
-router.get('/profile', checkLoggedIn, (req, res) => res.render('profile', {
+
+router.get('/', checkLoggedIn, (req, res) => res.render('profile', {
   user: req.user
 }));
 
-router.post('/profile', uploadCloud.single('phototoupload'), (req, res, next) => {
+router.post('/', uploadCloud.single('phototoupload'), (req, res, next) => {
   User.findByIdAndUpdate(req.user.id, {
       image: req.file.secure_url
     })
@@ -20,7 +24,7 @@ router.post('/profile', uploadCloud.single('phototoupload'), (req, res, next) =>
     .catch(err => next(err))
 });
 
-router.post('/profile/newpicture', uploadCloud.single('imagesupload'), (req, res, next) => {
+router.post('/newpicture', uploadCloud.single('imagesupload'), (req, res, next) => {
   User.findByIdAndUpdate(req.user.id, {
       $push: {
         pictures: {
@@ -31,6 +35,6 @@ router.post('/profile/newpicture', uploadCloud.single('imagesupload'), (req, res
     })
     .then(() => res.redirect('/profile'))
     .catch(err => next(err))
-})
+});
 
 module.exports = router
