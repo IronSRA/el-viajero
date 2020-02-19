@@ -13,7 +13,6 @@ router.get('/news', (req, res, next) => {
   res.render('details/news')
 })
 router.get('/events', (req, res, next) => {
-  res.render({ event: results[5].data._embedded.events })
   res.render('details/events')
 })
 router.get('/restaurants', (req, res, next) => {
