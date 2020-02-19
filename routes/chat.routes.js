@@ -27,8 +27,8 @@ router.get('/post', (req, res, next) => {
 
 router.post('/post', (req, res, next) => {
   const newEntry = {
-    //post_author_id: req.user.id,
-    post_text: req.body.description
+    name: req.body.name,
+    message: req.body.message
   }
   Post.create({ newEntry })
     .then(() => {

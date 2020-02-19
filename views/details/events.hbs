@@ -1,0 +1,28 @@
+<div class="col-lg-4 col-md-6 col-12">
+  <article class="card">
+    <header>
+      <div class="headerTitle">
+        <i class="material-icons">
+          calendar_today
+        </i>
+        <h2>Eventos</h2>
+      </div>
+      <a href="details/events">Detalles</a>
+    </header>
+    <div class="content">
+      {{!-- {{#if event}} --}}
+      {{#each event}}
+      <a href="{{url}}">
+        <div class="eventsContainer">
+          <img src="{{images.[0].url}}" alt="{{name}}" />
+          <p class="infoTitle">{{name}}</p>
+        </div>
+      </a>
+      {{/each}}
+      {{!-- {{/if}} --}}
+      {{!-- {{#unless event}}
+      <p class="error">Los eventos no se han popdido cargar en esta búsqueda</p>
+      {{/unless}} --}}
+    </div>
+  </article>
+</div>
