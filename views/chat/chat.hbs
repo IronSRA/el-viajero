@@ -16,15 +16,15 @@
     <div id='messages'>
       <ul>
         {{#each allMessages}}
-        <li>
-          <p style="color: #fff">Username: {{message.author.username}}</p>
+        <li style="border-bottom: 1px solid black;">
+          <p style="color: red">{{message.author.username}} dice:</p>
           {{message.message}}
         </li>
         {{/each}}
       </ul>
 
     </div>
-    <form action="/chat/{{receptor}" method="post">
+    <form action="/chat/{{receptor}}" method="post">
       <textarea id='message' class='form-control' name="message" placeholder='Your Message Here'></textarea>
       <br>
       <button id='send' class='btn btn-success'>Send</button>
