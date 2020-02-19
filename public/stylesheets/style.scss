@@ -45,6 +45,15 @@ main {
 }
 
 // GENERAL
+.titleHeader{
+  display: flex;
+  img {
+    width: 4%;
+    height: 3%;
+    margin-left: 20px;
+    margin-top: 10px;
+  }
+}
 .error {
   border: 1px solid #E53935;
   border-radius: 5px;
