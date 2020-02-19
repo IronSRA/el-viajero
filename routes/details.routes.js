@@ -16,7 +16,6 @@ router.get('/weather', (req, res, next) => {
   let city = req.query.city
   weatherAPI.getWeather(`${city}`)
     .then(response => {
-      console.log(response.data)
       let sunrise, sunset
       if (response === undefined) {
         response = {

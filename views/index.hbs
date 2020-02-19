@@ -6,6 +6,9 @@
       <img src="{{info.flag}}" alt="{{info.capital}}">
       </div>
       <a data-city="{{city}}" id="like-button" href='/like-city'>Like</a>
+      <form action="/api/city/like/{{city}}" method="post">
+        <input type="submit" value="Estoy aquí">
+      </form>
     </div>
   </div>
   <div class="row">

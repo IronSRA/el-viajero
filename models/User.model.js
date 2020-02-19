@@ -10,6 +10,7 @@ const userSchema = new Schema({
   email: String,
   photo: String,
   hidden: Boolean,
+  location: String,
   about: String,
   visiting_now: String,
   visited_cities: [String],
