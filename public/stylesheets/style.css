@@ -36,6 +36,14 @@ a:hover {
 main {
   margin: 40px 0; }
 
+.titleHeader {
+  display: flex; }
+  .titleHeader img {
+    width: 4%;
+    height: 3%;
+    margin-left: 20px;
+    margin-top: 10px; }
+
 .error {
   border: 1px solid #E53935;
   border-radius: 5px;
