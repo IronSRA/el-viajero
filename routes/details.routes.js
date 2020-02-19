@@ -3,9 +3,11 @@ const router = express.Router()
 const eventsAPIHandler = require('../services/EventsAPIHandler')
 const searchAPIHandler = require('../services/SearchAPIHandler')
 const weatherAPIHandler = require('../services/WeatherAPIHandler')
+const restaurantsAPIHandler = require('../services/RestaurantAPIHandler')
 const searchCountry = new searchAPIHandler()
 const weatherAPI = new weatherAPIHandler()
 const eventsAPI = new eventsAPIHandler()
+const restaurantsAPI = new restaurantsAPIHandler()
 
 router.get('/weather/:city', (req, res, next) => {
   let city = req.params.city
@@ -50,13 +52,26 @@ router.get('/events/:city', (req, res, next) => {
   eventsAPI.getEvents(`${city}`)
     .then(events => {
       console.log(events.data._embedded.events)
-      res.render('details/events', { event: events.data._embedded.events })
+      res.render('details/events', {
+        event: events.data._embedded.events
+      })
     })
     .catch(err => console.log(`Error al buscar el codigo de pais ${err}`))
 })
+
 router.get('/restaurants', (req, res, next) => {
-  res.render('details/restaurants')
+  let city = req.query.city
+  let country = req.query.country
+  restaurantsAPI.getRestaurants(`${city}`, `${country}`)
+    .then(restaurant => {
+      console.log(restaurant)
+      res.render('details/restaurants', {
+        restaurant
+      }
+      )
+    })
 })
+
 router.get('/points-of-interest', (req, res, next) => {
   res.render('details/points-of-interest')
 })

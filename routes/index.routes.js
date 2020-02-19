@@ -52,6 +52,7 @@ router.get('/', (req, res) => {
             info: results[1].data,
             weather: results[2].data,
             city: countryCode.city,
+            country: countryCode.country,
             hours: {
               sunrise,
               sunset
