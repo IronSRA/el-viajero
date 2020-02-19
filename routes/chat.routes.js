@@ -14,13 +14,14 @@ const checkLoggedIn = (req, res, next) => req.user ? next() : res.render('index'
 })
 
 router.get('/:id', checkLoggedIn, (req, res, next) => {
+  console.log("GET")
   Chat.find({
       $and: [{
-        "message.user": {
+        "message.users.sender": {
           $in: req.user._id
         }
       }, {
-        "message.user": {
+        "message.users.receptor": {
           $in: req.params.id
         }
       }]
@@ -36,9 +37,13 @@ router.get('/:id', checkLoggedIn, (req, res, next) => {
 });
 
 router.post('/:id', (req, res, next) => {
+  // console.log(`Receptor ${req.params.id}`)
   const newComment = {
     message: {
-      user: [req.user._id, req.params.id],
+      users: {
+        sender: req.user._id,
+        receptor: req.params.id
+      },
       author: req.user._id,
       message: req.body.message,
       user: req.user
@@ -46,23 +51,8 @@ router.post('/:id', (req, res, next) => {
   }
   console.log(newComment)
   Chat.create(newComment)
-    .then(() => res.redirect('/chat'))
+    .then(() => res.redirect(`/chat/${req.params.id}`))
     .catch(err => next(err))
-})
-
-router.post('/post', (req, res, next) => {
-  const newEntry = {
-    name: req.body.name,
-    message: req.body.message
-  }
-  Chat.create({
-      newEntry
-    })
-    .then(() => {
-      console.log(newEntry)
-      res.redirect('/chat')
-    })
-    .catch(err => next(new Error(err)))
 })
 
 module.exports = router

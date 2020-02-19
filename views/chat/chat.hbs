@@ -16,8 +16,8 @@
     <div id='messages'>
       <ul>
         {{#each allMessages}}
-        <li>
-          <p style="color: #fff">Username: {{message.author.username}}</p>
+        <li style="border-bottom: 1px solid black;">
+          <p style="color: red">{{message.author.username}} dice:</p>
           {{message.message}}
         </li>
         {{/each}}

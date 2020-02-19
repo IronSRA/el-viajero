@@ -29,10 +29,16 @@ const chatSchema = new Schema({
   //     createdAt: { type: Date, default: Date.now }
   //   }
   message: {
-    user: [{
-      type: mongoose.SchemaTypes.ObjectId,
-      ref: 'User'
-    }],
+    users: {
+      sender: {
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'User'
+      },
+      receptor: {
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'User'
+      }
+    },
     author: {
       type: mongoose.SchemaTypes.ObjectId,
       ref: 'User'
