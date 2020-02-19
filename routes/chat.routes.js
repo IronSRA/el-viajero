@@ -13,8 +13,13 @@ const checkLoggedIn = (req, res, next) => req.user ? next() : res.render('index'
   loginErrorMessage: 'Zona restringida a usuarios registrados'
 })
 
+router.get('/user/:id', checkLoggedIn, (req, res, next) => {
+  res.render('chat/chat', {
+    receptor: req.params.id,
+    user: req.user
+  })
+});
 router.get('/:id', checkLoggedIn, (req, res, next) => {
-  console.log("GET")
   Chat.find({
       $and: [{
         "message.users.sender": {
@@ -27,17 +32,13 @@ router.get('/:id', checkLoggedIn, (req, res, next) => {
       }]
     }).populate('message.author')
     .then(allMessages => {
-      res.render('chat/chat', {
-        allMessages,
-        receptor: req.params.id,
-        user: req.user
-      })
+      res.json(allMessages)
     })
     .catch(err => next(err))
 });
-
 router.post('/:id', (req, res, next) => {
-  // console.log(`Receptor ${req.params.id}`)
+  console.log("MENSAJE: " + req.body)
+  console.log(req.body)
   const newComment = {
     message: {
       users: {
@@ -51,7 +52,7 @@ router.post('/:id', (req, res, next) => {
   }
   console.log(newComment)
   Chat.create(newComment)
-    .then(() => res.redirect(`/chat/${req.params.id}`))
+    .then(() => res.redirect(`/chat/user/${req.params.id}`))
     .catch(err => next(err))
 })
 

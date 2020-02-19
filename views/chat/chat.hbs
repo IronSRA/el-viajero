@@ -11,29 +11,16 @@
   <br>
   <div class='jumbotron'>
     <h1>Send Message</h1>
-    Username{{user.username}}
+    Your Username: {{user.username}}
     <br>
     <div id='messages'>
-      <ul>
-        {{#each allMessages}}
-        <li style="border-bottom: 1px solid black;">
-          <p style="color: red">{{message.author.username}} dice:</p>
-          {{message.message}}
-        </li>
-        {{/each}}
+      <ul id="messagesContainer">
+
       </ul>
 
     </div>
-    <form action="/chat/{{receptor}}" method="post">
-      <textarea id='message' class='form-control' name="message" placeholder='Your Message Here'></textarea>
-      <br>
+    <form>
+      <input type="text" id="inputMessage" data-user="{{receptor}}" />
       <button id='send' class='btn btn-success'>Send</button>
   </div>
-
 </div>
-
-<script>
-  setInterval(() => {
-    location.reload();
-  }, 3000)
-</script>
