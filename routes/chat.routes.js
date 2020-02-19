@@ -18,11 +18,11 @@ router.get('/:id', checkLoggedIn, (req, res, next) => {
   Chat.find({
       $and: [{
         "message.users.sender": {
-          $in: req.user._id
+          $in: [req.params.id, req.user._id]
         }
       }, {
         "message.users.receptor": {
-          $in: req.params.id
+          $in: [req.user._id, req.params.id]
         }
       }]
     }).populate('message.author')
