@@ -20,5 +20,6 @@ require('./passport')(app);
 // Base URL's
 app.use('/', require('./routes/index.routes'))
 app.use('/auth', require('./routes/auth.routes'))
+app.use('/profile', require('./routes/profile.routes'))
 
 module.exports = app

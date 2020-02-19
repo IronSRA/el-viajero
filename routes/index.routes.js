@@ -1,7 +1,6 @@
 const express = require('express')
 const router = express.Router()
 const User = require('../models/User.model')
-const uploadCloud = require('../configs/cloudinary.config');
 const searchAPIHandler = require('../services/SearchAPIHandler')
 const newsAPIHandler = require('../services/NewsAPIHandler')
 const infoAPIHandler = require('../services/BasicAPIHandler')
@@ -67,30 +66,14 @@ router.get('/', (req, res) => {
     .catch(err => console.log(err))
 })
 
-router.get('/profile', checkLoggedIn, (req, res) => res.render('profile', {
-  user: req.user
-}));
-
-router.post('/profile', uploadCloud.single('phototoupload'), (req, res, next) => {
-  User.findByIdAndUpdate(req.user.id, { image: req.file.secure_url })
-    .then(() => res.redirect('/profile'))
+router.post('/api/city/like/:city', (req, res, next) => {
+  User.findByIdAndUpdate(req.user.id, { $push: { visited_cities: city } })
+    .then(() => {
+      console.log(req.body.id)
+      res.json({ city: true })
+    })
     .catch(err => next(err))
 });
-
-router.post('/profile/newpicture', uploadCloud.single('imagesupload'), (req, res, next) => {
-  User.findByIdAndUpdate(req.user.id, { $push: { pictures: { image: req.file.secure_url, description: req.body.description } } })
-    .then(() => res.redirect('/profile'))
-    .catch(err => next(err))
-});
-
-router.post('/like-city'), (req, res, next) => {
-  User.findByIdAndUpdate(req.user.id, { $push: { visited_cities: req.body.data } })
-};
-
-// router.post('profile/picture/like', (req, res, next) => {
-
-// })
-
 
 router.get('/userList', (req, res) => {
   User.find()
