@@ -9,6 +9,7 @@ button.onclick = e => {
   axios.post(`/chat/${receptor}`, {
       message: inputValue
     })
+    .then(() => document.querySelector('#inputMessage').value = '')
     .catch(err => console.log(err))
 }
 
@@ -27,4 +28,4 @@ setInterval(() => {
       })
     })
     .catch(err => console.log(err))
-}, 1000)
+}, 500)
