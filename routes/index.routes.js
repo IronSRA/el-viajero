@@ -47,7 +47,6 @@ router.get('/', (req, res) => {
           }
           console.log(req.user)
           // A AQUI
-          console.log(results[3][0].geometry.location)
           res.render('index', {
             news: results[0].data.articles,
             info: results[1].data,
