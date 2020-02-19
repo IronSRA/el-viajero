@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <article class="card big">
+        <header>
+          <a href="/?city={{city}}"><i class="material-icons">
+              chevron_left
+            </i></a>
+          <div class="headerTitle">
+            <i class="material-icons">
+              bookmark_border
+            </i>
+            <h2>Noticias</h2>
+          </div>
+        </header>
+        <div class="content">
+          {{#if new}}
+          {{#each new}}
+          <a href="{{url}}">
+            <div class="eventsContainer">
+              <img src="{{urlToImage}}" alt="{{title}}" />
+              <p class="infoTitle">{{title}}</p>
+              <p class="small">Autor: {{author}}</p>
+              <p class="infoBody">{{description}}</p>
+            </div>
+          </a>
+          {{/each}}
+          {{/if}}
+          {{#unless event}}
+          <p class="error">Los eventos no se han popdido cargar en esta búsqueda</p>
+          {{/unless}}
+        </div>
+      </article>
+    </div>
+  </div>
+</div>

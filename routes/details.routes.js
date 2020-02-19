@@ -2,12 +2,14 @@ const express = require('express')
 const router = express.Router()
 const eventsAPIHandler = require('../services/EventsAPIHandler')
 const searchAPIHandler = require('../services/SearchAPIHandler')
+const newsAPIHandler = require('../services/NewsAPIHandler')
 const weatherAPIHandler = require('../services/WeatherAPIHandler')
 const restaurantsAPIHandler = require('../services/RestaurantAPIHandler')
 const searchCountry = new searchAPIHandler()
 const weatherAPI = new weatherAPIHandler()
 const eventsAPI = new eventsAPIHandler()
 const restaurantsAPI = new restaurantsAPIHandler()
+const newsAPI = new newsAPIHandler()
 
 router.get('/weather/:city', (req, res, next) => {
   let city = req.params.city
@@ -44,8 +46,18 @@ router.get('/weather/:city', (req, res, next) => {
 router.get('/info', (req, res, next) => {
   res.render('details/info')
 })
-router.get('/news', (req, res, next) => {
-  res.render('details/news')
+router.get('/news/:city', (req, res, next) => {
+  let city = req.params.city
+  searchCountry.getCountry(city)
+    .then(countryCode => {
+      newsAPI.getNews(`${countryCode.country}`)
+        .then(news => {
+          res.render('details/news', { new: news.data.articles })
+        })
+        .catch(err => console.log(`Error al buscar el codigo de pais ${err}`))
+    })
+    .catch(err => console.log(`Error al buscar el codigo de pais ${err}`)
+    )
 })
 router.get('/events/:city', (req, res, next) => {
   let city = req.params.city
