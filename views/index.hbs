@@ -2,13 +2,14 @@
   <div class="row">
     <div class="col-12">
       <div class="titleHeader">
-      <h1 class="mainCityTitle">{{city}}</h1>
-      <img src="{{info.flag}}" alt="{{info.capital}}">
+        <h1 class="mainCityTitle">{{city}}</h1>
+        <img src="{{info.flag}}" alt="{{info.capital}}">
       </div>
       <a data-city="{{city}}" id="like-button" href='/like-city'>Like</a>
       <form action="/api/city/like/{{city}}" method="post">
         <input type="submit" value="Estoy aquí">
       </form>
+      <a style="color: white" href="/social">SOCIAL</a>
     </div>
   </div>
   <div class="row">
@@ -103,8 +104,10 @@
               {{name}}.
               {{/each}}
             </p>
-            <p><img src="https://image.flaticon.com/icons/svg/458/458287.svg"><span class="infoTitle">Prefijo: </span>+{{info.callingCodes}}</p>
-            <p><img src="https://image.flaticon.com/icons/svg/2599/2599539.svg"><span class="infoTitle">Zona Horaria:</span>
+            <p><img src="https://image.flaticon.com/icons/svg/458/458287.svg"><span class="infoTitle">Prefijo:
+              </span>+{{info.callingCodes}}</p>
+            <p><img src="https://image.flaticon.com/icons/svg/2599/2599539.svg"><span class="infoTitle">Zona
+                Horaria:</span>
               {{#each info.timezones}}
               {{this}}.
               {{/each}}
