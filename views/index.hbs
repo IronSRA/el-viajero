@@ -3,10 +3,13 @@
     <div class="col-4">
       <article class="card">
         <header>
-          <i class="material-icons">
-            bookmark_border
-          </i>
-          <h2>Noticias</h2>
+          <div class="headerTitle">
+            <i class="material-icons">
+              bookmark_border
+            </i>
+            <h2>Noticias</h2>
+          </div>
+          <a href="details/news" />
         </header>
         <div class="content">
           {{#if news}}
@@ -15,7 +18,6 @@
             <div class="newsContainer">
               <img src="{{urlToImage}}" alt="{{title}}" />
               <p>{{title}}</p>
-              {{!-- <p>{{description}}</p> --}}
             </div>
           </a>
           {{/each}}
