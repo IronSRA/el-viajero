@@ -57,7 +57,7 @@ main {
 }
 
 .error {
-  border: 1px solid #E53935;
+  border: 1px solid rgb(167, 167, 167);
   border-radius: 5px;
   padding: 5px;
   font-size: 0.8em;
@@ -582,6 +582,14 @@ main {
 
 }
 
+
+.select {
+  background-color: rgba(205, 203, 203, 0.687);
+}
+
+.deselect {
+  background-color: white;
+}
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
