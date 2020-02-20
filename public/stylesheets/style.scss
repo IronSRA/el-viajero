@@ -136,6 +136,11 @@ main {
 
 
 // CITY TITLE
+#city {
+  text-transform: capitalize;
+  font-weight: 700;
+}
+
 .titleHeader {
   display: flex;
   align-items: center;
@@ -558,42 +563,50 @@ main {
   height: 100%;
 }
 
-.profile-header-container{
-    margin: 0 auto;
-    text-align: center;
+.profile-header-container {
+  margin: 0 auto;
+  text-align: center;
 }
 
 .profile-header-img {
-    padding: 54px;
+  padding: 54px;
 }
 
-.profile-header-img > img.img-circle {
-    width: 120px;
-    height: 120px;
-    border: 2px solid #51D2B7;
+.profile-header-img>img.img-circle {
+  width: 120px;
+  height: 120px;
+  border: 2px solid #51D2B7;
 }
 
 .profile-header {
-    margin-top: 43px;
+  margin-top: 43px;
 }
 
 .rank-label-container {
-    margin-top: -19px;
-    /* z-index: 1000; */
-    text-align: center;
+  margin-top: -19px;
+  /* z-index: 1000; */
+  text-align: center;
 }
 
 .label.label-default.rank-label {
-    background-color: rgb(81, 210, 183);
-    padding: 5px 10px 5px 10px;
-    border-radius: 27px;
-    text-transform: uppercase;
+  background-color: rgb(81, 210, 183);
+  padding: 5px 10px 5px 10px;
+  border-radius: 27px;
+  text-transform: uppercase;
 }
 
+.user {
+  ul {
+    list-style-type: none;
+}}
 
+.select {
+  background-color: rgba(205, 203, 203, 0.687);
+}
 
-
-
+.deselect {
+  background-color: white;
+}
 
 // MEDIA QUERIES
 
@@ -641,14 +654,6 @@ main {
 
 }
 
-
-.select {
-  background-color: rgba(205, 203, 203, 0.687);
-}
-
-.deselect {
-  background-color: white;
-}
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {

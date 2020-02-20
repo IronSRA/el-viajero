@@ -108,6 +108,10 @@ main {
 .menu-wrapper .menu ul li {
   margin-left: 20px; }
 
+#city {
+  text-transform: capitalize;
+  font-weight: 700; }
+
 .titleHeader {
   display: flex;
   align-items: center;
@@ -458,6 +462,15 @@ main {
   border-radius: 27px;
   text-transform: uppercase; }
 
+.user ul {
+  list-style-type: none; }
+
+.select {
+  background-color: rgba(205, 203, 203, 0.687); }
+
+.deselect {
+  background-color: white; }
+
 @media (min-width: 768px) {
   .weatherDate {
     text-align: left; }
@@ -482,12 +495,6 @@ main {
     width: 70%; }
   .weatherContainer.big .weatherDetailsContainer > div {
     padding: 20px; } }
-
-.select {
-  background-color: rgba(205, 203, 203, 0.687); }
-
-.deselect {
-  background-color: white; }
 
 @media (min-width: 992px) {
   .menu-wrapper .menu {
