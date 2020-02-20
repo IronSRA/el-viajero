@@ -115,7 +115,7 @@ window.onload = () => {
       '<div>' +
       `<p>Se encuentra en: ${element.dataset.address}</p>` +
       `<p>Puntuación: ${element.dataset.rating} <img  style="width:4%" src="https://image.flaticon.com/icons/svg/616/616489.svg"></p>` +
-      `<a href="${element.dataset.url}>Mas información</a>` + `<img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${element.dataset.photo}&key=AIzaSyD44K0JK21Zr3D_vx2B1VKPoxwei7vzwfM">`
+      `<a href="${element.dataset.url}>Mas información</a>` + `<img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${element.dataset.photo}&key=AIzaSyB19aJO6EXXEfg-yAN9LGeapPIIBBAHVUQ">`
     '</div>' +
     '</div>'
 
