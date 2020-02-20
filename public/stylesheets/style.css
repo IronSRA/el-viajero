@@ -440,16 +440,17 @@ main {
   padding: 54px; }
 
 .profile-header-img > img.img-circle {
-  width: 120px;
-  height: 120px;
-  border: 2px solid #51D2B7; }
+  width: 200px;
+  height: 200px;
+  border: 3px solid #51D2B7;
+  border-radius: 50%; }
 
 .profile-header {
   margin-top: 43px; }
 
 .rank-label-container {
   margin-top: -19px;
-  /* z-index: 1000; */
+  z-index: 1000;
   text-align: center; }
 
 .label.label-default.rank-label {
@@ -457,6 +458,16 @@ main {
   padding: 5px 10px 5px 10px;
   border-radius: 27px;
   text-transform: uppercase; }
+
+#pencil {
+  color: #51d2b7;
+  margin-top: 12px;
+  margin-left: 180px;
+  z-index: 1000;
+  overflow: hidden; }
+
+#pencil:hover {
+  transform: scale(1.5); }
 
 @media (min-width: 768px) {
   .weatherDate {
