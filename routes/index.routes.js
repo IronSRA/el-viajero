@@ -52,6 +52,7 @@ router.get('/', (req, res) => {
 
             Promise.all([newsPromise, infoPromise, weatherPromise, eventsPromise])
               .then(results => {
+
                 // IMPORTANTE NO TOCAR DE AQUI
                 let sunrise, sunset
                 if (results[2] === undefined) {
