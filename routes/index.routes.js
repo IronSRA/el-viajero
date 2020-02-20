@@ -47,6 +47,7 @@ router.get('/', (req, res) => {
       Promise.all([searchRestaurant, searchPlace])
         .then(infoRestaurant => {
           //si hay restaurante solo pedimos x datos
+          countryCode.city = countryCode.city.toLowerCase()
           if (infoRestaurant[0].length > 0) {
 
 

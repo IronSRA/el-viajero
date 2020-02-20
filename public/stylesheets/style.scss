@@ -563,19 +563,22 @@ main {
   height: 100%;
 }
 
-.profile-header-container {
-  margin: 0 auto;
-  text-align: center;
+
+///PROFILE///
+.profile-header-container{
+    margin: 0 auto;
+    text-align: center;
 }
 
 .profile-header-img {
   padding: 54px;
 }
 
-.profile-header-img>img.img-circle {
-  width: 120px;
-  height: 120px;
-  border: 2px solid #51D2B7;
+.profile-header-img > img.img-circle {
+    width: 200px;
+    height: 200px;
+    border: 3px solid #51D2B7;
+    border-radius: 50%;
 }
 
 .profile-header {
@@ -584,8 +587,9 @@ main {
 
 .rank-label-container {
   margin-top: -19px;
-  /* z-index: 1000; */
   text-align: center;
+    z-index: 1000; 
+    text-align: center;
 }
 
 .label.label-default.rank-label {
@@ -607,6 +611,19 @@ main {
 .deselect {
   background-color: white;
 }
+#pencil{
+  color: rgb(81, 210, 183);
+  margin-top: 12px;
+  margin-left: 180px;
+  z-index: 1000; 
+  overflow: hidden;
+}
+
+#pencil:hover {
+  transform: scale(1.5);
+}
+
+
 
 // MEDIA QUERIES
 
