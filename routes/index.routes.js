@@ -72,7 +72,9 @@ router.get('/', (req, res) => {
 router.post('/api/city/like/:city', (req, res, next) => {
   let city = req.params.city
   console.log(req.user)
-  User.findByIdAndUpdate(req.user.id, { location: city })
+  User.findByIdAndUpdate(req.user.id, {
+      location: city
+    })
 
     .then(res.redirect('/'))
     .catch(err => console.log('Error consultando la BBDD: ', err))
