@@ -47,7 +47,6 @@ router.get('/', (req, res) => {
       Promise.all([searchRestaurant, searchPlace])
         .then(infoRestaurant => {
           //si hay restaurante solo pedimos x datos
-          console.log(infoRestaurant)
           if (infoRestaurant[0].length > 0) {
 
 
@@ -80,7 +79,7 @@ router.get('/', (req, res) => {
                   user: req.user
                 })
               })
-              .catch(err => console.log(`Error al traer los datos ${err}`))
+              .catch(err => console.log(`Error al traer los datos de BD`, err))
 
 
             //si no pedimos todos
@@ -98,8 +97,8 @@ router.get('/', (req, res) => {
                   sunset = (new Date(results[2].data.city.sunset * 1000)).toLocaleTimeString("en-UK")
                 }
                 // A AQUI
-                saveInfo(results[3].data.results, countryCode.city, Restaurants)
-                saveInfo(results[4].data.results, countryCode.city, PopularPlace)
+                saveInfo(results[3], countryCode.city, Restaurants)
+                saveInfo(results[4], countryCode.city, PopularPlace)
                 res.render('index', {
                   news: results[0].data.articles,
                   info: results[1].data,
@@ -110,13 +109,13 @@ router.get('/', (req, res) => {
                     sunrise,
                     sunset
                   },
-                  restaurant: results[3].data.results,
-                  points: results[4].data.results,
+                  restaurant: results[3],
+                  points: results[4],
                   event: results[5].data._embedded.events,
                   user: req.user
                 })
               })
-              .catch(err => console.log(`Error al traer los datos ${err}`))
+              .catch(err => console.log(`Error al traer los datos de la API`, err))
 
           }
         })
@@ -124,7 +123,7 @@ router.get('/', (req, res) => {
 
 
     })
-    .catch(err => console.log(`Error al buscar el codigo de pais ${err}`))
+    .catch(err => console.log(`Error al buscar el codigo de pais`, err))
 })
 
 router.post('/api/city/like/:city', (req, res, next) => {
