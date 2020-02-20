@@ -38,4 +38,12 @@ router.post('/newpicture', uploadCloud.single('imagesupload'), (req, res, next) 
     .catch(err => next(err))
 });
 
+
+router.post('/fav/city/:city', (req, res, next) => {
+  let city = req.params.city
+  let favorit = req.user.favourites.cities
+  favorit.push(city)
+});
+
+
 module.exports = router
