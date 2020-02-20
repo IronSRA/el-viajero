@@ -16,14 +16,15 @@
         </header>
 
         <div class="content">
+          <div id="map"></div>
           {{#if popular}}
           {{#each popular}}
-          <a href="{{url}}">
+          {{!-- <a href="{{url}}"> --}}
             <div class="restaurantsContainer">
               <h3>{{name}}</h3>
-              <img
+              {{!-- <img
                 src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference={{photos.[0].photo_reference}}&key=AIzaSyD44K0JK21Zr3D_vx2B1VKPoxwei7vzwfM"
-                alt="{{name}}" />
+                alt="{{name}}" /> --}}
               <div class="restaurantDetails">
                 <p class="infoTitle">{{name}}</p>
                 <div class="ratings">
@@ -32,11 +33,15 @@
                 </div>
                 <p>{{vicinity}}</p>
               </div>
+              <div class="marker">
+                <div id="latitude">{{geometry.location.lat}}</div>
+                <div id="longitude">{{geometry.location.lng}}</div>
+              </div>
             </div>
             <div>
 
             </div>
-          </a>
+          {{!-- </a> --}}
           {{/each}}
           {{/if}}
           {{#unless popular}}
