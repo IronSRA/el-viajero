@@ -3,7 +3,8 @@
     <div class="col-12">
       <div class="titleHeader">
         <img src="{{info.flag}}" alt="{{info.capital}}">
-        <h1 class="mainCityTitle" data-location="{{user.location}}">{{city}}</h1>
+        <h1 class="mainCityTitle" data-location="{{user.location}}" data-favcity="{{user.favourites.cities}}"
+          data-city="{{city}}">{{city}}</h1>
         <div>
           <i class="material-icons location">
             gps_not_fixed
@@ -13,10 +14,10 @@
           </i>
         </div>
         <div>
-          <i class="material-icons fav" data-city="{{city}}">
+          <i class="material-icons fav">
             favorite_border
           </i>
-          <i class="material-icons fav hidden">
+          <i class=" material-icons fav hidden">
             favorite
           </i>
         </div>

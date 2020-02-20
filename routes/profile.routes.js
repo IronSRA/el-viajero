@@ -41,9 +41,29 @@ router.post('/newpicture', uploadCloud.single('imagesupload'), (req, res, next) 
 
 router.post('/fav/city/:city', (req, res, next) => {
   let city = req.params.city
-  let favorit = req.user.favourites.cities
-  favorit.push(city)
+  let userFavCities = []
+
+  User.findById(req.user._id)
+    .then(response => {
+      userFavCities = [...response.favourites.cities]
+      if (response.favourites.cities.includes(city)) {
+        userFavCities.splice(userFavCities.indexOf(city), 1)
+        User.findByIdAndUpdate(req.user._id, {
+            "favourites.cities": userFavCities
+          })
+          .catch(err => console.log(`Error: ${err}`))
+      } else {
+        userFavCities.push(city)
+      }
+      User.findByIdAndUpdate(req.user._id, {
+          "favourites.cities": userFavCities
+        })
+        .catch(err => console.log(`Error: ${err}`))
+    })
+    .catch(err => console.log(`Error: ${err}`))
 });
+
+
 
 
 module.exports = router
