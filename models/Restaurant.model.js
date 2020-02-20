@@ -1,14 +1,14 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const now = Date.now();
+const now = Date.now()
 
 const restaurantSchema = new Schema({
+  city: String,
   name: String,
   place_id: String,
   rating: Number,
   type: String,
-  geometry:
-  {
+  geometry: {
     location: {
       latitude: Number,
       longitude: Number,
@@ -26,10 +26,12 @@ const restaurantSchema = new Schema({
   website: String,
   photos: Array,
   reviews: Array,
-},
-  {
-    timestamps: { type: Date, default: Date.now }
-  });
+}, {
+  timestamps: {
+    type: Date,
+    default: Date.now
+  }
+});
 
 const Restaurant = mongoose.model('Restaurant', restaurantSchema);
 module.exports = Restaurant;

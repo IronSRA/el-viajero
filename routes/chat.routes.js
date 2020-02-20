@@ -37,8 +37,8 @@ router.get('/:id', checkLoggedIn, (req, res, next) => {
     .catch(err => next(err))
 });
 router.post('/:id', (req, res, next) => {
-  console.log("MENSAJE: " + req.body)
-  console.log(req.body)
+  // console.log("MENSAJE: " + req.body)
+  // console.log(req.body)
   const newComment = {
     message: {
       users: {
