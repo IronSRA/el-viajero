@@ -12,86 +12,85 @@ window.onload = () => {
     zoom: 15,
     center: city,
     styles: [{
-      "featureType": "administrative",
-      "elementType": "all",
-      "stylers": [{
-        "visibility": "on"
+        "featureType": "administrative",
+        "elementType": "all",
+        "stylers": [{
+            "visibility": "on"
+          },
+          {
+            "lightness": 33
+          }
+        ]
       },
       {
-        "lightness": 33
-      }
-      ]
-    },
-    {
-      "featureType": "landscape",
-      "elementType": "all",
-      "stylers": [{
-        "color": "#f2e5d4"
-      }]
-    },
-    {
-      "featureType": "poi.park",
-      "elementType": "geometry",
-      "stylers": [{
-        "color": "#c5dac6"
-      }]
-    },
-    {
-      "featureType": "poi.park",
-      "elementType": "labels",
-      "stylers": [{
-        "visibility": "on"
+        "featureType": "landscape",
+        "elementType": "all",
+        "stylers": [{
+          "color": "#f2e5d4"
+        }]
       },
       {
-        "lightness": 20
-      }
-      ]
-    },
-    {
-      "featureType": "road",
-      "elementType": "all",
-      "stylers": [{
-        "lightness": 20
-      }]
-    },
-    {
-      "featureType": "road.highway",
-      "elementType": "geometry",
-      "stylers": [{
-        "color": "#c5c6c6"
-      }]
-    },
-    {
-      "featureType": "road.arterial",
-      "elementType": "geometry",
-      "stylers": [{
-        "color": "#e4d7c6"
-      }]
-    },
-    {
-      "featureType": "road.local",
-      "elementType": "geometry",
-      "stylers": [{
-        "color": "#fbfaf7"
-      }]
-    },
-    {
-      "featureType": "water",
-      "elementType": "all",
-      "stylers": [{
-        "visibility": "on"
+        "featureType": "poi.park",
+        "elementType": "geometry",
+        "stylers": [{
+          "color": "#c5dac6"
+        }]
       },
       {
-        "color": "#acbcc9"
+        "featureType": "poi.park",
+        "elementType": "labels",
+        "stylers": [{
+            "visibility": "on"
+          },
+          {
+            "lightness": 20
+          }
+        ]
+      },
+      {
+        "featureType": "road",
+        "elementType": "all",
+        "stylers": [{
+          "lightness": 20
+        }]
+      },
+      {
+        "featureType": "road.highway",
+        "elementType": "geometry",
+        "stylers": [{
+          "color": "#c5c6c6"
+        }]
+      },
+      {
+        "featureType": "road.arterial",
+        "elementType": "geometry",
+        "stylers": [{
+          "color": "#e4d7c6"
+        }]
+      },
+      {
+        "featureType": "road.local",
+        "elementType": "geometry",
+        "stylers": [{
+          "color": "#fbfaf7"
+        }]
+      },
+      {
+        "featureType": "water",
+        "elementType": "all",
+        "stylers": [{
+            "visibility": "on"
+          },
+          {
+            "color": "#acbcc9"
+          }
+        ]
       }
-      ]
-    }
     ]
   });
 
 
   markers.forEach(element => {
-console.log(element)
     markerPlace = {
       lat: parseFloat(element.dataset.latitude),
       lng: parseFloat(element.dataset.longitude),
@@ -112,23 +111,13 @@ console.log(element)
     }
 
     let contentString = '<div id="content">' +
-      '<h1>Uluru</h1>' +
+      `<h1>${element.dataset.name}</h1>` +
       '<div>' +
-      '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
-      'sandstone rock formation in the southern part of the ' +
-      'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) ' +
-      'south west of the nearest large town, Alice Springs; 450&#160;km ' +
-      '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major ' +
-      'features of the Uluru - Kata Tjuta National Park. Uluru is ' +
-      'sacred to the Pitjantjatjara and Yankunytjatjara, the ' +
-      'Aboriginal people of the area. It has many springs, waterholes, ' +
-      'rock caves and ancient paintings. Uluru is listed as a World ' +
-      'Heritage Site.</p>' +
-      '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' +
-      'https://en.wikipedia.org/w/index.php?title=Uluru</a> ' +
-      '(last visited June 22, 2009).</p>' +
-      '</div>' +
-      '</div>'
+      `<p>Se encuentra en: ${element.dataset.address}</p>` +
+      `<p>Puntuación: ${element.dataset.rating} <img  style="width:4%" src="https://image.flaticon.com/icons/svg/616/616489.svg"></p>` +
+      `<a href="${element.dataset.url}>Mas información</a>` + `<img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${element.dataset.photo}&key=AIzaSyB19aJO6EXXEfg-yAN9LGeapPIIBBAHVUQ">`
+    '</div>' +
+    '</div>'
 
     let infowindow = new google.maps.InfoWindow({
       content: contentString
@@ -141,12 +130,21 @@ console.log(element)
       icon,
     })
 
-    marker.addListener('click', function () {
+  
+    element.addEventListener("mouseover", () => {
       infowindow.open(map, marker);
-      document.querySelector("#select").style.backgroundColor = "red"
+      element.classList.remove('deselect')
+      element.classList.add('select')
+    });
+
+    element.addEventListener("mouseout", () => {
+      infowindow.close(map, marker);
+      element.classList.remove('select')
+      element.classList.add('deselect')
     });
 
   });
+
 
   document.addEventListener('DOMContentLoaded', () => {
 

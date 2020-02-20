@@ -38,7 +38,7 @@ main {
   margin: 40px 0; }
 
 .error {
-  border: 1px solid #E53935;
+  border: 1px solid #a7a7a7;
   border-radius: 5px;
   padding: 5px;
   font-size: 0.8em;
@@ -456,6 +456,12 @@ main {
     width: 70%; }
   .weatherContainer.big .weatherDetailsContainer > div {
     padding: 20px; } }
+
+.select {
+  background-color: rgba(205, 203, 203, 0.687); }
+
+.deselect {
+  background-color: white; }
 
 @media (min-width: 992px) {
   .menu-wrapper .menu {
