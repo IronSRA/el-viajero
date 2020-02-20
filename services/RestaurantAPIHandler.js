@@ -20,31 +20,31 @@ class restaurantsAPIHandler {
       .catch(err => console.log(err))
   }
 
-  // getUrl(info) {
+  getUrl(info) {
 
-  //   let urlPromises = info.map(elm => {
-  //     let reference = elm.place_id
-  //     return this.axiosApp.get(`https://maps.googleapis.com/maps/api/place/details/json?placeid=${reference}&key=${this.apiKey}`)
-  //       .then(res => {
-  //         elm.url = res.data.result.url
-  //         return elm
-  //       })
+    let urlPromises = info.map(elm => {
+      let reference = elm.place_id
+      return this.axiosApp.get(`https://maps.googleapis.com/maps/api/place/details/json?placeid=${reference}&key=${this.apiKey}`)
+        .then(res => {
+          elm.url = res.data.result.url
+          return elm
+        })
 
-  //   })
-  //   return Promise.all(urlPromises)
-  //     .then(allPromisesResult => allPromisesResult)
-  //     .catch(err => console.log(err))
-  // }
+    })
+    return Promise.all(urlPromises)
+      .then(allPromisesResult => allPromisesResult)
+      .catch(err => console.log(err))
+  }
 
   getRestaurants(city, country) {
     return this.getCityLatLng(city, country)
       .then(geometry => {
         return this.axiosApp.get(`place/nearbysearch/json?location=${geometry.lat}%2C${geometry.lng}&rankby=distance&keyword=restaurant&key=${this.apiKey}`)
       })
-      // .then(restaurant => {
-      //   let info = restaurant.data.results
-      //   return this.getUrl(info)
-      // })
+      .then(restaurant => {
+        let info = restaurant.data.results
+        return this.getUrl(info)
+      })
 
 
 
