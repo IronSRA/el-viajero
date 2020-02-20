@@ -5,6 +5,7 @@
         <img src="{{info.flag}}" alt="{{info.capital}}">
         <h1 class="mainCityTitle" data-location="{{user.location}}" data-favcity="{{user.favourites.cities}}"
           data-city="{{city}}">{{city}}</h1>
+        {{#if user}}
         <div>
           <i class="material-icons location">
             gps_not_fixed
@@ -21,6 +22,7 @@
             favorite
           </i>
         </div>
+        {{/if}}
       </div>
     </div>
 
@@ -93,7 +95,6 @@
               </i>
               <h2>Info</h2>
             </div>
-            <a href="details/info/{{city}}">Detalles</a>
           </header>
           <div class="content">
             {{#if info}}

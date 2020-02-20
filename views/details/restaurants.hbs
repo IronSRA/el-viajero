@@ -17,31 +17,33 @@
           <!--The div element for the map -->
           <div id="map"></div>
           {{#if restaurant}}
-          {{#each restaurant}}
-          <a href="{{url}}">
-            <div class="restaurantsContainer" data-latitude="{{geometry.location.lat}}"
-              data-longitude="{{geometry.location.lng}}" data-name="{{name}}" data-address="{{vicinity}}"
-              data-rating="{{rating}}" data-url="{{url}}" data-photo="{{photos.[0].photo_reference}}">
-              <div class="row">
-                <div class="col-6">
-                  <div class="places-images">
-                    <img
-                      src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference={{photos.[0].photo_reference}}&key=AIzaSyCFPhuSzSAR4FzJmO0eMimZ7B_XRD4FOJY"
-                      alt="{{name}}" />
+          <div class="restaurantDetails">
+            {{#each restaurant}}
+            <a href="{{url}}">
+              <div class="restaurantsContainer details" data-latitude="{{geometry.location.lat}}"
+                data-longitude="{{geometry.location.lng}}" data-name="{{name}}" data-address="{{vicinity}}"
+                data-rating="{{rating}}" data-url="{{url}}" data-photo="{{photos.[0].photo_reference}}">
+                <div class="row">
+                  <div class="col-6">
+                    <div class="places-images">
+                      <img
+                        src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference={{photos.[0].photo_reference}}&key=AIzaSyCFPhuSzSAR4FzJmO0eMimZ7B_XRD4FOJY"
+                        alt="{{name}}" />
+                    </div>
                   </div>
-                </div>
-                <div class="col-6">
-                  <p class="infoTitle" id="{{name}}">{{name}}</p>
-                  <div class="ratings">
-                    <img src="https://image.flaticon.com/icons/svg/616/616489.svg">
-                    <p>{{rating}}</p>
+                  <div class="col-6">
+                    <p class="infoTitle" id="{{name}}">{{name}}</p>
+                    <div class="ratings">
+                      <img src="https://image.flaticon.com/icons/svg/616/616489.svg">
+                      <p>{{rating}}</p>
+                    </div>
+                    <p>{{vicinity}}</p>
                   </div>
-                  <p>{{vicinity}}</p>
                 </div>
               </div>
-            </div>
-          </a>
-          {{/each}}
+            </a>
+            {{/each}}
+          </div>
           {{/if}}
           {{#unless restaurant}}
           <p class="error">No tenemos datos para esa búsqueda</p>
