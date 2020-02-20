@@ -1,24 +1,32 @@
-<h2>Signup</h2>
-
-<form action="/auth/signup" method="POST" id="form-container">
-  <label for="username">Username</label>
-  <input id="username" type="text" name="username" placeholder="JonSnow">
-
-  <br><br>
-
-  <label for="password">Password</label>
-  <input id="password" type="password" name="password" placeholder="Your password">
-  <br>
-  {{#if message }}
-  <div class="error-message">{{ message }}</div>
-  {{/if}}
-
-  <br><br>
-
-  <button>Create account</button>
-
-  <p class="account-message">
-    Do you already have an account?
-    <a href="/auth/login">Login</a>
-  </p>
-</form>
+<div class="col-lg-4 col-md-6 col-12">
+  <article class="card">
+    <header>
+      <div class="headerTitle">
+        <i class="material-icons">
+          recent_actors
+        </i>
+        <h2>Crear cuenta</h2>
+      </div>
+    </header>
+    <div class="content">
+      <div class="signup-page">
+        <div class="form">
+          <form class="register-form" action="/auth/signup" method="POST" id="form-container">
+            <div class="row d-flex justify-content-center">
+              <div class="col-11">
+                <input id="username" class="form-control" type="text" name="username" placeholder="Nombre de usuario"
+                  autofocus />
+                <input id="password" class="form-control" type="password" name="password" placeholder="Contraseña" />
+                {{#if message }}
+                <div class="error-message">{{ message }}</div>
+                {{/if}}
+                <button class="btn btn-success btn-block">Crear cuenta</button>
+                <p class="message">¿Ya tienes cuenta? <a href="/auth/login">Ingresar</a></p>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+  </article>
+</div>
+</div>

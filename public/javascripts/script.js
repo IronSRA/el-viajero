@@ -4,6 +4,8 @@ window.onload = () => {
     lng: parseFloat(document.getElementsByClassName('restaurantsContainer')[0].dataset.longitude)
   };
 
+  console.log(city)
+
   const markers = [...document.getElementsByClassName('restaurantsContainer')]
 
   const map = new google.maps.Map(document.getElementById('map'), {
