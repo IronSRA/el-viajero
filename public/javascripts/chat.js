@@ -18,7 +18,6 @@ setInterval(() => {
     .then(response => {
       container.innerHTML = ''
       response.data.forEach(elem => {
-        console.log(elem.message)
         data = `
         <li style="border-bottom: 1px solid black;">
         <p style="color: red">${elem.message.author.username} dice:</p>

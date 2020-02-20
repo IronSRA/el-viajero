@@ -50,7 +50,6 @@ router.post('/:id', (req, res, next) => {
       user: req.user
     }
   }
-  console.log(newComment)
   Chat.create(newComment)
     .then(() => res.redirect(`/chat/user/${req.params.id}`))
     .catch(err => next(err))

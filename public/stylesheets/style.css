@@ -6,6 +6,7 @@ body {
   font-family: 'Monserrat', sans-serif;
   font-weight: 100;
   background-color: #212121;
+  user-select: none;
   color: #3a3a3a; }
 
 img {
@@ -36,14 +37,6 @@ a:hover {
 main {
   margin: 40px 0; }
 
-.titleHeader {
-  display: flex; }
-  .titleHeader img {
-    width: 4%;
-    height: 3%;
-    margin-left: 20px;
-    margin-top: 10px; }
-
 .error {
   border: 1px solid #E53935;
   border-radius: 5px;
@@ -61,6 +54,9 @@ main {
 
 .ratings p {
   margin-left: 5px; }
+
+.hidden {
+  display: none; }
 
 .menu-wrapper {
   background-color: #fff;
@@ -112,9 +108,26 @@ main {
 .menu-wrapper .menu ul li {
   margin-left: 20px; }
 
-.mainCityTitle {
-  margin-bottom: 20px;
-  color: #fff; }
+.titleHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px; }
+  .titleHeader img {
+    width: 5%; }
+  .titleHeader h1 {
+    color: #fff;
+    margin-left: 20px; }
+  .titleHeader div {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+    cursor: pointer; }
+    .titleHeader div i {
+      font-size: 150%; }
+  .titleHeader .location {
+    color: #fff; }
+  .titleHeader .fav {
+    color: #E53935; }
 
 .card {
   height: 300px;
