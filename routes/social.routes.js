@@ -15,8 +15,6 @@ router.get('/', checkLoggedIn, (req, res, next) => {
     location: req.user.location
   }).populate('message.author')
     .then(allUsers => {
-      // console.log(req.user)
-      // console.log(allUsers)
       res.render('social/list', {
         allUsers,
         user: req.user
@@ -28,8 +26,6 @@ router.get('/', checkLoggedIn, (req, res, next) => {
 router.post('/city/iamhere/:city', (req, res, next) => {
   let city = req.params.city.toLowerCase()
   let userLocation = req.user.location
-
-  console.log(req.user.location)
 
   if (city === userLocation) {
     User.findByIdAndUpdate(req.user._id, { location: null })

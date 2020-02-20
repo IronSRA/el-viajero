@@ -1,6 +1,42 @@
-<h1>Lista de usuarios en tu seleccion</h1>
-<ul>
-  {{#each allUsers}}
-  <li><a style="color: white" href="/chat/user/{{_id}}">{{username}} - Enviar Mensaje</a></li>
-  {{/each}}
-</ul>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <article class="card big">
+        <header>
+          <a href="/?city={{city}}"><i class="material-icons">
+              chevron_left
+            </i></a>
+          <div class="headerTitle">
+            <i class="material-icons">
+              people_alt
+            </i>
+            <h2>Social</h2>
+          </div>
+        </header>
+        <div class="content">
+          <p>Conoce a otros usuarios que se encuentran en <span id="city">{{user.location}}</span> como tu:</p>
+          <br>
+          <br>
+          <br>
+          <div class="user">
+            <ul>
+              {{#each allUsers}}
+              <li>
+                <i class="material-icons">
+                  sentiment_very_satisfied
+                </i>
+                <a class="userFriends" href="/chat/user/{{_id}}">{{username}} - Enviar Mensaje</a>
+              </li>
+              {{/each}}
+            </ul>
+          </div>
+
+        </div>
+    </div>
+
+
+  </div>
+  </article>
+</div>
+</div>
+</div>

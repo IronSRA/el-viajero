@@ -10,7 +10,7 @@
             <i class="material-icons">
               perm_identity
             </i>
-            <h2>{{user.username}}</h2>
+            <h2>Perfil</h2>
           </div>
         </header>
         <img src={{user.picture}}></img>
@@ -19,9 +19,13 @@
             <div class="col-4">
               <div class="profile-header-container">
                 <div class="profile-header-img">
-                  <img class="img-circle rounded" src="{{user.image}}" alt="Foto de susuario de {{user.username}}" />
-                  <div class="rank-label-container">
-                    <span class="label label-default rank-label">{{user.username}}</span>
+                  <i class="material-icons position-fixed" id="pencil">
+                    create
+                  </i>
+                  <img class="img-circle position-relative" src="{{user.image}}"
+                    alt="Foto de susuario de {{user.username}}" />
+                  <div class="rank-label-container  position-relative">
+                    <span class="label label-default rank-label  position-relative">{{user.username}}</span>
                   </div>
                 </div>
               </div>
@@ -30,11 +34,8 @@
               <div class="row">
                 <div class="col-12">
                   <form action="/profile" method="post" enctype="multipart/form-data">
-                    <i class="material-icons">
-                      create
-                    </i>
                     <input type="file" name="phototoupload"><br>
-                    <input type="submit" value="Enviar"><br>
+                    <input type="submit" class="btn btn-success" value="Enviar"><br>
                   </form>
                 </div>
                 <div class="col-12">
@@ -47,14 +48,17 @@
           </div>
         </div>
         <hr>
-        <br>
-        <p>Sube tus fotos:</p>
-        <form action="/profile/newpicture" method="post" enctype="multipart/form-data">
-          <input type="text" name="description"><br>
-          <input type="file" name="imagesupload"><br>
-          <input type="submit" value="Enviar"><br>
-        </form>
-        <h4>Fotos de viajes</h4>
+        <div>
+          <div class="col-lg-3 col-md-4 col-6">
+            <p>Sube tus fotos:</p>
+            <form action="/profile/newpicture" method="post" enctype="multipart/form-data">
+              <input type="text" name="description"><br>
+              <input type="file" name="imagesupload"><br>
+              <input type="submit" class="btn btn-success" value="Enviar"><br>
+            </form>
+          </div>
+          <hr>
+        </div>
         <div class="row text-center text-lg-left">
           {{#each user.pictures}}
           <div class="col-lg-3 col-md-4 col-6">
@@ -63,10 +67,12 @@
               <p>{{description}}</p>
             </a>
           </div>
+          {{/each}}
+        </div>
       </article>
+
     </div>
   </div>
-</div>
-{{/each}}
+
 </div>
 </div>
