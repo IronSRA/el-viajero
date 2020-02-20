@@ -52,7 +52,7 @@ router.get('/', (req, res) => {
 
             Promise.all([newsPromise, infoPromise, weatherPromise, eventsPromise])
               .then(results => {
-          
+
                 // IMPORTANTE NO TOCAR DE AQUI
                 let sunrise, sunset
                 if (results[2] === undefined) {
@@ -127,24 +127,6 @@ router.get('/', (req, res) => {
     .catch(err => console.log(`Error al buscar el codigo de pais`, err))
 })
 
-router.post('/api/city/iamhere/:city', (req, res, next) => {
-  let city = req.params.city.toLowerCase()
-  let userLocation = req.user.location
-
-  console.log(req.user.location)
-
-  if (city === userLocation) {
-    User.findByIdAndUpdate(req.user._id, { location: null })
-      .then(res.redirect('/?city=' + city))
-      .catch(err => console.log('Error consultando la BBDD: ', err))
-  } else {
-    User.findByIdAndUpdate(req.user._id, { location: city })
-      .then(res.redirect('/?city=' + city))
-      .catch(err => console.log('Error consultando la BBDD: ', err))
-  }
-
-
-});
 
 router.get('/userList', (req, res) => {
   User.find()

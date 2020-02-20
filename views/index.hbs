@@ -2,15 +2,28 @@
   <div class="row">
     <div class="col-12">
       <div class="titleHeader">
-        <h1 class="mainCityTitle">{{city}}</h1>
         <img src="{{info.flag}}" alt="{{info.capital}}">
+        <h1 class="mainCityTitle">{{city}}</h1>
+        <div>
+          <i class="material-icons location">
+            gps_not_fixed
+          </i>
+          <i class="material-icons location hidden">
+            gps_fixed
+          </i>
+        </div>
+        <div>
+          <i class="material-icons fav">
+            favorite_border
+          </i>
+          <i class="material-icons fav hidden">
+            favorite
+          </i>
+        </div>
       </div>
-      <form action="/api/city/iamhere/{{city}}" method="post">
-        <input type="submit" value="Estoy aquí">
-      </form>
     </div>
 
-    <div class="boton-white-ext">
+    {{!-- <div class="boton-white-ext">
       <span class="linea1"></span>
       <span class="linea2"></span>
       <span class="linea3"></span>
@@ -23,7 +36,7 @@
       <span class="linea3_2"></span>
       <span class="linea4_2"></span>
       <a data-city="{{city}}" id="like-button" href='/like-city'>Like</a>
-    </div>
+    </div> --}}
     <div class="row">
       {{!-- TIEMPO --}}
       <div class="col-lg-4 col-md-6 col-12">
@@ -188,7 +201,7 @@
             {{/each}}
             {{/if}}
             {{#unless event}}
-            <p class="error">Los eventos no se han popdido cargar en esta búsqueda</p>
+            <p class="error">Los eventos no se han podido cargar en esta búsqueda</p>
             {{/unless}}
           </div>
         </article>
@@ -211,8 +224,8 @@
             <a href="{{url}}">
               <div class="restaurantsContainer">
                 <img
-                src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference={{photos.[0].photo_reference}}&key=AIzaSyB19aJO6EXXEfg-yAN9LGeapPIIBBAHVUQ"
-                alt="{{name}}" />
+                  src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference={{photos.[0].photo_reference}}&key=AIzaSyB19aJO6EXXEfg-yAN9LGeapPIIBBAHVUQ"
+                  alt="{{name}}" />
                 {{!-- <img src="{{images.[0].url}}" alt="{{name}}" /> --}}
                 <div class="restaurantDetails">
                   <p class="infoTitle">{{name}}</p>
@@ -252,8 +265,8 @@
             <a href="{{url}}">
               <div class="restaurantsContainer">
                 <img
-                src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference={{photos.[0].photo_reference}}&key=AIzaSyB19aJO6EXXEfg-yAN9LGeapPIIBBAHVUQ"
-                alt="{{name}}" />
+                  src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference={{photos.[0].photo_reference}}&key=AIzaSyB19aJO6EXXEfg-yAN9LGeapPIIBBAHVUQ"
+                  alt="{{name}}" />
                 <div class="restaurantDetails">
                   <p class="infoTitle">{{name}}</p>
                   {{!-- <p>Precio: {{price_level}}</p> --}}
@@ -274,3 +287,5 @@
         </article>
       </div>
     </div>
+
+    <script src="/javascripts/index.js"></script>
