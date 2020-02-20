@@ -24,14 +24,10 @@ window.onload = () => {
     new google.maps.Marker({
       position: markerPlace,
       map: map,
+      title: "manolo"
     })
 
   });
-
-
-
-
-
 
   document.addEventListener('DOMContentLoaded', () => {
 
