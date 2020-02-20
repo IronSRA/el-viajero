@@ -19,17 +19,28 @@ const userSchema = new Schema({
   comments: [{
     body: String,
     section: String,
-    date: { type: Date, default: Date.now }
+    date: {
+      type: Date,
+      default: Date.now
+    }
   }],
   pictures: [{
     image: String,
     description: String,
-    date: { type: Date, default: Date.now },
+    date: {
+      type: Date,
+      default: Date.now
+    },
     likes: [{
       type: mongoose.SchemaTypes.ObjectId,
       ref: "User"
     }]
   }],
+  favourites: {
+    cities: [String],
+    restaurants: [String],
+    places: [String]
+  },
   travelbuddies: [{
     type: mongoose.SchemaTypes.ObjectId,
     ref: "User"
