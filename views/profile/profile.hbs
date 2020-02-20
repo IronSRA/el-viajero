@@ -1,43 +1,72 @@
-<h1>Welcome, {{user.username}}! </h1>
-<img src={{user.picture}}></img>
-
-<div class='row'>
-  <div class='col-4'>
-    <p>Foto de usuario:</p>
-    <img src="{{user.image}}" alt="{{user.username}}">
-  </div>
-  <div class='col-4'>
-    <a href="/chat">Contacta</a>
-  </div>
-</div>
-<hr>
-<br>
-
-<p>Sube tu foto de perfil:</p>
-<form action="/profile" method="post" enctype="multipart/form-data">
-  <input type="file" name="phototoupload"><br>
-  <input type="submit" value="Enviar"><br>
-</form>
-
-
-<p>Sube tus fotos:</p>
-<form action="/profile/newpicture" method="post" enctype="multipart/form-data">
-  <input type="text" name="description"><br>
-  <input type="file" name="imagesupload"><br>
-  <input type="submit" value="Enviar"><br>
-</form>
-
-<p>Fotos de viajes</p>
-<div class="row">
-  {{#each user.pictures}}
-  <div class="image_card col-4" class="card">
-    <form action="profile/picture/like" method="post" class="like" id="like-button{{@index}}"></form>
-    <img src="{{image}}" alt="{{description}}">
-    <p>Description: {{description}}</p>
-
-    <button class="like-button" id={{_id}}>Like</button>
-    </form>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <article class="card big">
+        <header>
+          <a href="/?city={{city}}"><i class="material-icons">
+              chevron_left
+            </i></a>
+          <div class="headerTitle">
+            <i class="material-icons">
+              perm_identity
+            </i>
+            <h2>{{user.username}}</h2>
+          </div>
+        </header>
+        <img src={{user.picture}}></img>
+        <div class="container">
+          <div class="row d-flex justify-content-center">
+            <div class="col-4">
+              <div class="profile-header-container">
+                <div class="profile-header-img">
+                  <img class="img-circle rounded" src="{{user.image}}" alt="Foto de susuario de {{user.username}}" />
+                  <div class="rank-label-container">
+                    <span class="label label-default rank-label">{{user.username}}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-8 d-flex justify-content-center">
+              <div class="row">
+                <div class="col-12">
+                  <form action="/profile" method="post" enctype="multipart/form-data">
+                    <i class="material-icons">
+                      create
+                    </i>
+                    <input type="file" name="phototoupload"><br>
+                    <input type="submit" value="Enviar"><br>
+                  </form>
+                </div>
+                <div class="col-12">
+                  {{#if user.location}}
+                  <h4 class="text-center">Te encuentras en {{user.location}}. ¡Disfruta de tu visita!</h4>
+                  {{/if}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <br>
+        <p>Sube tus fotos:</p>
+        <form action="/profile/newpicture" method="post" enctype="multipart/form-data">
+          <input type="text" name="description"><br>
+          <input type="file" name="imagesupload"><br>
+          <input type="submit" value="Enviar"><br>
+        </form>
+        <h4>Fotos de viajes</h4>
+        <div class="row text-center text-lg-left">
+          {{#each user.pictures}}
+          <div class="col-lg-3 col-md-4 col-6">
+            <a href="{{image}}" class="d-block mb-4 h-100">
+              <img class="img-fluid img-thumbnail" src="{{image}}" alt="{{description}}">
+              <p>{{description}}</p>
+            </a>
+          </div>
+      </article>
+    </div>
   </div>
 </div>
 {{/each}}
+</div>
 </div>

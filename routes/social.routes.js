@@ -12,8 +12,8 @@ const checkLoggedIn = (req, res, next) => req.user ? next() : res.render('index'
 
 router.get('/', checkLoggedIn, (req, res, next) => {
   User.find({
-      location: req.user.location
-    }).populate('message.author')
+    location: req.user.location
+  }).populate('message.author')
     .then(allUsers => {
       // console.log(req.user)
       // console.log(allUsers)
@@ -24,5 +24,24 @@ router.get('/', checkLoggedIn, (req, res, next) => {
     })
     .catch(err => next(err))
 })
+
+router.post('/city/iamhere/:city', (req, res, next) => {
+  let city = req.params.city.toLowerCase()
+  let userLocation = req.user.location
+
+  console.log(req.user.location)
+
+  if (city === userLocation) {
+    User.findByIdAndUpdate(req.user._id, { location: null })
+      .then(res.redirect('/?city=' + city))
+      .catch(err => console.log('Error consultando la BBDD: ', err))
+  } else {
+    User.findByIdAndUpdate(req.user._id, { location: city })
+      .then(res.redirect('/?city=' + city))
+      .catch(err => console.log('Error consultando la BBDD: ', err))
+  }
+
+
+});
 
 module.exports = router

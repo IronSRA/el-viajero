@@ -419,6 +419,32 @@ main {
 .boton-white-ext2:active .linea4_2 {
   height: 100%; }
 
+.profile-header-container {
+  margin: 0 auto;
+  text-align: center; }
+
+.profile-header-img {
+  padding: 54px; }
+
+.profile-header-img > img.img-circle {
+  width: 120px;
+  height: 120px;
+  border: 2px solid #51D2B7; }
+
+.profile-header {
+  margin-top: 43px; }
+
+.rank-label-container {
+  margin-top: -19px;
+  /* z-index: 1000; */
+  text-align: center; }
+
+.label.label-default.rank-label {
+  background-color: #51d2b7;
+  padding: 5px 10px 5px 10px;
+  border-radius: 27px;
+  text-transform: uppercase; }
+
 @media (min-width: 768px) {
   .weatherDate {
     text-align: left; }
