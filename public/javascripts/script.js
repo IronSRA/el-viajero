@@ -1,89 +1,89 @@
 window.onload = () => {
   const city = {
-    lat: parseFloat(document.getElementById('latitude').innerText),
-    lng: parseFloat(document.getElementById('longitude').innerText)
+    lat: parseFloat(document.getElementsByClassName('restaurantsContainer')[0].dataset.latitude),
+    lng: parseFloat(document.getElementsByClassName('restaurantsContainer')[0].dataset.longitude)
   };
 
-  const markers = [...document.getElementsByClassName('marker')]
+  const markers = [...document.getElementsByClassName('restaurantsContainer')]
 
   const map = new google.maps.Map(document.getElementById('map'), {
     zoom: 15,
     center: city,
     styles: [{
-        "featureType": "administrative",
-        "elementType": "all",
-        "stylers": [{
-            "visibility": "on"
-          },
-          {
-            "lightness": 33
-          }
-        ]
+      "featureType": "administrative",
+      "elementType": "all",
+      "stylers": [{
+        "visibility": "on"
       },
       {
-        "featureType": "landscape",
-        "elementType": "all",
-        "stylers": [{
-          "color": "#f2e5d4"
-        }]
-      },
-      {
-        "featureType": "poi.park",
-        "elementType": "geometry",
-        "stylers": [{
-          "color": "#c5dac6"
-        }]
-      },
-      {
-        "featureType": "poi.park",
-        "elementType": "labels",
-        "stylers": [{
-            "visibility": "on"
-          },
-          {
-            "lightness": 20
-          }
-        ]
-      },
-      {
-        "featureType": "road",
-        "elementType": "all",
-        "stylers": [{
-          "lightness": 20
-        }]
-      },
-      {
-        "featureType": "road.highway",
-        "elementType": "geometry",
-        "stylers": [{
-          "color": "#c5c6c6"
-        }]
-      },
-      {
-        "featureType": "road.arterial",
-        "elementType": "geometry",
-        "stylers": [{
-          "color": "#e4d7c6"
-        }]
-      },
-      {
-        "featureType": "road.local",
-        "elementType": "geometry",
-        "stylers": [{
-          "color": "#fbfaf7"
-        }]
-      },
-      {
-        "featureType": "water",
-        "elementType": "all",
-        "stylers": [{
-            "visibility": "on"
-          },
-          {
-            "color": "#acbcc9"
-          }
-        ]
+        "lightness": 33
       }
+      ]
+    },
+    {
+      "featureType": "landscape",
+      "elementType": "all",
+      "stylers": [{
+        "color": "#f2e5d4"
+      }]
+    },
+    {
+      "featureType": "poi.park",
+      "elementType": "geometry",
+      "stylers": [{
+        "color": "#c5dac6"
+      }]
+    },
+    {
+      "featureType": "poi.park",
+      "elementType": "labels",
+      "stylers": [{
+        "visibility": "on"
+      },
+      {
+        "lightness": 20
+      }
+      ]
+    },
+    {
+      "featureType": "road",
+      "elementType": "all",
+      "stylers": [{
+        "lightness": 20
+      }]
+    },
+    {
+      "featureType": "road.highway",
+      "elementType": "geometry",
+      "stylers": [{
+        "color": "#c5c6c6"
+      }]
+    },
+    {
+      "featureType": "road.arterial",
+      "elementType": "geometry",
+      "stylers": [{
+        "color": "#e4d7c6"
+      }]
+    },
+    {
+      "featureType": "road.local",
+      "elementType": "geometry",
+      "stylers": [{
+        "color": "#fbfaf7"
+      }]
+    },
+    {
+      "featureType": "water",
+      "elementType": "all",
+      "stylers": [{
+        "visibility": "on"
+      },
+      {
+        "color": "#acbcc9"
+      }
+      ]
+    }
     ]
   });
 
@@ -91,8 +91,8 @@ window.onload = () => {
   markers.forEach(element => {
 console.log(element)
     markerPlace = {
-      lat: parseFloat(element.querySelector("#latitude").innerText),
-      lng: parseFloat(element.querySelector("#longitude").innerText),
+      lat: parseFloat(element.dataset.latitude),
+      lng: parseFloat(element.dataset.longitude),
     }
 
     let icon

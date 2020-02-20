@@ -10,6 +10,7 @@ class SearchAPIHandler {
   }
 
   getCountry(city) {
+
     return this.axiosApp.get(`/json?address=${city}&key=${this.apiKey}`)
       .then(response => {
         // console.log(response)
