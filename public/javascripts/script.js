@@ -110,14 +110,12 @@ window.onload = () => {
       }
     }
 
-    let contentString = '<div id="content">' +
-      `<h1>${element.dataset.name}</h1>` +
-      '<div>' +
+    let contentString = '<div id="content" style="display: flex">' +
+    '<div>' +
+    `<h1>${element.dataset.name}</h1>` +
       `<p>Se encuentra en: ${element.dataset.address}</p>` +
-      `<p>Puntuación: ${element.dataset.rating} <img  style="width:4%" src="https://image.flaticon.com/icons/svg/616/616489.svg"></p>` +
-      `<a href="${element.dataset.url}>Mas información</a>` + `<img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${element.dataset.photo}&key=AIzaSyB19aJO6EXXEfg-yAN9LGeapPIIBBAHVUQ">`
-    '</div>' +
-    '</div>'
+      `<p>Puntuación: ${element.dataset.rating} <img  style="width:4%" src="https://image.flaticon.com/icons/svg/616/616489.svg"></p></div></div>`
+
 
     let infowindow = new google.maps.InfoWindow({
       content: contentString

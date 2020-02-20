@@ -3,7 +3,7 @@
     <div class="col-12">
       <div class="titleHeader">
         <img src="{{info.flag}}" alt="{{info.capital}}">
-        <h1 class="mainCityTitle">{{city}}</h1>
+        <h1 class="mainCityTitle" data-location="{{user.location}}">{{city}}</h1>
         <div>
           <i class="material-icons location">
             gps_not_fixed
@@ -13,7 +13,7 @@
           </i>
         </div>
         <div>
-          <i class="material-icons fav">
+          <i class="material-icons fav" data-city="{{city}}">
             favorite_border
           </i>
           <i class="material-icons fav hidden">
@@ -21,37 +21,8 @@
           </i>
         </div>
       </div>
-<<<<<<< HEAD
-      <form action="/social/city/iamhere/{{city}}" method="post">
-=======
-<<<<<<< HEAD
-      {{!-- <form action="/api/city/like/{{city}}" method="post">
-=======
-      <form action="/api/city/iamhere/{{city}}" method="post">
->>>>>>> 2811cf45773512dc32e640c1d73e241e69d01f25
->>>>>>> c512e30a4dd36f9843c4832463d9a7afab2b4430
-        <input type="submit" value="Estoy aquí">
-      </form> --}}
     </div>
 
-<<<<<<< HEAD
-    {{!-- <div class="boton-white-ext">
-=======
-    <div class="boton-white-ext">
->>>>>>> 2811cf45773512dc32e640c1d73e241e69d01f25
-      <span class="linea1"></span>
-      <span class="linea2"></span>
-      <span class="linea3"></span>
-      <span class="linea4"></span>
-      <a href="/social" class="social">Social</a>
-    </div>
-    <div class="boton-white-ext2">
-      <span class="linea1_2"></span>
-      <span class="linea2_2"></span>
-      <span class="linea3_2"></span>
-      <span class="linea4_2"></span>
-      <a data-city="{{city}}" id="like-button" href='/like-city'>Like</a>
-    </div> --}}
     <div class="row">
       {{!-- TIEMPO --}}
       <div class="col-lg-4 col-md-6 col-12">
@@ -239,8 +210,8 @@
             <a href="{{url}}">
               <div class="restaurantsContainer">
                 <img
-                src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference={{photos.[0].photo_reference}}&key=AIzaSyB19aJO6EXXEfg-yAN9LGeapPIIBBAHVUQ"
-                alt="{{name}}" />
+                  src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference={{photos.[0].photo_reference}}&key=AIzaSyB19aJO6EXXEfg-yAN9LGeapPIIBBAHVUQ"
+                  alt="{{name}}" />
                 {{!-- <img src="{{images.[0].url}}" alt="{{name}}" /> --}}
                 <div class="restaurantDetails">
                   <p class="infoTitle">{{name}}</p>
@@ -280,8 +251,8 @@
             <a href="{{url}}">
               <div class="restaurantsContainer">
                 <img
-                src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference={{photos.[0].photo_reference}}&key=AIzaSyB19aJO6EXXEfg-yAN9LGeapPIIBBAHVUQ"
-                alt="{{name}}" />
+                  src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference={{photos.[0].photo_reference}}&key=AIzaSyB19aJO6EXXEfg-yAN9LGeapPIIBBAHVUQ"
+                  alt="{{name}}" />
                 <div class="restaurantDetails">
                   <p class="infoTitle">{{name}}</p>
                   {{!-- <p>Precio: {{price_level}}</p> --}}

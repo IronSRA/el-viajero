@@ -1,17 +1,22 @@
 const favButton = [...document.querySelectorAll('.fav')]
 const locationButton = [...document.querySelectorAll('.location')]
+const city = document.querySelector('.mainCityTitle').innerHTML
+const userLocation = document.querySelector('.mainCityTitle').dataset.location
 
-// action="/api/city/like/{{city}}" method="post"
+userLocation === city ? toggle(locationButton) : null
 
 favButton.forEach(button => {
-  button.onclick = () => {
-    favButton.forEach(elem => elem.classList.toggle("hidden"))
-  }
+
+  button.onclick = () => toggle(favButton)
 })
 
 locationButton.forEach(button => {
   button.onclick = () => {
-    Axios.post('/social/city/iamhere/')
-    locationButton.forEach(elem => elem.classList.toggle("hidden"))
+    axios.post(`/social/city/iamhere/${city}`)
+    toggle(locationButton)
   }
 })
+
+function toggle(element) {
+  element.forEach(elem => elem.classList.toggle("hidden"))
+}
