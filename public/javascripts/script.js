@@ -89,7 +89,7 @@ window.onload = () => {
 
 
   markers.forEach(element => {
-
+console.log(element)
     markerPlace = {
       lat: parseFloat(element.querySelector("#latitude").innerText),
       lng: parseFloat(element.querySelector("#longitude").innerText),
