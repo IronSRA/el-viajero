@@ -5,258 +5,272 @@
         <h1 class="mainCityTitle">{{city}}</h1>
         <img src="{{info.flag}}" alt="{{info.capital}}">
       </div>
-      <a data-city="{{city}}" id="like-button" href='/like-city'>Like</a>
       <form action="/api/city/like/{{city}}" method="post">
         <input type="submit" value="Estoy aquí">
       </form>
-      <a style="color: white" href="/social">SOCIAL</a>
     </div>
-  </div>
-  <div class="row">
-    {{!-- TIEMPO --}}
-    <div class="col-lg-4 col-md-6 col-12">
-      <article class="card">
-        <header>
-          <div class="headerTitle">
-            <i class="material-icons">
-              wb_sunny
-            </i>
-            <h2>Tiempo</h2>
-          </div>
-          <a href="details/weather/?city={{city}}">Detalles</a>
-        </header>
-        <div class="content">
-          {{#if weather}}
-          <div class="weatherContainer index">
-            <div class="weatherStatus">
-              <img src="http://openweathermap.org/img/wn/{{weather.list.[0].weather.[0].icon}}@2x.png"
-                alt="{{weather.list.[0].weather.[0].description}}" />
-              <p class="infoTitle weather">{{weather.list.[0].weather.[0].description}}</p>
+    
+    <div class="boton-white-ext">
+      <span class="linea1"></span>
+      <span class="linea2"></span>
+      <span class="linea3"></span>
+      <span class="linea4"></span>
+      <a href="/social" class="social">Social</a>
+    </div>
+    <div class="boton-white-ext2">
+      <span class="linea1_2"></span>
+      <span class="linea2_2"></span>
+      <span class="linea3_2"></span>
+      <span class="linea4_2"></span>
+      <a data-city="{{city}}" id="like-button" href='/like-city'>Like</a>
+    </div>
+    <div class="row">
+      {{!-- TIEMPO --}}
+      <div class="col-lg-4 col-md-6 col-12">
+        <article class="card">
+          <header>
+            <div class="headerTitle">
+              <i class="material-icons">
+                wb_sunny
+              </i>
+              <h2>Tiempo</h2>
             </div>
-            <div class="weatherDetailsContainer">
-              <div>
-                <div class="weatherHours">
-                  <img src="https://image.flaticon.com/icons/svg/2294/2294952.svg" />
-                  <p>{{hours.sunrise}}</p>
+            <a href="details/weather/?city={{city}}">Detalles</a>
+          </header>
+          <div class="content">
+            {{#if weather}}
+            <div class="weatherContainer index">
+              <div class="weatherStatus">
+                <img src="http://openweathermap.org/img/wn/{{weather.list.[0].weather.[0].icon}}@2x.png"
+                  alt="{{weather.list.[0].weather.[0].description}}" />
+                <p class="infoTitle weather">{{weather.list.[0].weather.[0].description}}</p>
+              </div>
+              <div class="weatherDetailsContainer">
+                <div>
+                  <div class="weatherHours">
+                    <img src="https://image.flaticon.com/icons/svg/2294/2294952.svg" />
+                    <p>{{hours.sunrise}}</p>
+                  </div>
+                  <div class="weatherHours">
+                    <img src="https://image.flaticon.com/icons/svg/2294/2294957.svg" />
+                    <p>{{hours.sunset}}</p>
+                  </div>
                 </div>
-                <div class="weatherHours">
-                  <img src="https://image.flaticon.com/icons/svg/2294/2294957.svg" />
-                  <p>{{hours.sunset}}</p>
+                <div>
+                  <div class="weatherDetails">
+                    <img src="https://image.flaticon.com/icons/svg/1684/1684374.svg" />
+                    <p>{{weather.list.[0].main.temp_min}}°</p>
+                  </div>
+                  <div class="weatherDetails">
+                    <img src="https://image.flaticon.com/icons/svg/1684/1684375.svg" />
+                    <p>{{weather.list.[0].main.temp_max}}°</p>
+                  </div>
+                  <div class="weatherDetails">
+                    <img src="https://image.flaticon.com/icons/svg/1532/1532259.svg" />
+                    <p>{{weather.list.[0].main.humidity}}%</p>
+                  </div>
+                  <div class="weatherDetails">
+                    <img src="https://image.flaticon.com/icons/svg/615/615486.svg" />
+                    <p>{{weather.list.[0].wind.speed}}<span>ms</span></p>
+                  </div>
                 </div>
               </div>
-              <div>
-                <div class="weatherDetails">
-                  <img src="https://image.flaticon.com/icons/svg/1684/1684374.svg" />
-                  <p>{{weather.list.[0].main.temp_min}}°</p>
-                </div>
-                <div class="weatherDetails">
-                  <img src="https://image.flaticon.com/icons/svg/1684/1684375.svg" />
-                  <p>{{weather.list.[0].main.temp_max}}°</p>
-                </div>
-                <div class="weatherDetails">
-                  <img src="https://image.flaticon.com/icons/svg/1532/1532259.svg" />
-                  <p>{{weather.list.[0].main.humidity}}%</p>
-                </div>
-                <div class="weatherDetails">
-                  <img src="https://image.flaticon.com/icons/svg/615/615486.svg" />
-                  <p>{{weather.list.[0].wind.speed}}<span>ms</span></p>
-                </div>
-              </div>
             </div>
+            {{/if}}
+            {{#unless weather}}
+            <p class="error">No tenemos datos para esa búsqueda</p>
+            {{/unless}}
           </div>
-          {{/if}}
-          {{#unless weather}}
-          <p class="error">No tenemos datos para esa búsqueda</p>
-          {{/unless}}
-        </div>
-      </article>
-    </div>
-    {{!-- INFO --}}
-    <div class="col-lg-4 col-md-6 col-12">
-      <article class="card">
-        <header>
-          <div class="headerTitle">
-            <i class="material-icons">
-              list_alt
-            </i>
-            <h2>Info</h2>
-          </div>
-          <a href="details/info/{{city}}">Detalles</a>
-        </header>
-        <div class="content">
-          {{#if info}}
-          <div class="basicInfoContainer">
-            <p><img src="{{info.flag}}" alt="{{info.capital}}"><span class="infoTitle">Capital: </span>{{info.capital}}
-            </p>
-            <p>
-              <span class="iconCurrency">
+        </article>
+      </div>
+      {{!-- INFO --}}
+      <div class="col-lg-4 col-md-6 col-12">
+        <article class="card">
+          <header>
+            <div class="headerTitle">
+              <i class="material-icons">
+                list_alt
+              </i>
+              <h2>Info</h2>
+            </div>
+            <a href="details/info/{{city}}">Detalles</a>
+          </header>
+          <div class="content">
+            {{#if info}}
+            <div class="basicInfoContainer">
+              <p><img src="{{info.flag}}" alt="{{info.capital}}"><span class="infoTitle">Capital:
+                </span>{{info.capital}}
+              </p>
+              <p>
+                <span class="iconCurrency">
+                  {{#each info.currencies}}
+                  {{symbol}}.
+                  {{/each}}
+                </span></o>
+                <span class="infoTitle">Moneda: </span>
                 {{#each info.currencies}}
-                {{symbol}}.
+                {{name}}.
                 {{/each}}
-              </span></o>
-              <span class="infoTitle">Moneda: </span>
-              {{#each info.currencies}}
-              {{name}}.
-              {{/each}}
-            </p>
-            <p><img src="https://image.flaticon.com/icons/svg/1810/1810702.svg"><span class="infoTitle">Lengua: </span>
-              {{#each info.languages}}
-              {{name}}.
-              {{/each}}
-            </p>
-            <p><img src="https://image.flaticon.com/icons/svg/458/458287.svg"><span class="infoTitle">Prefijo:
-              </span>+{{info.callingCodes}}</p>
-            <p><img src="https://image.flaticon.com/icons/svg/2599/2599539.svg"><span class="infoTitle">Zona
-                Horaria:</span>
-              {{#each info.timezones}}
-              {{this}}.
-              {{/each}}
-            </p>
-          </div>
-          {{/if}}
-          {{#unless info}}
-          <p class="error">No tenemos datos para esa búsqueda</p>
-          {{/unless}}
-        </div>
-      </article>
-    </div>
-    {{!-- NOTICIAS --}}
-    <div class="col-lg-4 col-md-6 col-12">
-      <article class="card">
-        <header>
-          <div class="headerTitle">
-            <i class="material-icons">
-              bookmark_border
-            </i>
-            <h2>Noticias</h2>
-          </div>
-          <a href="details/news/?city={{city}}&country={{country}}">Detalles</a>
-        </header>
-        <div class="content">
-          {{#if news}}
-          {{#each news}}
-          <a href="{{url}}">
-            <div class="newsContainer">
-              <img src="{{urlToImage}}" alt="{{title}}" />
-              <p>{{title}}</p>
-              {{!-- <p>{{description}}</p> --}}
+              </p>
+              <p><img src="https://image.flaticon.com/icons/svg/1810/1810702.svg"><span class="infoTitle">Lengua:
+                </span>
+                {{#each info.languages}}
+                {{name}}.
+                {{/each}}
+              </p>
+              <p><img src="https://image.flaticon.com/icons/svg/458/458287.svg"><span class="infoTitle">Prefijo:
+                </span>+{{info.callingCodes}}</p>
+              <p><img src="https://image.flaticon.com/icons/svg/2599/2599539.svg"><span class="infoTitle">Zona
+                  Horaria:</span>
+                {{#each info.timezones}}
+                {{this}}.
+                {{/each}}
+              </p>
             </div>
-          </a>
-          {{/each}}
-          {{/if}}
-          {{#unless news}}
-          <p class="error">Las noticias se encuentran bloqueadas en esta búsqueda</p>
-          {{/unless}}
-        </div>
-      </article>
-    </div>
-    {{!-- EVENTOS --}}
-    <div class="col-lg-4 col-md-6 col-12">
-      <article class="card">
-        <header>
-          <div class="headerTitle">
-            <i class="material-icons">
-              calendar_today
-            </i>
-            <h2>Eventos</h2>
+            {{/if}}
+            {{#unless info}}
+            <p class="error">No tenemos datos para esa búsqueda</p>
+            {{/unless}}
           </div>
-          <a href="details/events/{{city}}">Detalles</a>
-        </header>
-        <div class="content">
-          {{#if event}}
-          {{#each event}}
-          <a href="{{url}}">
-            <div class="eventsContainer">
-              <img src="{{images.[0].url}}" alt="{{name}}" />
-              <p class="infoTitle">{{name}}</p>
+        </article>
+      </div>
+      {{!-- NOTICIAS --}}
+      <div class="col-lg-4 col-md-6 col-12">
+        <article class="card">
+          <header>
+            <div class="headerTitle">
+              <i class="material-icons">
+                bookmark_border
+              </i>
+              <h2>Noticias</h2>
             </div>
-          </a>
-          {{/each}}
-          {{/if}}
-          {{#unless event}}
-          <p class="error">Los eventos no se han popdido cargar en esta búsqueda</p>
-          {{/unless}}
-        </div>
-      </article>
-    </div>
-    {{!-- RESTAURANTES --}}
-    <div class="col-lg-4 col-md-6 col-12">
-      <article class="card">
-        <header>
-          <div class="headerTitle">
-            <i class="material-icons">
-              restaurant
-            </i>
-            <h2>Restaurantes</h2>
+            <a href="details/news/?city={{city}}&country={{country}}">Detalles</a>
+          </header>
+          <div class="content">
+            {{#if news}}
+            {{#each news}}
+            <a href="{{url}}">
+              <div class="newsContainer">
+                <img src="{{urlToImage}}" alt="{{title}}" />
+                <p>{{title}}</p>
+                {{!-- <p>{{description}}</p> --}}
+              </div>
+            </a>
+            {{/each}}
+            {{/if}}
+            {{#unless news}}
+            <p class="error">Las noticias se encuentran bloqueadas en esta búsqueda</p>
+            {{/unless}}
           </div>
-          <a href="details/restaurants/?city={{city}}&country={{country}}">Detalles</a>
-        </header>
-        <div class="content">
-          {{#if restaurant}}
-          {{#each restaurant}}
-          <a href="{{url}}">
-            <div class="restaurantsContainer">
-              {{!-- <img
+        </article>
+      </div>
+      {{!-- EVENTOS --}}
+      <div class="col-lg-4 col-md-6 col-12">
+        <article class="card">
+          <header>
+            <div class="headerTitle">
+              <i class="material-icons">
+                calendar_today
+              </i>
+              <h2>Eventos</h2>
+            </div>
+            <a href="details/events/{{city}}">Detalles</a>
+          </header>
+          <div class="content">
+            {{#if event}}
+            {{#each event}}
+            <a href="{{url}}">
+              <div class="eventsContainer">
+                <img src="{{images.[0].url}}" alt="{{name}}" />
+                <p class="infoTitle">{{name}}</p>
+              </div>
+            </a>
+            {{/each}}
+            {{/if}}
+            {{#unless event}}
+            <p class="error">Los eventos no se han popdido cargar en esta búsqueda</p>
+            {{/unless}}
+          </div>
+        </article>
+      </div>
+      {{!-- RESTAURANTES --}}
+      <div class="col-lg-4 col-md-6 col-12">
+        <article class="card">
+          <header>
+            <div class="headerTitle">
+              <i class="material-icons">
+                restaurant
+              </i>
+              <h2>Restaurantes</h2>
+            </div>
+            <a href="details/restaurants/?city={{city}}&country={{country}}">Detalles</a>
+          </header>
+          <div class="content">
+            {{#if restaurant}}
+            {{#each restaurant}}
+            <a href="{{url}}">
+              <div class="restaurantsContainer">
+                {{!-- <img
                 src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference={{photos.[0].photo_reference}}&key=AIzaSyD44K0JK21Zr3D_vx2B1VKPoxwei7vzwfM"
                 alt="{{name}}" /> --}}
-              {{!-- <img src="{{images.[0].url}}" alt="{{name}}" /> --}}
-              <div class="restaurantDetails">
-                <p class="infoTitle">{{name}}</p>
-                {{!-- <p>Precio: {{price_level}}</p> --}}
-                <div class="ratings">
-                  <img src="https://image.flaticon.com/icons/svg/616/616489.svg">
-                  <p>{{rating}}</p>
+                {{!-- <img src="{{images.[0].url}}" alt="{{name}}" /> --}}
+                <div class="restaurantDetails">
+                  <p class="infoTitle">{{name}}</p>
+                  {{!-- <p>Precio: {{price_level}}</p> --}}
+                  <div class="ratings">
+                    <img src="https://image.flaticon.com/icons/svg/616/616489.svg">
+                    <p>{{rating}}</p>
+                  </div>
+                  <p>{{vicinity}}</p>
                 </div>
-                <p>{{vicinity}}</p>
               </div>
-            </div>
-          </a>
-          {{/each}}
-          {{/if}}
-          {{#unless restaurant}}
-          <p class="error">Los restaurantes no se han podido cargar en esta búsqueda</p>
-          {{/unless}}
-        </div>
-      </article>
-    </div>
+            </a>
+            {{/each}}
+            {{/if}}
+            {{#unless restaurant}}
+            <p class="error">Los restaurantes no se han podido cargar en esta búsqueda</p>
+            {{/unless}}
+          </div>
+        </article>
+      </div>
 
-    {{!-- PUNTOS DE INTERES --}}
-    <div class="col-lg-4 col-md-6 col-12">
-      <article class="card">
-        <header>
-          <div class="headerTitle">
-            <i class="material-icons">
-              local_see
-            </i>
-            <h2>P. de Interés</h2>
-          </div>
-          <a href="details/popular-place/?city={{city}}&country={{country}}">Detalles</a>
-        </header>
-        <div class="content">
-          {{#if points}}
-          {{#each points}}
-          <a href="{{url}}">
-            <div class="restaurantsContainer">
-              {{!-- <img
+      {{!-- PUNTOS DE INTERES --}}
+      <div class="col-lg-4 col-md-6 col-12">
+        <article class="card">
+          <header>
+            <div class="headerTitle">
+              <i class="material-icons">
+                local_see
+              </i>
+              <h2>P. de Interés</h2>
+            </div>
+            <a href="details/popular-place/?city={{city}}&country={{country}}">Detalles</a>
+          </header>
+          <div class="content">
+            {{#if points}}
+            {{#each points}}
+            <a href="{{url}}">
+              <div class="restaurantsContainer">
+                {{!-- <img
                 src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference={{photos.[0].photo_reference}}&key=AIzaSyD44K0JK21Zr3D_vx2B1VKPoxwei7vzwfM"
                 alt="{{name}}" /> --}}
-              <div class="restaurantDetails">
-                <p class="infoTitle">{{name}}</p>
-                {{!-- <p>Precio: {{price_level}}</p> --}}
-                <div class="ratings">
-                  <img src="https://image.flaticon.com/icons/svg/616/616489.svg">
-                  <p>{{rating}}</p>
+                <div class="restaurantDetails">
+                  <p class="infoTitle">{{name}}</p>
+                  {{!-- <p>Precio: {{price_level}}</p> --}}
+                  <div class="ratings">
+                    <img src="https://image.flaticon.com/icons/svg/616/616489.svg">
+                    <p>{{rating}}</p>
+                  </div>
+                  <p>{{vicinity}}</p>
                 </div>
-                <p>{{vicinity}}</p>
               </div>
-            </div>
-          </a>
-          {{/each}}
-          {{/if}}
-          {{#unless points}}
-          <p class="error">Los puntos de interés no se han podido cargar en esta búsqueda</p>
-          {{/unless}}
-        </div>
-      </article>
+            </a>
+            {{/each}}
+            {{/if}}
+            {{#unless points}}
+            <p class="error">Los puntos de interés no se han podido cargar en esta búsqueda</p>
+            {{/unless}}
+          </div>
+        </article>
+      </div>
     </div>
-  </div>
