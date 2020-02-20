@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const popularPointSchema = new Schema({
+  city: String,
   name: String,
   place_id: String,
   long_name: String,

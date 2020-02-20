@@ -15,8 +15,8 @@ router.get('/', checkLoggedIn, (req, res, next) => {
       location: req.user.location
     }).populate('message.author')
     .then(allUsers => {
-      console.log(req.user)
-      console.log(allUsers)
+      // console.log(req.user)
+      // console.log(allUsers)
       res.render('social/list', {
         allUsers,
         user: req.user

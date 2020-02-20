@@ -18,8 +18,8 @@
           <div id="map"></div>
           {{#if restaurant}}
           {{#each restaurant}}
-          {{!-- <a href="{{url}}"> --}}
-            <div class="restaurantsContainer">
+          <a href="{{url}}">
+            <div class="restaurantsContainer" lat="34.23123131">
               {{!-- <img
                 src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference={{photos.[0].photo_reference}}&key=AIzaSyD44K0JK21Zr3D_vx2B1VKPoxwei7vzwfM"
                 alt="{{name}}" /> --}}
@@ -34,7 +34,7 @@
                 <div id="longitude">{{geometry.location.lng}}</div>
               </div>
             </div>
-          {{!-- </a> --}}
+          </a>
           {{/each}}
           {{/if}}
           {{#unless restaurant}}
