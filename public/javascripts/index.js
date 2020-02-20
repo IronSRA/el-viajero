@@ -11,7 +11,7 @@ favButton.forEach(button => {
 
 locationButton.forEach(button => {
   button.onclick = () => {
-    Axios.post('/social/city/iamhere/')
+    axios.post('/social/city/iamhere/')
     locationButton.forEach(elem => elem.classList.toggle("hidden"))
   }
 })
