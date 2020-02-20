@@ -12,8 +12,9 @@ function savePlace(info, city, type) {
       rating: elm.rating,
       geometry: elm.geometry,
       address: elm.vicinity,
+      photos: elm.photos,
       // open_now: opening_hours.open_now,
-      website: elm.reference,
+      website: elm.url,
       photos: elm.photos
 
     })
