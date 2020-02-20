@@ -1,10 +1,10 @@
 window.onload = () => {
   const city = {
-    lat: parseFloat(document.getElementById('latitude').innerText),
-    lng: parseFloat(document.getElementById('longitude').innerText)
+    lat: parseFloat(document.getElementsByClassName('restaurantsContainer')[0].dataset.latitude),
+    lng: parseFloat(document.getElementsByClassName('restaurantsContainer')[0].dataset.longitude)
   };
 
-  const markers = [...document.getElementsByClassName('marker')]
+  const markers = [...document.getElementsByClassName('restaurantsContainer')]
 
   const map = new google.maps.Map(document.getElementById('map'), {
     zoom: 15,
@@ -90,10 +90,9 @@ window.onload = () => {
 
   markers.forEach(element => {
 
-
     markerPlace = {
-      lat: parseFloat(element.getAttributeNames("latitude")),
-      lng: parseFloat(element.getAttributeNames("longitude")),
+      lat: parseFloat(element.dataset.latitude),
+      lng: parseFloat(element.dataset.longitude),
     }
 
     let icon
@@ -109,7 +108,7 @@ window.onload = () => {
         scaledSize: new google.maps.Size(30, 30),
       }
     }
-    console.log(document.querySelector("h2").innerText)
+    //console.log(document.querySelector("h2").innerText)
 
     new google.maps.Marker({
       position: markerPlace,

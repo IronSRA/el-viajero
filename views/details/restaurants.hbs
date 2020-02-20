@@ -19,8 +19,8 @@
           {{#if restaurant}}
           {{#each restaurant}}
           <a href="{{url}}">
-            <div class="restaurantsContainer" latitude="{{geometry.location.lat}}"
-              longitude="{{geometry.location.lng}}">
+            <div class="restaurantsContainer" data-latitude="{{geometry.location.lat}}"
+              data-longitude="{{geometry.location.lng}}" data-name="{{name}}" data-address="{{vicinity}}">
               {{!-- <img
                 src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference={{photos.[0].photo_reference}}&key=AIzaSyD44K0JK21Zr3D_vx2B1VKPoxwei7vzwfM"
                 alt="{{name}}" /> --}}
@@ -30,10 +30,6 @@
                 <p>{{rating}}</p>
               </div>
               <p>{{vicinity}}</p>
-              <div class="marker">
-                <div id="latitude">{{geometry.location.lat}}</div>
-                <div id="longitude">{{geometry.location.lng}}</div>
-              </div>
             </div>
           </a>
           {{/each}}
