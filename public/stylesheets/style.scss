@@ -153,6 +153,7 @@ main {
   h1 {
     color: #fff;
     margin-left: 20px;
+    text-transform: capitalize;
   }
 
   div {
@@ -565,20 +566,20 @@ main {
 
 
 ///PROFILE///
-.profile-header-container{
-    margin: 0 auto;
-    text-align: center;
+.profile-header-container {
+  margin: 0 auto;
+  text-align: center;
 }
 
 .profile-header-img {
   padding: 54px;
 }
 
-.profile-header-img > img.img-circle {
-    width: 200px;
-    height: 200px;
-    border: 3px solid #51D2B7;
-    border-radius: 50%;
+.profile-header-img>img.img-circle {
+  width: 200px;
+  height: 200px;
+  border: 3px solid #51D2B7;
+  border-radius: 50%;
 }
 
 .profile-header {
@@ -588,8 +589,8 @@ main {
 .rank-label-container {
   margin-top: -19px;
   text-align: center;
-    z-index: 1000; 
-    text-align: center;
+  z-index: 1000;
+  text-align: center;
 }
 
 .label.label-default.rank-label {
@@ -602,7 +603,8 @@ main {
 .user {
   ul {
     list-style-type: none;
-}}
+  }
+}
 
 .select {
   background-color: rgba(205, 203, 203, 0.687);
@@ -611,11 +613,12 @@ main {
 .deselect {
   background-color: white;
 }
-#pencil{
+
+#pencil {
   color: rgb(81, 210, 183);
   margin-top: 12px;
   margin-left: 180px;
-  z-index: 1000; 
+  z-index: 1000;
   overflow: hidden;
 }
 
