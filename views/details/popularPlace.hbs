@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-5">
+      <article class="card big">
+
+        <header>
+          <a href="/?city={{city}}"><i class="material-icons">
+              chevron_left
+            </i></a>
+          <div class="headerTitle">
+            <i class="material-icons">
+              local_see
+            </i>
+            <h2>Puntos de interes</h2>
+          </div>
+        </header>
+
+        <div class="content">
+          {{#if popular}}
+          {{#each popular}}
+          <a href="{{url}}">
+            <div class="restaurantsContainer" data-latitude="{{geometry.location.lat}}" data-longitude="{{geometry.location.lng}}"
+              data-name="{{name}}" data-address="{{vicinity}}" data-rating="{{rating}}" data-url="{{url}}"
+              data-photo="{{photos.[0].photo_reference}}">
+              <div class="row">
+                <div class="col-12">
+                  <p class="infoTitle" id="{{name}}">{{name}}</p>
+                  <div class="ratings">
+                    <img src="https://image.flaticon.com/icons/svg/616/616489.svg">
+                    <p>{{rating}}</p>
+                  </div>
+                  <p>{{vicinity}}</p>
+                </div>
+              </div>
+            </div>
+          </a>
+          {{/each}}
+          {{/if}}
+          {{#unless popular}}
+          <p class="error">No tenemos datos para esa búsqueda</p>
+          {{/unless}}
+        </div>
+      </article>
+    </div>
+    <div class="col-md-7">
+      <div id="map"></div>
+    </div>
+  </div>
+</div>
+</div>

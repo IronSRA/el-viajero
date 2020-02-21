@@ -394,7 +394,7 @@ main {
 }
 
 .restaurantsContainer img {
-  width: 25%;
+  width: 20px;
 }
 
 .restaurantsContainer .restaurantDetails {
@@ -487,7 +487,6 @@ main {
   }
 }
 
-
 // SOCIAL
 
 .social {
@@ -562,10 +561,15 @@ main {
 
 /* Set the size of the div element that contains the map */
 #map {
-  height: 400px;
+  height: 598px;
   /* The height is 400 pixels */
   width: 100%;
   /* The width is the width of the web page */
+  margin-left: -29px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  margin-bottom: 20px;
 }
 
 ///PROFILE///
