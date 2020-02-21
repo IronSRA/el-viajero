@@ -111,8 +111,8 @@ window.onload = () => {
     }
 
     let contentString = '<div id="content" style="display: flex">' +
-    '<div>' +
-    `<h1>${element.dataset.name}</h1>` +
+      '<div>' +
+      `<h1>${element.dataset.name}</h1>` +
       `<p>Se encuentra en: ${element.dataset.address}</p>` +
       `<p>Puntuación: ${element.dataset.rating} <img  style="width:4%" src="https://image.flaticon.com/icons/svg/616/616489.svg"></p></div></div>`
 
@@ -128,7 +128,7 @@ window.onload = () => {
       icon,
     })
 
-  
+
     element.addEventListener("mouseover", () => {
       infowindow.open(map, marker);
       element.classList.remove('deselect')
@@ -144,25 +144,25 @@ window.onload = () => {
   });
 
 
-  document.addEventListener('DOMContentLoaded', () => {
+  //   document.addEventListener('DOMContentLoaded', () => {
 
-    const city = document.querySelector('#citySearch').value
+  //     const city = document.querySelector('#citySearch').value
 
-    document.getElementById("like-button").onclick = function (event) {
-      alert("sdfasd")
-      event.preventDefault();
+  //     document.getElementById("like-button").onclick = function (event) {
+  //       alert("sdfasd")
+  //       event.preventDefault();
 
-      axios.post('api/city/like/:id', visited_cities)
-        .then(response => {
-          console.log("You just updated visited cities with: ", response.data);
+  //       axios.post('api/city/like/:id', visited_cities)
+  //         .then(response => {
+  //           console.log("You just updated visited cities with: ", response.data);
 
-        })
-        .catch(error => {
-          console.log("Error is: ", error);
-        })
-    }
+  //         })
+  //         .catch(error => {
+  //           console.log("Error is: ", error);
+  //         })
+  //     }
 
 
 
-  }, false);
+  //   }, false);
 };

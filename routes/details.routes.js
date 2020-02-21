@@ -74,7 +74,8 @@ router.get('/restaurants', (req, res, next) => {
     .then(restaurant => {
       res.render('details/restaurants', {
         restaurant,
-        city
+        city,
+        user: req.user
       })
     })
 })
@@ -86,7 +87,8 @@ router.get('/popular-place', (req, res, next) => {
     .then(popular => {
       res.render('details/popularPlace', {
         popular,
-        city
+        city,
+        user: req.user
       })
     })
 })
