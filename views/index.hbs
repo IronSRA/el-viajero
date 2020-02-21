@@ -99,34 +99,42 @@
           <div class="content">
             {{#if info}}
             <div class="basicInfoContainer">
-              <p><img src="{{info.flag}}" alt="{{info.capital}}"><span class="infoTitle">Capital:
-                </span>{{info.capital}}
-              </p>
-              <p>
+              <div class="infoDetails">
+                <img src="{{info.flag}}" alt="{{info.capital}}">
+                <span class="infoTitle">Capital:</span>
+                <p>{{info.capital}}</p>
+              </div>
+              <div class="infoDetails">
                 <span class="iconCurrency">
                   {{#each info.currencies}}
-                  {{symbol}}.
+                  {{symbol}}
                   {{/each}}
-                </span></o>
+                </span>
                 <span class="infoTitle">Moneda: </span>
                 {{#each info.currencies}}
-                {{name}}.
+                <p>{{name}}. </p>
                 {{/each}}
-              </p>
-              <p><img src="https://image.flaticon.com/icons/svg/1810/1810702.svg"><span class="infoTitle">Lengua:
+              </div>
+              <div class="infoDetails">
+                <img src="https://image.flaticon.com/icons/svg/1810/1810702.svg">
+                <span class="infoTitle">Lengua:
                 </span>
                 {{#each info.languages}}
-                {{name}}.
+                <p>{{name}}. </p>
                 {{/each}}
-              </p>
-              <p><img src="https://image.flaticon.com/icons/svg/458/458287.svg"><span class="infoTitle">Prefijo:
-                </span>+{{info.callingCodes}}</p>
-              <p><img src="https://image.flaticon.com/icons/svg/2599/2599539.svg"><span class="infoTitle">Zona
-                  Horaria:</span>
-                {{#each info.timezones}}
-                {{this}}.
-                {{/each}}
-              </p>
+              </div>
+              <div class="infoDetails">
+                <img src="https://image.flaticon.com/icons/svg/458/458287.svg">
+                <span class="infoTitle">Prefijo:</span>
+                <p>+{{info.callingCodes}}</p>
+              </div>
+              <div class="infoDetails">
+                <img src="https://image.flaticon.com/icons/svg/2599/2599539.svg">
+                <span class="infoTitle">Zona Horaria:</span>
+              </div>
+              {{#each info.timezones}}
+              {{this}}.
+              {{/each}}
             </div>
             {{/if}}
             {{#unless info}}
