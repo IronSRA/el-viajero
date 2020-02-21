@@ -1,32 +1,27 @@
 <div class="container">
-      <div class="row">
-        <div class="col-md-5">
+  <div class="row">
+    <div class="col-md-5">
       <article class="card big">
+
         <header>
           <a href="/?city={{city}}"><i class="material-icons">
               chevron_left
             </i></a>
           <div class="headerTitle">
             <i class="material-icons">
-              restaurant
+              local_see
             </i>
-            <h2>Restaurantes</h2>
+            <h2>Puntos de interes</h2>
           </div>
         </header>
+
         <div class="content">
-          <!--The div element for the map -->
-<<<<<<< HEAD
-=======
-          <div class="col-6">
-            <div id="map"></div>
-          </div>
->>>>>>> d744d5120a1bc820e4d16b24ab321cb730630bd7
-          {{#if restaurant}}
-          {{#each restaurant}}
+          {{#if popular}}
+          {{#each popular}}
           <a href="{{url}}">
-            <div class="restaurantsContainer" data-latitude="{{geometry.location.lat}}"
-              data-longitude="{{geometry.location.lng}}" data-name="{{name}}" data-address="{{vicinity}}"
-              data-rating="{{rating}}" data-url="{{url}}" data-photo="{{photos.[0].photo_reference}}">
+            <div class="restaurantsContainer" data-latitude="{{geometry.location.lat}}" data-longitude="{{geometry.location.lng}}"
+              data-name="{{name}}" data-address="{{vicinity}}" data-rating="{{rating}}" data-url="{{url}}"
+              data-photo="{{photos.[0].photo_reference}}">
               <div class="row">
                 <div class="col-12">
                   <p class="infoTitle" id="{{name}}">{{name}}</p>
@@ -41,16 +36,15 @@
           </a>
           {{/each}}
           {{/if}}
-          {{#unless restaurant}}
+          {{#unless popular}}
           <p class="error">No tenemos datos para esa búsqueda</p>
           {{/unless}}
         </div>
       </article>
-      </div>
-      <div class="col-md-7">
-        <div id="map"></div>
-      </div>
-      </div>
+    </div>
+    <div class="col-md-7">
+      <div id="map"></div>
     </div>
   </div>
+</div>
 </div>

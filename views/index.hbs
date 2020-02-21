@@ -112,7 +112,7 @@
                 </span>
                 <span class="infoTitle">Moneda: </span>
                 {{#each info.currencies}}
-                <p>{{name}}{{#unless @last}}, {{/unless}}.</p>
+                <p>{{name}}. </p>
                 {{/each}}
               </div>
               <div class="infoDetails">
@@ -120,7 +120,7 @@
                 <span class="infoTitle">Lengua:
                 </span>
                 {{#each info.languages}}
-                <p>{{name}}{{#unless @last}}, {{/unless}}.</p>
+                <p>{{name}}. </p>
                 {{/each}}
               </div>
               <div class="infoDetails">
@@ -133,7 +133,7 @@
                 <span class="infoTitle">Zona Horaria:</span>
               </div>
               {{#each info.timezones}}
-              {{this}}{{#unless @last}}, {{/unless}}.
+              {{this}}.
               {{/each}}
             </div>
             {{/if}}

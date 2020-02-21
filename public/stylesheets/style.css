@@ -300,6 +300,9 @@ main {
 .restaurantsContainer img {
   width: 20px; }
 
+.imgRestaurants {
+  width: 20%; }
+
 .restaurantsContainer .restaurantDetails {
   width: 70%;
   margin-left: 10px;
