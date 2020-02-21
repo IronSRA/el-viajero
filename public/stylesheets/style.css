@@ -143,7 +143,8 @@ main {
   margin-bottom: 20px; }
 
 .card.big {
-  height: auto; }
+  height: auto;
+  height: 80vh; }
 
 .card header {
   background-color: #1DE9B6;
@@ -152,7 +153,8 @@ main {
   text-transform: uppercase;
   display: flex;
   justify-content: space-between;
-  align-items: center; }
+  align-items: center;
+  font-weight: bold; }
 
 .card header .headerTitle {
   display: flex;
@@ -311,15 +313,16 @@ main {
 
 .eventsContainer {
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  border-bottom: 3px solid #e0e0e0;
+  margin-bottom: 20px; }
 
 .eventsContainer img {
   margin-bottom: 10px; }
 
 .eventsContainer p {
   margin-bottom: 15px;
-  padding-bottom: 5px;
-  border-bottom: 1px solid #f5f5f5; }
+  padding-bottom: 5px; }
 
 /* Set the size of the div element that contains the map */
 #map {

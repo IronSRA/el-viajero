@@ -38,10 +38,6 @@ router.get('/weather', (req, res, next) => {
     .catch(err => console.log(`Error al buscar el tiempo ${err}`))
 })
 
-router.get('/info', (req, res, next) => {
-  res.render('details/info')
-})
-
 router.get('/news', (req, res, next) => {
   let city = req.query.city
   let country = req.query.country

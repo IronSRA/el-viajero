@@ -188,6 +188,7 @@ main {
 
 .card.big {
   height: auto;
+  height: 80vh;
 }
 
 .card header {
@@ -198,6 +199,7 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-weight: bold;
 }
 
 .card header .headerTitle {
@@ -403,16 +405,12 @@ main {
   font-size: 1.3em;
 }
 
-// .restaurantsContainer .restaurantDetails {
-//   margin-bottom: 15px;
-//   padding-bottom: 5px;
-//   border-bottom: 1px solid #f5f5f5;
-// }
-
 // EVENTOS
 .eventsContainer {
   display: flex;
   flex-direction: column;
+  border-bottom: 3px solid #e0e0e0;
+  margin-bottom: 20px;
 }
 
 .eventsContainer img {
@@ -422,7 +420,6 @@ main {
 .eventsContainer p {
   margin-bottom: 15px;
   padding-bottom: 5px;
-  border-bottom: 1px solid #f5f5f5;
 }
 
 //GOOGLE MAPS
