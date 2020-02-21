@@ -13,24 +13,29 @@
             <h2>Social</h2>
           </div>
         </header>
-        <div class="content">
-          <p>Conoce a otros usuarios que se encuentran en <span id="city">{{user.location}}</span> como tu:</p>
-
-
-
-          <div class="user">
+        <div class="content social">
+          {{#if user.location}}
+          <p>Conoce a otros usuarios que se encuentran en <span id="city">{{user.location}}</span> como tú:</p>
+          {{/if}}
+          {{#unless user.location}}
+          <p class="error">Debes estar en una localización para interactuar con otros usuarios</p>
+          {{/unless}}
+          <div class="userList">
             <ul>
+              {{#if user.location}}
               {{#each allUsers}}
               <li>
                 <i class="material-icons">
                   sentiment_very_satisfied
                 </i>
-                <a class="userFriends" href="/chat/user/{{_id}}">{{username}} - Enviar Mensaje</a>
+                <a class="userFriends" href="/chat/user/{{_id}}/{{username}}"><span class="username">{{username}}</span>
+                  - Enviar
+                  Mensaje</a>
               </li>
               {{/each}}
+              {{/if}}
             </ul>
           </div>
-
         </div>
     </div>
 

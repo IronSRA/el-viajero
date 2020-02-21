@@ -13,9 +13,10 @@ const checkLoggedIn = (req, res, next) => req.user ? next() : res.render('index'
   loginErrorMessage: 'Zona restringida a usuarios registrados'
 })
 
-router.get('/user/:id', checkLoggedIn, (req, res, next) => {
+router.get('/user/:id/:name', checkLoggedIn, (req, res, next) => {
   res.render('chat/chat', {
     receptor: req.params.id,
+    receptorName: req.params.name,
     user: req.user
   })
 });

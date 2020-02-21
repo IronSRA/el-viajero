@@ -38,7 +38,7 @@ main {
   margin: 40px 0; }
 
 .error {
-  border: 1px solid #a7a7a7;
+  border: 1px solid #E53935;
   border-radius: 5px;
   padding: 5px;
   font-size: 0.8em;
@@ -203,21 +203,24 @@ main {
 
 .basicInfoContainer {
   width: 100%; }
-  .basicInfoContainer img {
-    width: 8%;
-    margin-bottom: 5px;
-    margin-right: 5px; }
-  .basicInfoContainer .iconCurrency {
-    padding: 3px .5px 2px 7px;
-    border-radius: 50%;
-    background: #d2bd91;
-    font-weight: 600;
-    color: #2e2e2e;
-    margin-right: 4px;
-    border: 1px solid #939393; }
-
-.basicInfoContainer p {
-  margin-bottom: 5px; }
+  .basicInfoContainer .infoDetails {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; }
+    .basicInfoContainer .infoDetails img {
+      width: 8%; }
+    .basicInfoContainer .infoDetails .iconCurrency {
+      width: 8%;
+      height: 8%;
+      text-align: center;
+      border-radius: 50%;
+      background: #d2bd91;
+      font-weight: 600;
+      color: #2e2e2e;
+      border: 1px solid #939393; }
+    .basicInfoContainer .infoDetails .infoTitle,
+    .basicInfoContainer .infoDetails p {
+      margin-left: 10px; }
 
 .weatherDate {
   text-align: center;
@@ -328,121 +331,87 @@ main {
   margin-bottom: 15px;
   padding-bottom: 5px; }
 
+.login {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-image: url("https://images.pexels.com/photos/2007401/pexels-photo-2007401.jpeg?cs=srgb&dl=white-airliner-wing-on-top-of-sea-clouds-2007401.jpg&fm=jpg");
+  background-size: cover;
+  z-index: -1; }
+  .login .mask {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    background-color: #000;
+    opacity: 0.8; }
+  .login .card {
+    height: auto; }
+    .login .card header {
+      margin-bottom: 20px; }
+    .login .card .content {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+      .login .card .content .form {
+        width: 100%; }
+        .login .card .content .form input,
+        .login .card .content .form button,
+        .login .card .content .form p {
+          margin-bottom: 20px; }
+        .login .card .content .form button {
+          background-color: #1DE9B6;
+          color: #fff; }
+
+.social p {
+  margin-bottom: 20px; }
+
+.social .userList {
+  padding: 0 40px; }
+  .social .userList ul {
+    list-style: none; }
+    .social .userList ul li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px; }
+      .social .userList ul li a {
+        margin-left: 10px; }
+        .social .userList ul li a span {
+          text-transform: capitalize;
+          font-weight: bold; }
+
+.chat {
+  height: auto !important; }
+  .chat .content #messagesContainer {
+    border: 1px solid #ced4da;
+    border-radius: 10px;
+    padding: 10px;
+    list-style: none;
+    max-height: 400px;
+    overflow: hidden;
+    overflow-y: scroll; }
+    .chat .content #messagesContainer li {
+      padding: 10px 20px;
+      background-color: #E8F5E9;
+      border-radius: 10px;
+      margin-bottom: 5px; }
+  .chat .content .sendMessage {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; }
+    .chat .content .sendMessage button {
+      margin-left: 20px;
+      color: #fff;
+      background-color: #1DE9B6; }
+
 /* Set the size of the div element that contains the map */
 #map {
   height: 400px;
   /* The height is 400 pixels */
   width: 100%;
   /* The width is the width of the web page */ }
-
-.boton-white-ext a,
-.boton-white-ext2 a {
-  text-decoration: none;
-  font-weight: 900;
-  color: #eeeaea; }
-
-.boton-white-ext,
-.boton-white-ext2 {
-  padding: .9px 15px;
-  border: none;
-  background: transparent;
-  color: #eeeaea;
-  width: auto;
-  float: left;
-  position: relative;
-  line-height: 45px;
-  cursor: pointer;
-  margin: 1em 2em 1em 2em; }
-
-.boton-white-ext span,
-.boton-white-ext2 span {
-  position: absolute;
-  background-color: #eeeaea;
-  display: block;
-  transition: all 300ms; }
-
-.boton-white-ext:hover,
-.boton-white-ext:active,
-.boton-white-ext2:hover,
-.boton-white-ext2:active {
-  backgroundo-color: transparent;
-  color: #eeeaea; }
-
-.boton-white-ext:hover a {
-  text-decoration: none;
-  color: #f5f5f5;
-  background-color: #f5f5f5;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#87eebe', endColorstr='#289dbd', GradientType=1);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; }
-
-.boton-white-ext .linea1,
-.boton-white-ext .linea2,
-.boton-white-ext2 .linea1_1,
-.boton-white-ext2 .linea2_2 {
-  top: 0;
-  right: 0; }
-
-.boton-white-ext .linea3,
-.boton-white-ext .linea4,
-.boton-white-ext2 .linea3_2,
-.boton-white-ext2 .linea4_2 {
-  bottom: 0;
-  left: 0; }
-
-.boton-white-ext .linea1,
-.boton-white-ext .linea3,
-.boton-white-ext2 .linea1_2,
-.boton-white-ext2 .linea3_2 {
-  height: 3px;
-  width: 18px; }
-
-.boton-white-ext .linea2,
-.boton-white-ext .linea4,
-.boton-white-ext2 .linea2_2,
-.boton-white-ext2 .linea4_2 {
-  height: 18px;
-  width: 3px; }
-
-.boton-white-ext:hover .linea1,
-.boton-white-ext:hover .linea3,
-.boton-white-ext:active .linea1,
-.boton-white-ext:active .linea3 {
-  width: 100%; }
-
-.boton-white-ext:hover .linea2,
-.boton-white-ext:active .linea2 {
-  height: 100%; }
-
-.boton-white-ext:hover .linea4,
-.boton-white-ext:active .linea4 {
-  height: 100%; }
-
-.boton-white-ext2:hover a {
-  text-decoration: none;
-  color: #f5f5f5;
-  background-color: #f5f5f5;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; }
-
-.boton-white-ext2 .linea1_2,
-.boton-white-ext2 .linea2_2 {
-  top: 0;
-  right: 0; }
-
-.boton-white-ext2:hover .linea1_2,
-.boton-white-ext2:hover .linea3_2,
-.boton-white-ext2:active .linea1_2,
-.boton-white-ext2:active .linea3_2 {
-  width: 100%; }
-
-.boton-white-ext2:hover .linea2_2,
-.boton-white-ext2:active .linea2_2 {
-  height: 100%; }
-
-.boton-white-ext2:hover .linea4_2,
-.boton-white-ext2:active .linea4_2 {
-  height: 100%; }
 
 .profile-header-container {
   margin: 0 auto;

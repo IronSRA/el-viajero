@@ -1,32 +1,38 @@
-<div class="col-lg-4 col-md-6 col-12">
-  <article class="card">
-    <header>
-      <div class="headerTitle">
-        <i class="material-icons">
-          recent_actors
-        </i>
-        <h2>Crear cuenta</h2>
-      </div>
-    </header>
-    <div class="content">
-      <div class="signup-page">
-        <div class="form">
-          <form class="register-form" action="/auth/signup" method="POST" id="form-container">
-            <div class="row d-flex justify-content-center">
-              <div class="col-11">
-                <input id="username" class="form-control" type="text" name="username" placeholder="Nombre de usuario"
-                  autofocus />
-                <input id="password" class="form-control" type="password" name="password" placeholder="Contraseña" />
-                {{#if message }}
-                <div class="error-message">{{ message }}</div>
-                {{/if}}
-                <button class="btn btn-success btn-block">Crear cuenta</button>
-                <p class="message text-center">¿Ya tienes cuenta? <a href="/auth/login">Ingresar</a></p>
-              </div>
+<div class="login">
+  <div class="mask"></div>
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-4 col-md-6 col-12">
+        <article class="card">
+          <header>
+            <div class="headerTitle">
+              <i class="material-icons">
+                recent_actors
+              </i>
+              <h2>Crear cuenta</h2>
             </div>
-          </form>
-        </div>
+          </header>
+          <div class="content">
+            <div class="form">
+              <form class="register-form" action="/auth/signup" method="POST" id="form-container">
+                <div class="row d-flex justify-content-center">
+                  <div class="col-12">
+                    <input id="username" class="form-control" type="text" name="username"
+                      placeholder="Nombre de usuario" autofocus />
+                    <input id="password" class="form-control" type="password" name="password"
+                      placeholder="Contraseña" />
+                    {{#if message }}
+                    <div class="error-message">{{ message }}</div>
+                    {{/if}}
+                    <button class="btn btn-block">Crear cuenta</button>
+                    <p class="message text-center">¿Ya tienes cuenta? <a href="/auth/login">Ingresar</a></p>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </article>
       </div>
-  </article>
-</div>
+    </div>
+  </div>
 </div>

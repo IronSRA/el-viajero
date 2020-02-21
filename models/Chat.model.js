@@ -1,9 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const now = Date.now()
 
 const chatSchema = new Schema({
-
   message: {
     users: {
       sender: {
@@ -20,8 +18,12 @@ const chatSchema = new Schema({
       ref: 'User'
     },
     message: String
-  },
-
+  }
+}, {
+  timestamps: {
+    createdAt: 'created_at',
+    updatedAt: 'updated_at'
+  }
 });
 
 const Chat = mongoose.model('Chat', chatSchema);
