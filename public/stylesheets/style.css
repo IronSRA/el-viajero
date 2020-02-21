@@ -108,6 +108,10 @@ main {
 .menu-wrapper .menu ul li {
   margin-left: 20px; }
 
+.el-viajero {
+  font-family: 'Rozha One';
+  color: #212121; }
+
 #city {
   text-transform: capitalize;
   font-weight: 700; }
@@ -455,6 +459,10 @@ main {
 
 #pencil:hover {
   transform: scale(1.5); }
+
+.places-images {
+  overflow: hidden;
+  display: block; }
 
 @media (min-width: 768px) {
   .weatherDate {

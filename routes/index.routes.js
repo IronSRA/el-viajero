@@ -50,7 +50,6 @@ router.get('/', (req, res) => {
           countryCode.city = countryCode.city.toLowerCase()
           if (infoRestaurant[0].length > 0) {
 
-
             Promise.all([newsPromise, infoPromise, weatherPromise, eventsPromise])
               .then(results => {
 
@@ -58,11 +57,11 @@ router.get('/', (req, res) => {
                 let sunrise, sunset
                 if (results[2] === undefined) {
                   results[2] = {
-                    data: ""
+                    data: ''
                   }
                 } else {
-                  sunrise = (new Date(results[2].data.city.sunrise * 1000)).toLocaleTimeString("en-UK")
-                  sunset = (new Date(results[2].data.city.sunset * 1000)).toLocaleTimeString("en-UK")
+                  sunrise = (new Date(results[2].data.city.sunrise * 1000)).toLocaleTimeString('en-UK')
+                  sunset = (new Date(results[2].data.city.sunset * 1000)).toLocaleTimeString('en-UK')
                 }
                 // A AQUI
                 res.render('index', {
@@ -83,7 +82,6 @@ router.get('/', (req, res) => {
               })
               .catch(err => console.log(`Error al traer los datos de BD`, err))
 
-
             //si no pedimos todos
           } else {
             Promise.all([newsPromise, infoPromise, weatherPromise, restaurantsPromise, pointOfInterestPromise, eventsPromise])
@@ -92,11 +90,11 @@ router.get('/', (req, res) => {
                 let sunrise, sunset
                 if (results[2] === undefined) {
                   results[2] = {
-                    data: ""
+                    data: ''
                   }
                 } else {
-                  sunrise = (new Date(results[2].data.city.sunrise * 1000)).toLocaleTimeString("en-UK")
-                  sunset = (new Date(results[2].data.city.sunset * 1000)).toLocaleTimeString("en-UK")
+                  sunrise = (new Date(results[2].data.city.sunrise * 1000)).toLocaleTimeString('en-UK')
+                  sunset = (new Date(results[2].data.city.sunset * 1000)).toLocaleTimeString('en-UK')
                 }
                 // A AQUI
                 saveInfo(results[3], countryCode.city, Restaurants)
@@ -118,12 +116,9 @@ router.get('/', (req, res) => {
                 })
               })
               .catch(err => console.log(`Error al traer los datos de la API`, err))
-
           }
         })
         .catch(err => console.log(err))
-
-
     })
     .catch(err => console.log(`Error al buscar el codigo de pais`, err))
 })

@@ -20,26 +20,26 @@ router.get('/user/:id/:name', checkLoggedIn, (req, res, next) => {
     user: req.user
   })
 });
+
 router.get('/:id', checkLoggedIn, (req, res, next) => {
   Chat.find({
-      $and: [{
-        "message.users.sender": {
-          $in: [req.params.id, req.user._id]
-        }
-      }, {
-        "message.users.receptor": {
-          $in: [req.user._id, req.params.id]
-        }
-      }]
-    }).populate('message.author')
+    $and: [{
+      "message.users.sender": {
+        $in: [req.params.id, req.user._id]
+      }
+    }, {
+      "message.users.receptor": {
+        $in: [req.user._id, req.params.id]
+      }
+    }]
+  }).populate('message.author')
     .then(allMessages => {
       res.json(allMessages)
     })
     .catch(err => next(err))
 });
+
 router.post('/:id', (req, res, next) => {
-  // console.log("MENSAJE: " + req.body)
-  // console.log(req.body)
   const newComment = {
     message: {
       users: {

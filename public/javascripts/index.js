@@ -19,5 +19,5 @@ locationButton.forEach(button => button.onclick = () => {
 })
 
 function toggle(element) {
-  element.forEach(elem => elem.classList.toggle("hidden"))
+  element.forEach(elem => elem.classList.toggle('hidden'))
 }
