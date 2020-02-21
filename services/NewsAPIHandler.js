@@ -8,10 +8,7 @@ class NewsAPIHandler {
     })
   }
 
-  getNews(country) {
-    return this.axiosApp.get(`/top-headlines?country=${country}&apiKey=${this.api}`)
-      .catch(error => console.log('Oh No! Error is: ', error))
-  }
+  getNews(country) { return this.axiosApp.get(`/top-headlines?country=${country}&apiKey=${this.api}`) }
 }
 
 module.exports = NewsAPIHandler

@@ -72,6 +72,7 @@ router.get('/restaurants', (req, res, next) => {
         city
       })
     })
+    .catch(err => console.log(`Error al buscar los restaurantes ${err}`))
 })
 
 router.get('/popular-place', (req, res, next) => {
@@ -84,6 +85,7 @@ router.get('/popular-place', (req, res, next) => {
         city
       })
     })
+    .catch(err => console.log(`Error al buscar los lugares más populares ${err}`))
 })
 
 module.exports = router

@@ -1,1 +1,1 @@
-module.exports = app => app.locals.title = 'ElViajero'
+module.exports = app => app.locals.title = 'el viajero'
