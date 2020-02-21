@@ -46,13 +46,10 @@ router.get('/', (req, res) => {
 
       Promise.all([searchRestaurant, searchPlace])
         .then(infoRestaurant => {
-          //si hay restaurante solo pedimos x datos
           countryCode.city = countryCode.city.toLowerCase()
           if (infoRestaurant[0].length > 0) {
-
             Promise.all([newsPromise, infoPromise, weatherPromise, eventsPromise])
               .then(results => {
-
                 // IMPORTANTE NO TOCAR DE AQUI
                 let sunrise, sunset
                 if (results[2] === undefined) {
@@ -81,8 +78,6 @@ router.get('/', (req, res) => {
                 })
               })
               .catch(err => console.log(`Error al traer los datos de BD`, err))
-
-            //si no pedimos todos
           } else {
             Promise.all([newsPromise, infoPromise, weatherPromise, restaurantsPromise, pointOfInterestPromise, eventsPromise])
               .then(results => {

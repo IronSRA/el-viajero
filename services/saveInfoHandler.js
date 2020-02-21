@@ -13,7 +13,6 @@ function savePlace(info, city, type) {
       geometry: elm.geometry,
       address: elm.vicinity,
       photos: elm.photos,
-      // open_now: opening_hours.open_now,
       website: elm.url,
       photos: elm.photos
 
