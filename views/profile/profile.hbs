@@ -13,13 +13,13 @@
             <h2>Perfil</h2>
           </div>
         </header>
-        <img src={{user.picture}}></img>
-        <div class="container">
+
+        <div class="container profile">
           <div class="row d-flex justify-content-center">
-            <div class="col-4">
+            <div class="col-12 col-md-4">
               <div class="profile-header-container">
                 <div class="profile-header-img">
-                  <i class="material-icons position-fixed" id="pencil">
+                  <i class="material-icons" id="pencil">
                     create
                   </i>
                   <img class="img-circle position-relative" src="{{user.image}}"
@@ -30,49 +30,74 @@
                 </div>
               </div>
             </div>
-            <div class="col-8 d-flex justify-content-center">
+            <div class="col-12 cold-md-8 d-flex justify-content-center">
               <div class="row">
-                <div class="col-12">
-                  <form action="/profile" method="post" enctype="multipart/form-data">
-                    <input type="file" name="phototoupload">
-                    <input type="submit" class="btn btn-success" value="Enviar">
-                  </form>
-                </div>
-                <div class="col-12">
+                <div class="col-12 profileLocation">
                   {{#if user.location}}
-                  <h4 class="text-center">Te encuentras en {{user.location}}. ¡Disfruta de tu visita!</h4>
+                  <p class="text-center">Te encuentras en {{user.location}}. ¡Disfruta de tu visita!</p>
                   {{/if}}
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <hr>
-        <div>
-          <div class="col-lg-3 col-md-4 col-6">
-            <p>Sube tus fotos:</p>
-            <form action="/profile/newpicture" method="post" enctype="multipart/form-data">
-              <input type="text" name="description">
-              <input type="file" name="imagesupload">
-              <input type="submit" class="btn btn-success" value="Enviar">
-            </form>
+          <div class="row" style="border: 0">
+            <div class="col-12">
+              <h3>Sube tus fotos:</h3>
+              <form action="/profile/newpicture" method="post" enctype="multipart/form-data">
+                <input type="text" name="description">
+                <input type="file" name="imagesupload">
+                <button style="background-color: #1DE9B6; width: 100%" type="submit" class="btn">Enviar</button>
+              </form>
+            </div>
           </div>
-          <hr>
-        </div>
-        <div class="row text-center text-lg-left">
-          {{#each user.pictures}}
-          <div class="col-lg-3 col-md-4 col-6">
-            <a href="{{image}}" class="d-block mb-4 h-100">
-              <img class="img-fluid img-thumbnail" src="{{image}}" alt="{{description}}">
-              <p>{{description}}</p>
-            </a>
+          <div class="row text-center text-lg-left">
+            {{#each user.pictures}}
+            <div class="col-lg-3 col-md-4 col-6">
+              <a href="{{image}}" class="d-block mb-4 h-100">
+                <img class="img-fluid img-thumbnail" src="{{image}}" alt="{{description}}">
+                <p>{{description}}</p>
+              </a>
+            </div>
+            {{/each}}
           </div>
-          {{/each}}
+          <div class="row">
+            <div class="col-12">
+              <h3>Ciudades preferidas:</h3>
+              <div class="favorite-cities">
+                {{#each user.favourites.cities}}
+                {{this}}{{#unless @last}}, {{/unless}}
+                {{/each}}
+              </div>
+            </div>
+          </div>
         </div>
-      </article>
-
     </div>
+    </article>
   </div>
+</div>
 
+<div class="modal">
+  <div class="col-6">
+    <article class="card">
+      <header>
+        <div class="headerTitle">
+          <i class="material-icons">
+            account_box
+          </i>
+          <h2>Subir Foto</h2>
+        </div>
+        <i class="material-icons" id="close">
+          close
+        </i>
+      </header>
+      <div class="content d-flex justify-content-center align-items-center h-300">
+        <form action="/profile" method="post" enctype="multipart/form-data">
+          <input type="file" name="phototoupload">
+          <button type="submit" class="btn">Enviar</button>
+        </form>
+      </div>
+    </article>
+  </div>
 </div>
-</div>
+
+<script src="/javascripts/profile.js"></script>
