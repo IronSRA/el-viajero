@@ -25,5 +25,4 @@ app.use('/chat', require('./routes/chat.routes'))
 app.use('/details', require('./routes/details.routes'))
 app.use('/social', require('./routes/social.routes'))
 
-
 module.exports = app

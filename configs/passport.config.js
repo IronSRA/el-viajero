@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 const flash = require('connect-flash')
 const mongoose = require('mongoose');
 
-const session = require("express-session");
+const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 
 const User = require('../models/User.model')

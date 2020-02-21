@@ -1,4 +1,162 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="titleHeader">
+        <img src="{{info.flag}}" alt="{{info.capital}}">
+        <h1 class="mainCityTitle" data-location="{{user.location}}" data-favcity="{{user.favourites.cities}}"
+          data-city="{{city}}">{{city}}</h1>
+        {{#if user}}
+        <div>
+          <i class="material-icons location">
+            gps_not_fixed
+          </i>
+          <i class="material-icons location hidden">
+            gps_fixed
+          </i>
+        </div>
+        <div>
+          <i class="material-icons fav">
+            favorite_border
+          </i>
+          <i class=" material-icons fav hidden">
+            favorite
+          </i>
+        </div>
+        {{/if}}
+      </div>
+    </div>
 
+    <div class="row">
+      {{!-- TIEMPO --}}
+      <div class="col-lg-4 col-md-6 col-12">
+        <article class="card">
+          <header>
+            <div class="headerTitle">
+              <i class="material-icons">
+                wb_sunny
+              </i>
+              <h2>Tiempo</h2>
+            </div>
+            <a href="details/weather/?city={{city}}">Detalles</a>
+          </header>
+          <div class="content">
+            {{#if weather}}
+            <div class="weatherContainer index">
+              <div class="weatherStatus">
+                <img src="http://openweathermap.org/img/wn/{{weather.list.[0].weather.[0].icon}}@2x.png"
+                  alt="{{weather.list.[0].weather.[0].description}}" />
+                <p class="infoTitle weather">{{weather.list.[0].weather.[0].description}}</p>
+              </div>
+              <div class="weatherDetailsContainer">
+                <div>
+                  <div class="weatherHours">
+                    <img src="https://image.flaticon.com/icons/svg/2294/2294952.svg" />
+                    <p>{{hours.sunrise}}</p>
+                  </div>
+                  <div class="weatherHours">
+                    <img src="https://image.flaticon.com/icons/svg/2294/2294957.svg" />
+                    <p>{{hours.sunset}}</p>
+                  </div>
+                </div>
+                <div>
+                  <div class="weatherDetails">
+                    <img src="https://image.flaticon.com/icons/svg/1684/1684374.svg" />
+                    <p>{{weather.list.[0].main.temp_min}}°</p>
+                  </div>
+                  <div class="weatherDetails">
+                    <img src="https://image.flaticon.com/icons/svg/1684/1684375.svg" />
+                    <p>{{weather.list.[0].main.temp_max}}°</p>
+                  </div>
+                  <div class="weatherDetails">
+                    <img src="https://image.flaticon.com/icons/svg/1532/1532259.svg" />
+                    <p>{{weather.list.[0].main.humidity}}%</p>
+                  </div>
+                  <div class="weatherDetails">
+                    <img src="https://image.flaticon.com/icons/svg/615/615486.svg" />
+                    <p>{{weather.list.[0].wind.speed}}<span>ms</span></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {{/if}}
+            {{#unless weather}}
+            <p class="error">No tenemos datos para esa búsqueda</p>
+            {{/unless}}
+          </div>
+        </article>
+      </div>
+      {{!-- INFO --}}
+      <div class="col-lg-4 col-md-6 col-12">
+        <article class="card">
+          <header>
+            <div class="headerTitle">
+              <i class="material-icons">
+                list_alt
+              </i>
+              <h2>Info</h2>
+            </div>
+          </header>
+          <div class="content">
+            {{#if info}}
+            <div class="basicInfoContainer">
+              <div class="infoDetails">
+                <img src="{{info.flag}}" alt="{{info.capital}}">
+                <span class="infoTitle">Capital:</span>
+                <p>{{info.capital}}</p>
+              </div>
+              <div class="infoDetails">
+                <span class="iconCurrency">
+                  {{#each info.currencies}}
+                  {{symbol}}
+                  {{/each}}
+                </span>
+                <span class="infoTitle">Moneda: </span>
+                {{#each info.currencies}}
+                <p>{{name}}. </p>
+                {{/each}}
+              </div>
+              <div class="infoDetails">
+                <img src="https://image.flaticon.com/icons/svg/1810/1810702.svg">
+                <span class="infoTitle">Lengua:
+                </span>
+                {{#each info.languages}}
+                <p>{{name}}. </p>
+                {{/each}}
+              </div>
+              <div class="infoDetails">
+                <img src="https://image.flaticon.com/icons/svg/458/458287.svg">
+                <span class="infoTitle">Prefijo:</span>
+                <p>+{{info.callingCodes}}</p>
+              </div>
+              <div class="infoDetails">
+                <img src="https://image.flaticon.com/icons/svg/2599/2599539.svg">
+                <span class="infoTitle">Zona Horaria:</span>
+              </div>
+              {{#each info.timezones}}
+              {{this}}.
+              {{/each}}
+            </div>
+            {{/if}}
+            {{#unless info}}
+            <p class="error">No tenemos datos para esa búsqueda</p>
+            {{/unless}}
+          </div>
+        </article>
+      </div>
+      {{!-- NOTICIAS --}}
+      <div class="col-lg-4 col-md-6 col-12">
+        <article class="card">
+          <header>
+            <div class="headerTitle">
+              <i class="material-icons">
+                bookmark_border
+              </i>
+              <h2>Noticias</h2>
+            </div>
+            <a href="details/news/?city={{city}}&country={{country}}">Detalles</a>
+          </header>
+          <div class="content">
+            {{#if news}}
             {{#each news}}
             <a href="{{url}}">
               <div class="newsContainer">

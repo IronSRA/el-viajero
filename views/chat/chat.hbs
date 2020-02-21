@@ -1,28 +1,32 @@
-{{!-- <section>
-  <h2>Chat</h2>
-  <form action="/chat/post" method="post">
-    <input type="text" name="description" placeholder="Escribe aquí"><br>
-    <input type="submit" value="Enviar"><br>
-  </form>
-</section> --}}
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <article class="card big chat">
+        <header>
+          <a href="/social"><i class="material-icons">
+              chevron_left
+            </i></a>
+          <div class="headerTitle">
+            <i class="material-icons">
+              people_alt
+            </i>
+            <h2>Chat con {{receptorName}}<span id="receptor"></span></h2>
+          </div>
+        </header>
+        <div class="content">
+          <div id='messages'>
+            <ul id="messagesContainer">
 
+            </ul>
 
-<div class='container'>
-  <br>
-  <div class='jumbotron'>
-    <h1>Send Message</h1>
-    Your Username: {{user.username}}
-    <br>
-    <div id='messages'>
-      <ul id="messagesContainer">
-
-      </ul>
-
+          </div>
+          <form class="sendMessage">
+            <input type="text" id="inputMessage" class="form-control" data-receptor="{{receptor}}"
+              data-user="{{user.username}}" required />
+            <button id='send' class='btn'>Send</button>
+          </form>
+        </div>
     </div>
-    <form>
-      <input type="text" id="inputMessage" data-user="{{receptor}}" />
-      <button id='send' class='btn btn-success'>Send</button>
   </div>
-</div>
 
-<script src="/javascripts/chat.js"></script>
+  <script src="/javascripts/chat.js"></script>

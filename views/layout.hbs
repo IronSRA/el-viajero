@@ -6,6 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{title}}</title>
+  <link
+    href="https://fonts.googleapis.com/css?family=Arbutus+Slab|BioRhyme|Copse|Coustard|DM+Serif+Text|Ibarra+Real+Nova|Marcellus+SC|Quando|Rozha+One|Suez+One&display=swap"
+    rel="stylesheet">>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
@@ -31,7 +34,7 @@
         <div class="col-lg-4 col-12 order-1 order-lg-2">
           <div class="logo">
             {{!-- LOGO --}}
-            <h1><a href="/">EL VIAJERO</a></h1>
+            <h1><a href="/" class="el-viajero">el viajero</a></h1>
           </div>
         </div>
         <div class="col-lg-4 col-12 order-2 order-lg-3">
@@ -39,16 +42,17 @@
             {{!-- MENU --}}
             <nav>
               <ul>
-                <li><a href="/" id="home">Home</a></li>
+                <li><a href="/" id="home">Inicio</a></li>
                 {{#if user}}
-                <li><a href="/profile" id="home">Profile</a></li>
+                <li><a href="/social" id="home">Social</a></li>
+                <li><a href="/profile" id="home">Perfil</a></li>
                 {{/if}}
                 {{#unless user}}
-                <li><a href="/auth/login" id="login">Login</a></li>
-                <li><a href="/auth/signup" id="signup">Signup</a></li>
+                <li><a href="/auth/login" id="login">Acceder</a></li>
+                <li><a href="/auth/signup" id="signup">Registro</a></li>
                 {{/unless}}
                 {{#if user}}
-                <li><a href="/auth/logout" id="logout">Logout</a></li>
+                <li><a href="/auth/logout" id="logout">Salir</a></li>
                 {{/if}}
               </ul>
             </nav>
@@ -57,13 +61,13 @@
       </div>
     </div>
   </header>
-
   <main>
     {{{body}}}
   </main>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFPhuSzSAR4FzJmO0eMimZ7B_XRD4FOJY">
   </script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="/javascripts/map.js"></script>
   <script src="/javascripts/script.js"></script>
 </body>
 
