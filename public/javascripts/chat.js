@@ -41,6 +41,7 @@ setInterval(() => {
         container.innerHTML += data
         lastMessageAutor = elem.message.author.username
       })
+      console.log(container.innerHTML.split('<div>'))
       if (!isScrolled) {
         chatContent.scrollTop = chatContent.scrollHeight
         isScrolled = true

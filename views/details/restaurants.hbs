@@ -16,8 +16,9 @@
         </header>
 
         <div class="content">
-          {{#if popular}}
-          {{#each popular}}
+          <!--The div element for the map -->
+          {{#if restaurant}}
+          {{#each restaurant}}
           <a href="{{url}}">
             <div class="restaurantsContainer" data-latitude="{{geometry.location.lat}}" data-longitude="{{geometry.location.lng}}"
               data-name="{{name}}" data-address="{{vicinity}}" data-rating="{{rating}}" data-url="{{url}}"
@@ -46,5 +47,6 @@
       <div id="map"></div>
     </div>
   </div>
+</div>
 </div>
 </div>
