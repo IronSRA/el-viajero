@@ -31,7 +31,6 @@ router.get('/', (req, res) => {
   let city = req.query.city
   searchCountry.getCountry(city)
     .then(countryCode => {
-      countryCode.city ? null : countryCode.city = "London"
       const newsPromise = newsAPI.getNews(`${countryCode.country}`)
       const infoPromise = infoAPI.getInfo(`${countryCode.country}`)
       const weatherPromise = weatherAPI.getWeather(`${countryCode.city}`)
@@ -62,6 +61,10 @@ router.get('/', (req, res) => {
                   sunset = (new Date(results[2].data.city.sunset * 1000)).toLocaleTimeString('en-UK')
                 }
                 // A AQUI
+                results[3].data._embedded ? null : results[3].data._embedded = {
+                  events: ""
+                }
+
                 res.render('index', {
                   news: results[0].data.articles,
                   info: results[1].data,
@@ -93,6 +96,9 @@ router.get('/', (req, res) => {
                   sunset = (new Date(results[2].data.city.sunset * 1000)).toLocaleTimeString('en-UK')
                 }
                 // A AQUI
+                results[5].data._embedded ? null : results[5].data._embedded = {
+                  events: ""
+                }
                 saveInfo(results[3], countryCode.city, Restaurants)
                 saveInfo(results[4], countryCode.city, PopularPlace)
                 res.render('index', {
