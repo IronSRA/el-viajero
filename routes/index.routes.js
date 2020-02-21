@@ -31,6 +31,7 @@ router.get('/', (req, res) => {
   let city = req.query.city
   searchCountry.getCountry(city)
     .then(countryCode => {
+      countryCode.city ? null : countryCode.city = "London"
       const newsPromise = newsAPI.getNews(`${countryCode.country}`)
       const infoPromise = infoAPI.getInfo(`${countryCode.country}`)
       const weatherPromise = weatherAPI.getWeather(`${countryCode.city}`)

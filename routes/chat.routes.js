@@ -36,7 +36,7 @@ router.get('/:id', checkLoggedIn, (req, res, next) => {
     .then(allMessages => {
       res.json(allMessages)
     })
-    .catch(err => next(err))
+    .catch(err => console.log(err))
 });
 
 router.post('/:id', (req, res, next) => {
