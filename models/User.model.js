@@ -15,7 +15,10 @@ const userSchema = new Schema({
   visiting_now: String,
   visited_cities: [String],
   rating: Number,
-  image: String,
+  image: {
+    type: String,
+    default: 'https://res.cloudinary.com/dnzarhjsc/image/upload/v1582292344/folder-name/egg_ghl8sj.png'
+  },
   comments: [{
     body: String,
     section: String,

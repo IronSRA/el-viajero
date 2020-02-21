@@ -450,6 +450,9 @@ main {
 .deselect {
   background-color: white; }
 
+.favorite-cities {
+  text-transform: uppercase; }
+
 #pencil {
   color: #51d2b7;
   margin-top: 12px;
