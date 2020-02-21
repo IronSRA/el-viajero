@@ -46,16 +46,12 @@ router.post('/fav/city/:city', (req, res, next) => {
       userFavCities = [...response.favourites.cities]
       if (response.favourites.cities.includes(city)) {
         userFavCities.splice(userFavCities.indexOf(city), 1)
-        User.findByIdAndUpdate(req.user._id, {
-          "favourites.cities": userFavCities
-        })
+        User.findByIdAndUpdate(req.user._id, { "favourites.cities": userFavCities })
           .catch(err => console.log(`Error: ${err}`))
       } else {
         userFavCities.push(city)
       }
-      User.findByIdAndUpdate(req.user._id, {
-        "favourites.cities": userFavCities
-      })
+      User.findByIdAndUpdate(req.user._id, { "favourites.cities": userFavCities })
         .catch(err => console.log(`Error: ${err}`))
     })
     .catch(err => console.log(`Error: ${err}`))

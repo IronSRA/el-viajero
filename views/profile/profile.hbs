@@ -3,7 +3,7 @@
     <div class="col-12">
       <article class="card big">
         <header>
-          <a href="/?city={{city}}"><i class="material-icons">
+          <a href="/?city={{user.location}}"><i class="material-icons">
               chevron_left
             </i></a>
           <div class="headerTitle">
@@ -36,6 +36,13 @@
                   {{#if user.location}}
                   <p class="text-center">Te encuentras en {{user.location}}. ¡Disfruta de tu visita!</p>
                   {{/if}}
+                  Ciudades preferidas:
+                  <div class="favorite-cities">
+
+                    {{#each user.favourites.cities}}
+                    {{this}}{{#unless @last}}, {{/unless}}
+                    {{/each}}
+                  </div>
                 </div>
               </div>
             </div>

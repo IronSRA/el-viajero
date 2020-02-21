@@ -137,16 +137,9 @@ main {
 //HEADER EL VIAJERO
 
 .el-viajero {
-  // font-family: 'BioRhyme';
-  // font-family: 'Copse', ;
-  // font-family: DM Serif Text;
-  // font-family: 'Ibarra Real Nova' ;
-  // font-family: 'Suez One' ;
   font-family: 'Rozha One';
-  // font-family: 'Quando';
   color: #212121;
 }
-
 
 // CITY TITLE
 #city {
@@ -394,7 +387,7 @@ main {
 }
 
 .restaurantsContainer img {
-  width: 25%;
+  width: 20px;
 }
 
 .restaurantsContainer .restaurantDetails {
@@ -486,7 +479,6 @@ main {
     }
   }
 }
-
 
 // SOCIAL
 
@@ -591,10 +583,15 @@ main {
 
 /* Set the size of the div element that contains the map */
 #map {
-  height: 400px;
+  height: 598px;
   /* The height is 400 pixels */
   width: 100%;
   /* The width is the width of the web page */
+  margin-left: -29px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  margin-bottom: 20px;
 }
 
 ///PROFILE///
@@ -659,6 +656,10 @@ main {
 
 .deselect {
   background-color: white;
+}
+
+.favorite-cities {
+  text-transform: uppercase;
 }
 
 #pencil {
