@@ -36,8 +36,6 @@ router.post('/city/iamhere/:city', (req, res, next) => {
       .then(res.redirect('/?city=' + city))
       .catch(err => console.log('Error consultando la BBDD: ', err))
   }
-
-
 });
 
 module.exports = router

@@ -50,7 +50,6 @@ router.get('/', (req, res) => {
           countryCode.city = countryCode.city.toLowerCase()
           if (infoRestaurant[0].length > 0) {
 
-
             Promise.all([newsPromise, infoPromise, weatherPromise, eventsPromise])
               .then(results => {
 

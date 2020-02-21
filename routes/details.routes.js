@@ -19,13 +19,12 @@ router.get('/weather', (req, res, next) => {
       let sunrise, sunset
       if (response === undefined) {
         response = {
-          data: ""
+          data: ''
         }
       } else {
-        sunrise = (new Date(response.data.city.sunrise * 1000)).toLocaleTimeString("en-UK")
-        sunset = (new Date(response.data.city.sunset * 1000)).toLocaleTimeString("en-UK")
+        sunrise = (new Date(response.data.city.sunrise * 1000)).toLocaleTimeString('en-UK')
+        sunset = (new Date(response.data.city.sunset * 1000)).toLocaleTimeString('en-UK')
       }
-
       res.render('details/weather', {
         weather: response.data,
         hours: {
@@ -86,7 +85,5 @@ router.get('/popular-place', (req, res, next) => {
       })
     })
 })
-
-
 
 module.exports = router

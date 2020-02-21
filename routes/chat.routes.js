@@ -19,6 +19,7 @@ router.get('/user/:id', checkLoggedIn, (req, res, next) => {
     user: req.user
   })
 });
+
 router.get('/:id', checkLoggedIn, (req, res, next) => {
   Chat.find({
     $and: [{
@@ -36,6 +37,7 @@ router.get('/:id', checkLoggedIn, (req, res, next) => {
     })
     .catch(err => next(err))
 });
+
 router.post('/:id', (req, res, next) => {
   const newComment = {
     message: {
