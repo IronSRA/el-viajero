@@ -1,27 +1,15 @@
-{{!-- <section>
-  <h2>Chat</h2>
-  <form action="/chat/post" method="post">
-    <input type="text" name="description" placeholder="Escribe aquí"><br>
-    <input type="submit" value="Enviar"><br>
-  </form>
-</section> --}}
+<div class="container">
 
+  <div class="jumbotron">
+    <h1>Área de chat</h1>
+    {{user.username}} escribe tu mensaje:
 
-<div class='container'>
-  <br>
-  <div class='jumbotron'>
-    <h1>Send Message</h1>
-    Your Username: {{user.username}}
-    <br>
-    <div id='messages'>
-      <ul id="messagesContainer">
-
-      </ul>
-
+    <div id="messages">
+      <ul id="messagesContainer"></ul>
     </div>
     <form>
       <input type="text" id="inputMessage" data-user="{{receptor}}" />
-      <button id='send' class='btn btn-success'>Send</button>
+      <button id="send" class="btn btn-success">Send</button>
   </div>
 </div>
 

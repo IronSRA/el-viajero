@@ -33,7 +33,7 @@ const userSchema = new Schema({
     },
     likes: [{
       type: mongoose.SchemaTypes.ObjectId,
-      ref: "User"
+      ref: 'User'
     }]
   }],
   favourites: {
@@ -43,7 +43,7 @@ const userSchema = new Schema({
   },
   travelbuddies: [{
     type: mongoose.SchemaTypes.ObjectId,
-    ref: "User"
+    ref: 'User'
   }]
 
 

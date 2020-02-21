@@ -21,7 +21,7 @@ module.exports = app => {
 
   hbs.registerHelper('ifUndefined', (value, options) => {
     if (arguments.length < 2)
-      throw new Error("Handlebars Helper ifUndefined needs 1 parameter");
+      throw new Error('Handlebars Helper ifUndefined needs 1 parameter');
     if (typeof value !== undefined) {
       return options.inverse(this);
     } else {
