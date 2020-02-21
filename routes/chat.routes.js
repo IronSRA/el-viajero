@@ -23,16 +23,16 @@ router.get('/user/:id/:name', checkLoggedIn, (req, res, next) => {
 
 router.get('/:id', checkLoggedIn, (req, res, next) => {
   Chat.find({
-    $and: [{
-      "message.users.sender": {
-        $in: [req.params.id, req.user._id]
-      }
-    }, {
-      "message.users.receptor": {
-        $in: [req.user._id, req.params.id]
-      }
-    }]
-  }).populate('message.author')
+      $and: [{
+        "message.users.sender": {
+          $in: [req.params.id, req.user._id]
+        }
+      }, {
+        "message.users.receptor": {
+          $in: [req.user._id, req.params.id]
+        }
+      }]
+    }).populate('message.author')
     .then(allMessages => {
       res.json(allMessages)
     })
@@ -40,6 +40,7 @@ router.get('/:id', checkLoggedIn, (req, res, next) => {
 });
 
 router.post('/:id', (req, res, next) => {
+  console.log("POST!")
   const newComment = {
     message: {
       users: {
@@ -51,9 +52,12 @@ router.post('/:id', (req, res, next) => {
       user: req.user
     }
   }
+  console.log(newComment)
   Chat.create(newComment)
-    .then(() => res.redirect(`/chat/user/${req.params.id}`))
-    .catch(err => next(err))
+    .then(() => res.json({
+      status: 'popino'
+    }))
+    .catch(err => console.log(`Error chat ${err}`))
 })
 
 module.exports = router
