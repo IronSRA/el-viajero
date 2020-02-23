@@ -50,7 +50,6 @@ router.get('/', (req, res) => {
           if (infoRestaurant[0].length > 0) {
             Promise.all([newsPromise, infoPromise, weatherPromise, eventsPromise])
               .then(results => {
-                // IMPORTANTE NO TOCAR DE AQUI
                 let sunrise, sunset
                 if (results[2] === undefined) {
                   results[2] = {
@@ -60,7 +59,10 @@ router.get('/', (req, res) => {
                   sunrise = (new Date(results[2].data.city.sunrise * 1000)).toLocaleTimeString('en-UK')
                   sunset = (new Date(results[2].data.city.sunset * 1000)).toLocaleTimeString('en-UK')
                 }
-                // A AQUI
+                results[3].data._embedded ? null : results[3].data._embedded = {
+                  events: ""
+                }
+
                 res.render('index', {
                   news: results[0].data.articles,
                   info: results[1].data,
@@ -81,7 +83,6 @@ router.get('/', (req, res) => {
           } else {
             Promise.all([newsPromise, infoPromise, weatherPromise, restaurantsPromise, pointOfInterestPromise, eventsPromise])
               .then(results => {
-                // IMPORTANTE NO TOCAR DE AQUI
                 let sunrise, sunset
                 if (results[2] === undefined) {
                   results[2] = {
@@ -91,7 +92,9 @@ router.get('/', (req, res) => {
                   sunrise = (new Date(results[2].data.city.sunrise * 1000)).toLocaleTimeString('en-UK')
                   sunset = (new Date(results[2].data.city.sunset * 1000)).toLocaleTimeString('en-UK')
                 }
-                // A AQUI
+                results[5].data._embedded ? null : results[5].data._embedded = {
+                  events: ""
+                }
                 saveInfo(results[3], countryCode.city, Restaurants)
                 saveInfo(results[4], countryCode.city, PopularPlace)
                 res.render('index', {
