@@ -1,7 +1,7 @@
 const axios = require('axios').default;
 
 class SearchAPIHandler {
-  constructor(baseUrl) {
+  constructor() {
     this.BASE_URL = 'https://maps.googleapis.com/maps/api/geocode';
     this.apiKey = process.env.SEARCHAPI
     this.axiosApp = axios.create({
@@ -29,5 +29,6 @@ class SearchAPIHandler {
       .catch(error => console.log('Oh No! Error is: ', error))
   }
 }
+
 
 module.exports = SearchAPIHandler

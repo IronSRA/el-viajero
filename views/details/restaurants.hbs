@@ -2,25 +2,27 @@
   <div class="row">
     <div class="col-md-5">
       <article class="card big">
+
         <header>
           <a href="/?city={{city}}"><i class="material-icons">
               chevron_left
             </i></a>
           <div class="headerTitle">
             <i class="material-icons">
-              restaurant
+              local_see
             </i>
             <h2>Restaurantes</h2>
           </div>
         </header>
+
         <div class="content">
           <!--The div element for the map -->
           {{#if restaurant}}
           {{#each restaurant}}
           <a href="{{url}}">
-            <div class="restaurantsContainer" data-latitude="{{geometry.location.lat}}"
-              data-longitude="{{geometry.location.lng}}" data-name="{{name}}" data-address="{{vicinity}}"
-              data-rating="{{rating}}" data-url="{{url}}" data-photo="{{photos.[0].photo_reference}}">
+            <div class="restaurantsContainer" data-latitude="{{geometry.location.lat}}" data-longitude="{{geometry.location.lng}}"
+              data-name="{{name}}" data-address="{{vicinity}}" data-rating="{{rating}}" data-url="{{url}}"
+              data-photo="{{photos.[0].photo_reference}}">
               <div class="row">
                 <div class="col-12">
                   <p class="infoTitle" id="{{name}}">{{name}}</p>
@@ -35,7 +37,7 @@
           </a>
           {{/each}}
           {{/if}}
-          {{#unless restaurant}}
+          {{#unless popular}}
           <p class="error">No tenemos datos para esa búsqueda</p>
           {{/unless}}
         </div>

@@ -1,4 +1,3 @@
-const mongoose = require('mongoose')
 const Restaurants = require('../models/Restaurant.model.js')
 const PopularPlace = require('../models/PopularPoint.model.js')
 const express = require('express')
@@ -28,95 +27,98 @@ const checkLoggedIn = (req, res, next) => req.user ? next() : res.render('index'
 
 router.get('/', (req, res) => {
 
-  let city = req.query.city
+  let searchPlace, searchRestaurant, code, resultRestaurant, resultPlace
+  const city = req.query.city
+
   searchCountry.getCountry(city)
     .then(countryCode => {
-      const newsPromise = newsAPI.getNews(`${countryCode.country}`)
-      const infoPromise = infoAPI.getInfo(`${countryCode.country}`)
-      const weatherPromise = weatherAPI.getWeather(`${countryCode.city}`)
-      const restaurantsPromise = restaurantsAPI.getRestaurants(`${countryCode.city}`, `${countryCode.country}`)
-      const pointOfInterestPromise = pointsOfInterestAPI.getPointsOfInterest(`${countryCode.city}`, `${countryCode.country}`)
-      const eventsPromise = eventsAPI.getEvents(`${countryCode.city}`)
-      const searchRestaurant = Restaurants.find({
-        city: countryCode.city
-      })
-      const searchPlace = PopularPlace.find({
+      searchRestaurant = Restaurants.find({
         city: countryCode.city
       })
 
-      Promise.all([searchRestaurant, searchPlace])
-        .then(infoRestaurant => {
-          countryCode.city = countryCode.city.toLowerCase()
-          if (infoRestaurant[0].length > 0) {
-            Promise.all([newsPromise, infoPromise, weatherPromise, eventsPromise])
-              .then(results => {
-                // IMPORTANTE NO TOCAR DE AQUI
-                let sunrise, sunset
-                if (results[2] === undefined) {
-                  results[2] = {
-                    data: ''
-                  }
-                } else {
-                  sunrise = (new Date(results[2].data.city.sunrise * 1000)).toLocaleTimeString('en-UK')
-                  sunset = (new Date(results[2].data.city.sunset * 1000)).toLocaleTimeString('en-UK')
-                }
-                // A AQUI
-                res.render('index', {
-                  news: results[0].data.articles,
-                  info: results[1].data,
-                  weather: results[2].data,
-                  city: countryCode.city,
-                  country: countryCode.country,
-                  hours: {
-                    sunrise,
-                    sunset
-                  },
-                  restaurant: infoRestaurant[0],
-                  points: infoRestaurant[1],
-                  event: results[3].data._embedded.events,
-                  user: req.user
-                })
-              })
-              .catch(err => console.log(`Error al traer los datos de BD`, err))
-          } else {
-            Promise.all([newsPromise, infoPromise, weatherPromise, restaurantsPromise, pointOfInterestPromise, eventsPromise])
-              .then(results => {
-                // IMPORTANTE NO TOCAR DE AQUI
-                let sunrise, sunset
-                if (results[2] === undefined) {
-                  results[2] = {
-                    data: ''
-                  }
-                } else {
-                  sunrise = (new Date(results[2].data.city.sunrise * 1000)).toLocaleTimeString('en-UK')
-                  sunset = (new Date(results[2].data.city.sunset * 1000)).toLocaleTimeString('en-UK')
-                }
-                // A AQUI
-                saveInfo(results[3], countryCode.city, Restaurants)
-                saveInfo(results[4], countryCode.city, PopularPlace)
-                res.render('index', {
-                  news: results[0].data.articles,
-                  info: results[1].data,
-                  weather: results[2].data,
-                  city: countryCode.city,
-                  country: countryCode.country,
-                  hours: {
-                    sunrise,
-                    sunset
-                  },
-                  restaurant: results[3],
-                  points: results[4],
-                  event: results[5].data._embedded.events,
-                  user: req.user
-                })
-              })
-              .catch(err => console.log(`Error al traer los datos de la API`, err))
-          }
-        })
-        .catch(err => console.log(err))
+      searchPlace = PopularPlace.find({
+        city: countryCode.city
+      })
+      code = countryCode
+      code.city = countryCode.city.toLowerCase()
+      return Promise.all([searchRestaurant, searchPlace])
     })
-    .catch(err => console.log(`Error al buscar el codigo de pais`, err))
+    .then(infoRestaurant => {
+      if (infoRestaurant[0].length) {
+        resultRestaurant = infoRestaurant[0]
+        resultPlace = infoRestaurant[1]
+        const newsPromise = newsAPI.getNews(`${code.country}`)
+        const infoPromise = infoAPI.getInfo(`${code.country}`)
+        const weatherPromise = weatherAPI.getWeather(`${code.city}`)
+        const eventsPromise = eventsAPI.getEvents(`${code.city}`)
+        return Promise.all([newsPromise, infoPromise, weatherPromise, eventsPromise])
+      } else {
+        const newsPromise = newsAPI.getNews(`${code.country}`)
+        const infoPromise = infoAPI.getInfo(`${code.country}`)
+        const weatherPromise = weatherAPI.getWeather(`${code.city}`)
+        const restaurantsPromise = restaurantsAPI.getRestaurants(`${code.city}`, `${code.country}`)
+        const pointOfInterestPromise = pointsOfInterestAPI.getPointsOfInterest(`${code.city}`, `${code.country}`)
+        const eventsPromise = eventsAPI.getEvents(`${code.city}`)
+        return Promise.all([newsPromise, infoPromise, weatherPromise, eventsPromise, restaurantsPromise, pointOfInterestPromise])
+      }
+    })
+    .then(results => {
+      let sunrise, sunset
+
+      if (results[2] === undefined) {
+        results[2] = {
+          data: ''
+        }
+      } else {
+        sunrise = (new Date(results[2].data.city.sunrise * 1000)).toLocaleTimeString('en-UK')
+        sunset = (new Date(results[2].data.city.sunset * 1000)).toLocaleTimeString('en-UK')
+      }
+      results[3].data._embedded ? null : results[3].data._embedded = {
+        events: ""
+      }
+
+      if (results.length === 4) {
+
+        res.render('index', {
+          news: results[0].data.articles,
+          info: results[1].data,
+          weather: results[2].data,
+          city: code.city,
+          country: code.country,
+          hours: {
+            sunrise,
+            sunset
+          },
+          restaurant: resultRestaurant,
+          points: resultPlace,
+          event: results[3].data._embedded.events,
+          user: req.user
+        })
+
+      } else {
+        saveInfo(results[4], code.city, Restaurants)
+        saveInfo(results[5], code.city, PopularPlace)
+        res.render('index', {
+          news: results[0].data.articles,
+          info: results[1].data,
+          weather: results[2].data,
+          city: code.city,
+          country: code.country,
+          hours: {
+            sunrise,
+            sunset
+          },
+          restaurant: results[4],
+          points: results[5],
+          event: results[3].data._embedded.events,
+          user: req.user
+        })
+      }
+    })
+    .catch(err => console.log("Algo ha fallado aquí", err))
 })
+
+
 
 
 router.get('/userList', (req, res) => {
