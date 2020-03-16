@@ -56,7 +56,9 @@ To teammates and to the IronHack Team for their support!
 ## Contact
 
 Sergio Collado - [sergiocollado95@gmail.com](sergiocollado95@gmail.com)
+
 Roberto Marrero - [robertomarreropuertollano@gmail.com](robertomarreropuertollano@gmail.com)
+
 Alejandro García - [alejandro.garci.rodr@gmail.com](alejandro.garci.rodr@gmail.com)
 
 Project Link: [https://github.com/IronSRA/el-viajero
