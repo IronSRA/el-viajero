@@ -24,6 +24,9 @@ The page has a city search engine, which allows you to obtain:
 - Events
 - news
 
+
+<p align="center"><img src="https://i.ibb.co/26kDYMr/Screenshot-2020-03-16-at-13-50-00.png" /></a></p>
+
 It also allows you to join a social community with which you can contact other users who are in the same city as you.
 
 try it here: http://elviajero-test.herokuapp.com/
