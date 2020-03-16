@@ -21,7 +21,7 @@ router.post('/', uploadCloud.single('phototoupload'), (req, res, next) => {
       image: req.file.secure_url
     })
     .then(() => res.redirect('/profile'))
-    .catch(err => console.log(err))
+    .catch(err => next(err))
 });
 
 router.post('/newpicture', uploadCloud.single('imagesupload'), (req, res, next) => {
@@ -34,7 +34,7 @@ router.post('/newpicture', uploadCloud.single('imagesupload'), (req, res, next) 
       }
     })
     .then(() => res.redirect('/profile'))
-    .catch(err => console.log(err))
+    .catch(err => next(err))
 });
 
 router.post('/fav/city/:city', (req, res, next) => {
@@ -49,16 +49,16 @@ router.post('/fav/city/:city', (req, res, next) => {
         User.findByIdAndUpdate(req.user._id, {
             "favourites.cities": userFavCities
           })
-          .catch(err => console.log(`Error: ${err}`))
+          .catch(err => next(err))
       } else {
         userFavCities.push(city)
       }
       User.findByIdAndUpdate(req.user._id, {
           "favourites.cities": userFavCities
         })
-        .catch(err => console.log(`Error: ${err}`))
+        .catch(err => next(err))
     })
-    .catch(err => console.log(`Error: ${err}`))
+    .catch(err => next(err))
 });
 
 module.exports = router

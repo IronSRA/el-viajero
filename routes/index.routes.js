@@ -115,7 +115,7 @@ router.get('/', (req, res) => {
         })
       }
     })
-    .catch(err => console.log("Algo ha fallado aquí", err))
+    .catch(err => next(err))
 })
 
 
@@ -126,7 +126,7 @@ router.get('/userList', (req, res) => {
     .then(allUsers => res.render('/user-list', {
       users: allUsers
     }))
-    .catch(err => console.log('Error consultando la BBDD: ', err))
+    .catch(err => next(err))
 })
 
 module.exports = router

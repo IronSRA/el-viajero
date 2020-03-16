@@ -13,7 +13,6 @@ class SearchAPIHandler {
 
     return this.axiosApp.get(`/json?address=${city}&key=${this.apiKey}`)
       .then(response => {
-        // console.log(response)
         let city = ""
         let infoCountry = response.data.results[0].address_components.filter(pro => (pro.types[0] === "country"));
         let infoCity = response.data.results[0].address_components.filter(pro => (pro.types[0] === "locality"));
@@ -26,7 +25,7 @@ class SearchAPIHandler {
           country: country
         }
       })
-      .catch(error => console.log('Oh No! Error is: ', error))
+      .catch(err => next(err))
   }
 }
 

@@ -20,7 +20,7 @@ router.get('/', checkLoggedIn, (req, res, next) => {
         user: req.user
       })
     })
-    .catch(err => console.log(err))
+    .catch(err => next(err))
 })
 
 router.post('/city/iamhere/:city', (req, res, next) => {
@@ -32,13 +32,13 @@ router.post('/city/iamhere/:city', (req, res, next) => {
         location: null
       })
       .then(res.redirect('/?city=' + city))
-      .catch(err => console.log('Error consultando la BBDD: ', err))
+      .catch(err => next(err))
   } else {
     User.findByIdAndUpdate(req.user._id, {
         location: city
       })
       .then(res.redirect('/?city=' + city))
-      .catch(err => console.log('Error consultando la BBDD: ', err))
+      .catch(err => next(err))
   }
 });
 

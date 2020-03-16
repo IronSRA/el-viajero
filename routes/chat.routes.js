@@ -36,11 +36,10 @@ router.get('/:id', checkLoggedIn, (req, res, next) => {
     .then(allMessages => {
       res.json(allMessages)
     })
-    .catch(err => console.log(err))
+    .catch(err => next(err))
 });
 
 router.post('/:id', (req, res, next) => {
-  console.log("POST!")
   const newComment = {
     message: {
       users: {
@@ -52,12 +51,12 @@ router.post('/:id', (req, res, next) => {
       user: req.user
     }
   }
-  console.log(newComment)
+
   Chat.create(newComment)
     .then(() => res.json({
       status: 'popino'
     }))
-    .catch(err => console.log(`Error chat ${err}`))
+    .catch(err => next(err))
 })
 
 module.exports = router
