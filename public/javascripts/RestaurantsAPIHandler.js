@@ -15,7 +15,7 @@ class RestaurantsAPIHandler {
         }
         return geometry
       })
-      .catch(err => next(err))
+      .catch(err => console.log(err))
   }
 
   getRestaurants(city, country) {
@@ -23,6 +23,6 @@ class RestaurantsAPIHandler {
       .then(geometry => {
         return this.axiosApp.get(`place/nearbysearch/json?location=${geometry.lat}%2C${geometry.lng}&radius=50000&keyword=restaurant&point_of_interest&key=${this.apiKey}`)
       })
-      .catch(err => next(err))
+      .catch(err => console.log(err))
   }
 }

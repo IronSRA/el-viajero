@@ -17,12 +17,12 @@ class pointOfInterestAPIHandler {
           elm.url = res.data.result.url
           return elm
         })
-        .catch(err => next(err))
+        .catch(err => console.log(err))
 
     })
     return Promise.all(urlPromises)
       .then(allPromisesResult => allPromisesResult)
-      .catch(err => next(err))
+      .catch(err => console.log(err))
   }
 
   getPointsOfInterest(city, country) {
@@ -31,7 +31,7 @@ class pointOfInterestAPIHandler {
         let info = popularPlaces.data.results
         return this.getUrl(info)
       })
-      .catch(err => next(err))
+      .catch(err => console.log(err))
   }
 
 

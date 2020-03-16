@@ -17,7 +17,7 @@ class restaurantsAPIHandler {
         }
         return geometry
       })
-      .catch(err => next(err))
+      .catch(err => console.log(err))
   }
 
   getUrl(info) {
@@ -29,12 +29,12 @@ class restaurantsAPIHandler {
           elm.url = res.data.result.url
           return elm
         })
-        .catch(err => next(err))
+        .catch(err => console.log(err))
 
     })
     return Promise.all(urlPromises)
       .then(allPromisesResult => allPromisesResult)
-      .catch(err => next(err))
+      .catch(err => console.log(err))
   }
 
   getRestaurants(city, country) {
@@ -46,7 +46,7 @@ class restaurantsAPIHandler {
         let info = restaurant.data.results
         return this.getUrl(info)
       })
-      .catch(err => next(err))
+      .catch(err => console.log(err))
   }
 
 

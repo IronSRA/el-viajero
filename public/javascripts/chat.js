@@ -20,7 +20,7 @@ button.onclick = e => {
       document.querySelector('#inputMessage').value = ''
       isScrolled = false
     })
-    .catch(err => next(err)) : null
+    .catch(err => console.log(err)) : null
 }
 setInterval(() => {
   axios.get(`/chat/${receptor}`)
@@ -47,5 +47,5 @@ setInterval(() => {
         isScrolled = true
       }
     })
-    .catch(err => next(err))
+    .catch(err => console.log(err))
 }, 500)

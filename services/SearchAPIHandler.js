@@ -25,7 +25,7 @@ class SearchAPIHandler {
           country: country
         }
       })
-      .catch(err => next(err))
+      .catch(err => console.log(err))
   }
 }
 
