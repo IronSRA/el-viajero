@@ -32,13 +32,18 @@
             </div>
             <div class="col-12 cold-md-8 d-flex justify-content-center">
               <div class="row">
-                <div class="col-12 profileLocation">
+                <div class="col-12">
+                  <form action="/profile" method="post" enctype="multipart/form-data">
+                    <input type="file" name="phototoupload">
+                    <input type="submit" class="btn btn-success" value="Enviar">
+                  </form>
+                </div>
+                <div class="col-12">
                   {{#if user.location}}
                   <p class="text-center">Te encuentras en {{user.location}}. ¡Disfruta de tu visita!</p>
                   {{/if}}
                   Ciudades preferidas:
                   <div class="favorite-cities">
-
                     {{#each user.favourites.cities}}
                     {{this}}{{#unless @last}}, {{/unless}}
                     {{/each}}
