@@ -29,6 +29,7 @@ class restaurantsAPIHandler {
           elm.url = res.data.result.url
           return elm
         })
+        .catch(err => console.log(err))
 
     })
     return Promise.all(urlPromises)
@@ -45,20 +46,7 @@ class restaurantsAPIHandler {
         let info = restaurant.data.results
         return this.getUrl(info)
       })
-
-
-
-      // restaurant.data.results.forEach(elm => {
-      //   let reference = elm.photos[0].photo_reference
-      //   return this.axiosApp.get(`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${reference}&key=${this.apiKey}`)
-      //     .then(res => {
-      //       photo.push(res.data)
-      //       return restaurants
-      //     })
-
-      // })
-      // })
-      .catch(error => console.log('Oh No! Error is: ', error))
+      .catch(err => console.log(err))
   }
 
 

@@ -17,6 +17,7 @@ class pointOfInterestAPIHandler {
           elm.url = res.data.result.url
           return elm
         })
+        .catch(err => console.log(err))
 
     })
     return Promise.all(urlPromises)
@@ -30,7 +31,7 @@ class pointOfInterestAPIHandler {
         let info = popularPlaces.data.results
         return this.getUrl(info)
       })
-      .catch(error => console.log('Oh No! Error is: ', error))
+      .catch(err => console.log(err))
   }
 
 

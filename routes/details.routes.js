@@ -34,7 +34,7 @@ router.get('/weather', (req, res, next) => {
         city
       })
     })
-    .catch(err => console.log(`Error al buscar el tiempo ${err}`))
+    .catch(err => next(err))
 })
 
 router.get('/news', (req, res, next) => {
@@ -47,7 +47,7 @@ router.get('/news', (req, res, next) => {
         city
       })
     })
-    .catch(err => console.log(`Error al buscar el codigo de pais ${err}`))
+    .catch(err => next(err))
 })
 
 router.get('/events/:city', (req, res, next) => {
@@ -59,7 +59,7 @@ router.get('/events/:city', (req, res, next) => {
         city
       })
     })
-    .catch(err => console.log(`Error al buscar el codigo de pais ${err}`))
+    .catch(err => next(err))
 })
 
 router.get('/restaurants', (req, res, next) => {
@@ -73,7 +73,7 @@ router.get('/restaurants', (req, res, next) => {
         user: req.user
       })
     })
-    .catch(err => console.log(`Error al buscar los restaurantes ${err}`))
+    .catch(err => next(err))
 })
 
 router.get('/popular-place', (req, res, next) => {
@@ -87,7 +87,7 @@ router.get('/popular-place', (req, res, next) => {
         user: req.user
       })
     })
-    .catch(err => console.log(`Error al buscar los lugares más populares ${err}`))
+    .catch(err => next(err))
 })
 
 module.exports = router
