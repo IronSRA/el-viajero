@@ -2,34 +2,34 @@
 <p align="center"><img src="https://i.ibb.co/b3VQfZd/Screenshot-2020-03-16-at-13-48-28.png" /></a></p>
 
 <h2 align="center">
-Travel website, which offers you basic information about your destination city and allows you to interact with other users.
+Travelling related website, which offers basic information about your destination city and allows users to interact with each other.
 </h2>
 
 ## About The Project
 
-The traveler is the second project we have carried out in t [Ironhack] (https://www.ironhack.com/) Full Stack Web Dev Bootcamp. Between Sergio Collado, Roberto Marrero and Alejandro García.
+The Traveler is the second project we have carried out during [Ironhack](https://www.ironhack.com/) Full Stack Web Dev Bootcamp. Team work: Sergio Collado, Roberto Marrero and Alejandro García.
 
 ### Built With 🛠
 
-This project is built with Node.js, MongoDB, Handlebars and makes use of different APIs
+This project is built with Node.js, MongoDB, Handlebars and is using different APIs to retreive the needed data.
 
 ## Getting Started ⌨️
 
-The page has a city search engine, which allows you to obtain:
+The page has a city search engine, which allows users to obtain:
 
-- basic country information.
+- Basic country information.
 - Climate information.
-- Points of tourist interest
-- Restaurants
-- Events
-- news
+- Points of tourist interest.
+- Restaurants.
+- Events.
+- News.
 
 
 <p align="center"><img src="https://i.ibb.co/26kDYMr/Screenshot-2020-03-16-at-13-50-00.png" /></a></p>
 
-It also allows you to join a social community with which you can contact other users who are in the same city as you.
+It also allows travllers to join a social community where they contact other users who are in the same city to set up plans.
 
-try it here: http://elviajero-test.herokuapp.com/
+Try it here: http://elviajero-test.herokuapp.com/
 
 ### Installation
 
@@ -55,8 +55,8 @@ To teammates and to the IronHack Team for their support!
 
 ## Contact
 
-Sergio Collado - 
-Roberto Marrero - 
+Sergio Collado - [sergiocollado95@gmail.com](sergiocollado95@gmail.com)
+Roberto Marrero - [robertomarreropuertollano@gmail.com](robertomarreropuertollano@gmail.com)
 Alejandro García - [alejandro.garci.rodr@gmail.com](alejandro.garci.rodr@gmail.com)
 
 Project Link: [https://github.com/IronSRA/el-viajero
