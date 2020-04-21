@@ -29,8 +29,6 @@ The page has a city search engine, which allows users to obtain:
 
 It also allows travllers to join a social community where they contact other users who are in the same city to set up plans.
 
-Try it here: http://elviajero-test.herokuapp.com/
-
 ### Installation
 
 If you wish to look at the project in detail or even work something upon it, feel free to clone the repository:
